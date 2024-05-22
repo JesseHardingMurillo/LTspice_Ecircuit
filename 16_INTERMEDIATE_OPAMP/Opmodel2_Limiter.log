@@ -1,0 +1,22 @@
+Questionable use of curly braces in ".meas tran m param {(num2-num1)/(40us-10use)}"
+    Error: undefined symbol in: "([num2]-num1)/(40us-10use)"
+LTspice 24.0.9 for Windows
+Circuit: OPAMP2.CIR - OPAMP MODEL (LEVEL 2)
+Start Time: Tue May 21 07:13:49 2024
+solver = Normal
+Maximum thread count: 12
+tnom = 27
+temp = 27
+method = modified trap
+WARNING: Less than two connections to node out3.  This node is used by r:opx1:o.
+WARNING: Less than two connections to node out4.  This node is used by r:opx2:o.
+WARNING: Less than two connections to node out.  This node is used by rl.
+Direct Newton iteration for .op point succeeded.
+
+aol: MAX(v(out3))=(99.9962dB,-0.572921°) FROM 0.1 TO 1e+07
+fp1: mag(v(out3))=(mag(aol)/sqrt(2)) AT 10.0014
+gain_at_fp1: v(out3)=(96.9858dB,-45.0022°) at 10.0014
+fu: v(out3)=(-0.00312849dB,-89.9994°) at 1e+06
+
+Total elapsed time: 0.083 seconds.
+

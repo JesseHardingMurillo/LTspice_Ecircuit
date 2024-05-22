@@ -1,0 +1,32 @@
+LTspice 24.0.9 for Windows
+Circuit: *FULL wave circuit with Diode
+Start Time: Mon Mar 25 04:30:04 2024
+solver = Normal
+Maximum thread count: 12
+
+
+
+.OP point found by inspection.
+.step dmodel=1
+
+
+
+.step dmodel=2
+tnom = 27
+temp = 27
+method = modified trap
+.step dmodel=3
+
+
+Measurement: vin_max
+  step	MAX(v(in))	FROM	TO
+     1	9.99205	0.0004	0.0005
+     2	9.99681	0.0004	0.0005
+     3	9.99996	0.0004	0.0005
+
+Measurement "vout_max" FAIL'ed
+
+Measurement "diff_vin_vout" FAIL'ed
+
+Total elapsed time: 0.145 seconds.
+

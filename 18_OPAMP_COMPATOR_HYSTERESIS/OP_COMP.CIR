@@ -1,0 +1,110 @@
+OP_COMP.CIR - OPAMP COMPARATOR WITH HYSTERESIS
+*--------------------------------------------------------------------------
+*NOTES
+*--------------------------------------------------------------------------
+*IS = Saturation current
+*Rs = Ohmic resistance
+*Bv = Reverse brakdown voltage
+*Ibv = Current at breakdown voltage
+
+*Si modifico el Bv de los Dz1 y Dz2 esto hara que el voltage de salida cambie
+*es decir que entre mayor BV mayor Vout.
+*voltage levels of VP and VN by changing the zener diode's reverse voltage parameter BV
+*--------------------------------------------------------------------------
+*MODELS AND LIBRARIES
+*--------------------------------------------------------------------------
+* ZENER DIODE MODEL
+.MODEL	DZ1	D(Is=0.05u Rs=0.1 Bv=4.3 Ibv=0.05u)
+.MODEL	DZ2	D(Is=0.05u Rs=0.1 Bv=4.3 Ibv=0.05u)
+
+.LIB LM741.LIB
+
+*--------------------------------------------------------------------------
+*PARAMETER
+*--------------------------------------------------------------------------
+.PARAM p_R1 	{1k}
+.PARAM p_Rlim	{1000}
+.PARAM p_Vref	{0V}
+
+
+
+*--------------------------------------------------------------------------
+*CIRCUIT
+*--------------------------------------------------------------------------
+VIN 	1	0	SIN(0V 10VPEAK 10kHZ)
+VNOISE 	2	1	SIN(0V 0VPEAK 2.5KHZ)
+VNOISE 	2	1	SIN(0V 1VPEAK 2.5KHZ)
+*VNOISE 	4	1	SIN(0V 1VPEAK 2.5KHZ)	;Inversion
+*
+* COMPARATOR
+R1		2	3	{p_R1}
+R2	3	6	5K
+XOP2	3 	4 	5	OPAMP1
+RLIM	5	6	{p_Rlim}
+D1		7	6	DZ1
+D2		7	0	DZ2
+*
+* VREF
+VREF	4	0	{p_Vref}
+*VREF	2	0	{p_Vref}				;Inversion
+*
+*--------------------------------------------------------------------------
+*SUBCIRCUIT
+*--------------------------------------------------------------------------
+* OPAMP MACRO MODEL, SINGLE-POLE WITH 15V OUTPUT CLAMP
+* connections:      non-in	verting input
+*                   |   inverting input
+*                   |   |   output
+*                   |   |   |
+.SUBCKT OPAMP1		  1   2   6
+* INPUT IMPEDANCE
+RIN	1	2	10MEG
+* DC GAIN=100K AND POLE1=100HZ
+* UNITY GAIN = DCGAIN X POLE1 = 10MHZ
+EGAIN	3 0	1 2	100K
+RP1	3	4	100K
+CP1	4	0	0.0159UF
+* ZENER LIMITER
+D1	4	7	DZ0
+D2	0	7	DZ0
+* OUTPUT BUFFER AND RESISTANCE
+EBUFFER	5 0	4 0	1
+ROUT	5	6	10
+*
+* 15V ZENER DIODE MODEL
+
+.model	DZ0	D(Is=0.05u Rs=0.1 Bv=15 Ibv=0.05u)
+.ENDS
+*--------------------------------------------------------------------------
+* MEASURMENTS
+*--------------------------------------------------------------------------
+* EVENT MEASURE
+.PARAM threshold  0.5 								; Mesaure in in the middle in that case
+.PARAM Start_measure 2								; Rise and fall start value
+.PARAM Final_measure 3								; Rise and fall end value
+.PARAM Delta_sample  {final_measure-start_measure}	; difference because we use a measurement range
+
+*---------------------------------------------------------------------------------------------------
+*VCTRL MEASURE
+.MEAS TRAN v_ctrl_max MAX(V(6))					; Max voltage control
+
+.MEAS TRAN t_on										; Period on
++TRIG V(6)= V_CTRL_MAX*threshold RISE={start_measure}
++TARG V(6)= V_CTRL_MAX*threshold FALL={start_measure}
+.MEAS TRAN delta_t1
++TRIG V(6)= V_CTRL_MAX*threshold RISE={start_measure}
++TARG V(6)= V_CTRL_MAX*threshold RISE={final_measure}
+.MEAS TRAN ts PARAM delta_t1/delta_sample			; Period
+.MEAS TRAN duty_cycle PARAM (t_on/ts)*100			; Duty Cycle (D)
+.MEAS TRAN fs PARAM  1/ts							; Frequency
+
+
+*--------------------------------------------------------------------------
+* ANALYSIS
+*--------------------------------------------------------------------------
+.TRAN 	0.1MS 100MS
+*
+* VIEW RESULTS
+.PRINT TRAN	V(2) V(6) V(5)
+.PROBE
+.END

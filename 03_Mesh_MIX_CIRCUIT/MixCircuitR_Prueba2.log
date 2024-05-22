@@ -1,0 +1,45 @@
+LTspice 24.0.9 for Windows
+Circuit: Ciruito Mallas
+Start Time: Mon Mar 11 14:25:25 2024
+solver = Normal
+Maximum thread count: 12
+
+
+
+WARNING: Less than two connections to node calc_r1.  This node is used by vs2.
+Direct Newton iteration for .op point succeeded.
+.step param_vin=2.001
+
+
+
+.step param_vin=3.001
+
+
+
+.step param_vin=4.001
+
+
+
+.step param_vin=5.001
+
+
+
+.step param_vin=6.001
+
+
+
+.step param_vin=7.001
+
+
+
+.step param_vin=8.001
+
+
+
+.step param_vin=9.001
+tnom = 27
+temp = 27
+method = modified trap
+.step param_vin=10
+Total elapsed time: 0.527 seconds.
+

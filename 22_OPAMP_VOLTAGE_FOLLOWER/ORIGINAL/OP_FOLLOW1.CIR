@@ -1,0 +1,33 @@
+OP_FOLLOW1.CIR - OP AMP VOLTAGE FOLLOWER
+* UNITY-GAIN BUFFER
+*
+VS	10	0	PWL(0us 0V 10us 1V)
+*
+* SOURCE WITH NO BUFFER TO RIN
+RS1  10	20	1K
+RIN1 20	0	10K
+*
+* SOURCE WITH BUFFER BETWEEN RS AND RIN
+RS	10	11	1K
+XOP 11  12  12   OPAMP1
+RIN	12	0	100K
+
+*
+* OPAMP MACRO MODEL, SINGLE-POLE
+* connections:      non-inverting input
+*                   |   inverting input
+*                   |   |   output
+*                   |   |   |
+.SUBCKT OPAMP1      1   2   4
+* INPUT IMPEDANCE
+RIN	1	2	10MEG
+* DC GAIN
+EGAIN	3 0	1 2	100K
+ROUT	3	4	100
+.ENDS
+*
+* ANALYSIS
+.TRAN 	100US
+* VIEW RESULTS
+.PROBE
+.END

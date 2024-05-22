@@ -1,0 +1,9 @@
+Questionable use of curly braces in ".meas ac m param {mag(num1/num2)}"
+    Error: undefined symbol in: "[mag](num1/num2)"
+Questionable use of curly braces in ".meas tran vout_90 param {vout_max*0.9}"
+    Error: undefined symbol in: "[vout_max]*0.9"
+Questionable use of curly braces in ".meas tran av1 param {vout_max/vin_max}"
+    Error: undefined symbol in: "[vout_max]/vin_max"
+Questionable use of curly braces in ".meas tran av_cal param {p_r1/p_r2+1}"
+    Error: undefined symbol in: "[p_r1]/p_r2+1"
+Fatal Error: No circuit found in source

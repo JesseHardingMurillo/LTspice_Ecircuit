@@ -1,0 +1,31 @@
+Ciruito Mallas con R3 dependiente
+*--------------------------------
+*Fuente
+VS	in	0	{param_vin}
+*--------------------------------}
+*Resistencias
+R1	in	out	{param_r1}
+R2	out	0	{param_r2}
+R3	out	0	{param_r3}
+*--------------------------------
+*Parameters
+.param  param_vin 3 ;user input
+.param  param_vout_target 1 ;user input
+.param  param_r1	1k ;Fixed value
+.param  param_r2 1k ;Fixed value
+.param  param_r3 {(param_vout_target*param_r1*param_r2)/(param_vin*param_r2-param_vout_target*param_r1)} ;Automatic calculation
+*--------------------------------
+*Internal variables
+VS2 calc_r3 0 {(param_vout_target*param_r1*param_r2)/(param_vin*param_r2-param_vout_target*param_r1)}
+*--------------------------------
+*Sweep ->Barrido
+*------------------------------------
+.step param param_vin 2.00 10 1
+*ANALYSIS
+*Tran
+.Tran 500us
+*
+*Resultados
+.Plot
+.PROBE
+.END

@@ -1,0 +1,21 @@
+LPFILTER.CIR - SIMPLE RC LOW-PASS FILTER
+*Trasient (Time)
+*DC offset of 0 V, a peak amplitude of 0.2 V and a frequency of 40 kHz
+VS	1	0	AC	1	SIN(0	1	40KHZ)
+*
+R1	1	2	1K
+C1	2	0	0.032UF
+*
+* ANALYSIS (AC(Frequency) Analysis)
+*Analyses like DC, Sensitivity, Noise and Distortion.
+*AC Analysis at 5 points per DECade in the frequency range from 10 Hz to 10 MHz
+.AC 	DEC 	50 10 10MEG
+* for a duration of 0.2 ms and prints out the results at 0.001 mS intervals.
+*.TRAN 	1ms
+* VIEW RESULTS
+*.PLOT	AC	VM(2) VP(2)
+*.PLOT	TRAN	AVG(V(1))
+*.PLOT	TRAN	V(1)	V(2)
+*.PRINT TRAN V(1) V(2)
+.PROBE
+.END

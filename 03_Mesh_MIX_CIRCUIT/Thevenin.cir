@@ -1,0 +1,26 @@
+Ciruito Mallas
+*------------------------------------
+*Circuitry
+*------------------------------------
+*Fuente
+VS	in	0	{param_vin}
+*Resistencias
+RTH	in	out	{param_rth}
+RL	out	0	{param_rl}
+
+*------------------------------------
+*Parameters
+.param  param_vin 1
+.param param_rth	333.33
+.param param_rl	200
+*------------------------------------
+
+*ANALYSIS
+*Tran
+.Tran 500us
+*.op
+*
+*Resultados
+.Plot
+.PROBE
+.END

@@ -1,0 +1,32 @@
+*Half wave circuit with Diode
+*----------------------------
+*Circuit
+*----------------------------
+*Source
+VS in	0	AC 1 SIN({p_offset} {p_ampl} {p_freq})
+*----------------------------
+*Components
+*D1 in	out	1N5817	;Vd ~ 100mV , Vreverse ~ -32.4 mV
+D1 in	out	1N4148
+R1	out	0	{p_r1}
+*----------------------------
+*Models
+*.model MyIdealDiode  D(Ron=0 Roff=1Meg Vfwd=.72)
+*.model MyIdealDiode  D(1N4148) ;MyIdealDiodeJesse
+.model D D
+*Standard library
+.lib C:\Users\jesse\AppData\Local\LTspice\lib\cmp\standard.dio
+*----------------------------
+*Parameters
+.param p_r1	1k
+*Values of the wave
+.param p_offset	0
+.param p_ampl	1
+.param p_freq	1k
+*----------------------------
+* ANALYSIS
+*.AC 	DEC 	5 1 500MEG
+.tran 10ms
+.PLOT
+.PROBE
+.END

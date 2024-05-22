@@ -1,0 +1,23 @@
+
+*-----------------------------------------------------------------------------
+*AC Mearurements
+*-----------------------------------------------------------------------------
+.meas 	AC	AOL	MAX(V(3))								; Open-Loop Gain
+.meas 	AC 	FP1 WHEN	mag(V(3))=(Mag(AOL)/sqrt(2))	; 1St Pole Frequency
+.meas 	AC 	gain_at_fp1		FIND 	V(3) 		AT=FP1 	; Gain at 1St Pole Frquency
+.meas 	AC 	fu	WHEN 	mag(V(3)) =	dB_to_Av(0)	; Unirty Gain Frequency (Open Loop)
+.meas 	AC 	num1	FIND V(3) at	1k
+.meas 	AC 	num2	FIND V(3) at	10k
+.meas 	AC 	m 	PARAM {Mag(num1 / num2)}
+
+*-----------------------------------------------------------------------------
+*Tran Mearurements
+*-----------------------------------------------------------------------------
+.meas 	TRAN	Vin_max		Max(V(1))
+.meas 	TRAN	Vout_max	Max(V(3))
+.meas	TRAN	Vout_90	param	{Vout_max*0.9}
+
+.meas 	TRAN 	Av1		param	{Vout_max/Vin_max}
+.meas 	TRAN	Av_cal	param	{p_r1/p_r2+1}
+*Output rise to 90% of its final value rather quickly (<1us)
+.meas 	TRAN	Time_Vout_90	find	time	when V(3)=Vout_90

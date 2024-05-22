@@ -1,0 +1,14 @@
+Ciruito Mallas
+*Fuente
+VS	Nodo1	0	3
+*Resistencias
+R1	Nodo1	Nodo2	1k
+R2	Nodo2	0	1k
+R3	Nodo2	0	1k
+*
+*Trans
+.Trans 500us
+*
+.Plot
+.PROBE
+.END

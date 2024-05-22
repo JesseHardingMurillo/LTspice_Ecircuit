@@ -1,0 +1,64 @@
+*Measures in Tran and AC
+*-----------------------------------------------------------------------------
+*CIRCUIT
+*-----------------------------------------------------------------------------
+VS	in	0	AC {p_Vtran} SIN({p_Voff} {p_Vpeak} {p_Fin})
+
+R1	in	out	{p_r1}
+C1	out	0	{p_c1}
+
+*-----------------------------------------------------------------------------
+*FUNTIONS
+
+*-----------------------------------------------------------------------------
+.func cal_Xc(Freq,C) 	{-1/(2*pi*Freq*C)}
+.func Vec_Mag(A,B)		{sqrt(A**2+B**2)}
+.func Vec_angle(A,B)	{atan(A/B)}
+.func AvtodB(Av)		{20*(log10(Av))}
+.func dBtoAv(dB)		{10**(dB/20)}
+
+*-----------------------------------------------------------------------------
+*Parameters: User input
+*-----------------------------------------------------------------------------
+.param 	p_Vtran		1
+
+.param 	p_Voff 		0
+.param 	p_Vpeak 	1
+.param 	p_Fin 		5K				; Input frequecy
+
+.param 	p_fc		5k				; Cutoff frequecy
+.param 	p_r1 		1k
+
+.param	p_n_cycles	10				; Number of cycles
+.param	p_c_start	1/p_fc *4		; Start Cycle
+.param	p_c_end		1/p_fc *6		; End Cycle
+
+*-----------------------------------------------------------------------------
+*Parameters: Automatic calculation
+*-----------------------------------------------------------------------------
+.param 	p_c1		1/(2*pi*p_r1*p_fc)
+.param	p_period	1/p_Fin			; Period
+
+*-----------------------------------------------------------------------------
+*MEASUREMENTS
+*-----------------------------------------------------------------------------
+.include VECTOR_ANGLE.MEAS
+
+*-----------------------------------------------------------------------------
+* SIMULATOR OPTIONS
+*-----------------------------------------------------------------------------
+*.option meascplxfmt=bode			; default
+*.option meascplxfmt=polar
+.option meascplxfmt=cartesian
+
+*-----------------------------------------------------------------------------
+* ANALYSIS
+*-----------------------------------------------------------------------------
+*.step param p_r1 list 1k 3k 10k
+*.step param p_r1 1k 2k 100
+*.step temp -55 125 15
+
+.AC 	DEC 	10 	10 	10MEG
+;.tran {p_period*p_n_cycles}
+.PROBE
+.END

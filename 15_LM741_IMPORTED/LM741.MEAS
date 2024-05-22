@@ -1,0 +1,14 @@
+
+*-----------------------------------------------------------------------------
+*Tran Mearurements
+*-----------------------------------------------------------------------------
+.meas 	TRAN	Vin_max		Max(V(IN))
+.meas 	TRAN	Vout_max	Max(V(OUT))
+
+
+.meas 	TRAN 	Av1		param	{Vout_max/Vin_max}
+
+*PHASE CALCULATION
+.meas TRAN T1 FIND time WHEN V(IN)=0 cross = 3 rise = 2
+.meas TRAN T2 FIND time WHEN V(OUT)=0 cross = 3 rise = 2
+.meas TRAN phase param (360*(T1 - T2)*p_Vfreq)

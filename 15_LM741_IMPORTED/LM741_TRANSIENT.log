@@ -1,0 +1,22 @@
+Questionable use of curly braces in ".meas tran av1 param {vout_max/vin_max}"
+    Error: undefined symbol in: "[vout_max]/vin_max"
+LTspice 24.0.9 for Windows
+Circuit: Inverter Circuit With Gain=2
+Start Time: Sun May 19 11:09:33 2024
+solver = Normal
+Maximum thread count: 12
+tnom = 27
+temp = 27
+method = modified trap
+Direct Newton iteration for .op point succeeded.
+Heightened Def Con from 3.24383e-10 to 4.32438e-09
+
+vin_max: MAX(v(in))=4.99999 FROM 0 TO 0.003
+vout_max: MAX(v(out))=3.81973 FROM 0 TO 0.003
+av1: (vout_max/vin_max)=0.763947
+t1: time=0.001 at 0.001
+t2: time=0.00050029 at 0.00050029
+phase: (360*(t1 - t2)*p_vfreq)=179.895
+
+Total elapsed time: 0.081 seconds.
+

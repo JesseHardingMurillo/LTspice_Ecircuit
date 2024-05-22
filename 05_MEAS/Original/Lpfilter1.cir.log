@@ -1,0 +1,17 @@
+LTspice 24.0.9 for Windows
+Circuit: LPFILTER.CIR - SIMPLE RC LOW-PASS FILTER
+Start Time: Thu Mar 14 19:13:33 2024
+solver = Normal
+Maximum thread count: 12
+tnom = 27
+temp = 27
+method = modified trap
+.OP point found by inspection.
+
+vout_avg: AVG(v(out))=1 FROM 0 TO 2e-05
+vout_max: MAX(v(out))=(-0.00175532dB,-1.15184°) FROM 100 TO 100000
+vout_min: MIN(v(out))=(-26.0773dB,-87.1527°) FROM 100 TO 100000
+vout_hz: v(out)=(-40.0455dB,-89.43°) at 500000
+
+Total elapsed time: 0.255 seconds.
+

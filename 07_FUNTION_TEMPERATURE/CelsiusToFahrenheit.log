@@ -1,0 +1,13 @@
+LTspice 24.0.9 for Windows
+Circuit: Funtion the celsius degrees to fahrenheit degress
+Start Time: Mon Mar 25 14:47:08 2024
+solver = Normal
+Maximum thread count: 12
+tnom = 27
+temp = 27
+method = modified trap
+WARNING: Less than two connections to node a.  This node is used by vtemp.
+WARNING: Less than two connections to node b.  This node is used by vx.
+Direct Newton iteration for .op point succeeded.
+Total elapsed time: 0.068 seconds.
+

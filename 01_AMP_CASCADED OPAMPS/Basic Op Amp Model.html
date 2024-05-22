@@ -1,0 +1,449 @@
+
+<!-- saved from url=(0060)http://www.ecircuitcenter.com/Circuits/opmodel1/opmodel1.htm -->
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns="http://www.w3.org/TR/REC-html40"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="keywords" content="SPICE, opamps, op, amps, model, basic, pole, gain, buffer">
+<meta name="GENERATOR" content="Microsoft FrontPage 12.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+
+
+
+<title>Basic Op Amp Model</title>
+<style>
+<!--
+h1           { font-family: Arial; font-size: 14pt; font-style: oblique }
+ li.MsoNormal
+	{mso-style-parent:"";
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:Arial;
+	margin-left:0in; margin-right:0in; margin-top:0in}
+-->
+</style>
+</head>
+
+<body>
+<table border="0" cellpadding="3" cellspacing="0" style="border-collapse: collapse" width="700">
+  <tbody><tr>
+    <td width="50%">
+    <font size="5" face="Trebuchet MS"><font color="#FFFFFF">
+    <span style="background-color: #000000">&nbsp;eCircuit </span></font>
+    <span style="background-color: #99CCFF">&nbsp;Center </span></font></td>
+    <td width="50%">
+    <p align="center"><b><font face="Arial" size="4">Op Amp Model - Level 1</font></b></p></td>
+  </tr>
+</tbody></table>
+
+<table border="0" cellpadding="6" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="700" id="AutoNumber1">
+  <tbody><tr>
+    <td width="94%">
+	<hr color="#C0C0C0" align="left">
+
+    <p align="center"><font face="Arial" size="1">
+    <a href="http://www.ecircuitcenter.com/AboutSPICE.htm">About SPICE</a> | 
+    <a href="http://www.ecircuitcenter.com/Basics.htm">SPICE Basics</a> | 
+    <a href="http://www.ecircuitcenter.com/RunSPICE.htm">Running SPICE</a> | 
+    <a href="http://www.ecircuitcenter.com/Circuits.htm">CIRCUIT COLLECTION</a>
+    <br>
+    <a href="http://www.ecircuitcenter.com/SPICEsummary.htm">SPICE Commands</a> |  
+    <a href="http://www.ecircuitcenter.com/demos.htm">SPICE Downloads</a> | 
+    <a href="http://www.ecircuitcenter.com/About.htm">About</a> | 
+    <a href="http://www.ecircuitcenter.com/contact.htm">Contact</a> | 
+    <a href="http://www.ecircuitcenter.com/index.htm">Home</a></font></p>
+	<p>&nbsp;</p>
+    </td>
+  </tr>
+</tbody></table>
+
+<table border="0" cellpadding="6" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="700" id="AutoNumber1" bordercolorlight="#C0C0C0" bordercolordark="#FFFFFF">
+  <tbody><tr>
+    <td width="10%" align="left" valign="top" bgcolor="#C0C0C0">&nbsp;</td>
+    <td width="92%" align="left" valign="top">
+
+    <h3 align="center"><i><font face="Arial" size="5">Basic Op Amp Model</font></i></h3>
+
+    <p><font face="Arial" size="4">CIRCUIT</font></p>
+    <p class="MsoNormal" align="center">
+    <img border="0" src="./Basic Op Amp Model_files/image002.gif" width="598" height="320"></p>
+    <p class="MsoNormal" align="center">
+    <font face="Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; OPMODEL1.CIR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font> <font size="2">
+    <a href="http://www.ecircuitcenter.com/Circuits/opmodel1/opmodel1.cir">Download the 
+    SPICE file</a></font></p>
+
+    <p class="MsoNormal">One of the challenges of simulating op amp circuits is 
+    modeling the op amp itself. How is that accomplished? There's a couple of 
+    ways. You can create a circuit of many 
+    transistors, resistors and caps that closely replicate the internals of an 
+    op amp. Or, you can create a simpler model that reproduces the basic behavior of 
+    the op amp. The benefit of the simpler model is one that uses less 
+    components and typically simulates faster.&nbsp;As you begin to look at more 
+    complex or subtle behaviors, you can create a more 
+    complex op amp model. </p>
+    <p class="MsoNormal">To simulate more complex behaviors, check out the
+    <a href="http://www.ecircuitcenter.com/OpModels/Opmodel2/opmodel2.htm">Intermediate Op Amp Model</a>. For a 
+    description of all available op amp models, see
+	<a href="http://www.ecircuitcenter.com/OpModels/OpampModels.htm">Op Amp Models</a>.</p>
+    <p class="MsoNormal">&nbsp;</p>
+
+    <p class="MsoNormal"><font face="Arial" size="4">OP AMP MODEL<br>
+	</font>What are the three basic stages of an op amp? The 
+    circuit above shows</p>
+	<blockquote>
+		<p class="MsoNormal"><font face="Arial" size="2">1) A differential amplifier 
+		with high voltage gain&nbsp;&nbsp;&nbsp; RIN, EGAIN<br>
+		2) A single-pole low-pass filter frequency&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RP1, CP1<br>
+		3) An output buffer (unity gain).&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; EBUF, ROUT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></p>
+	</blockquote>
+	<p class="MsoNormal"><b><font face="Times New Roman">&nbsp;&nbsp;&nbsp; Why a differential amp 
+	with high gain?</font></b></p>
+	<blockquote>
+		<p class="MsoNormal"><font face="Arial" size="2">Open-loop gain is 
+		defined as the gain with no external feedback resistors – i.e. the loop 
+		from output to input is open. On the other hand, the closed-loop gain is 
+		typically defined by two external resistors. But, <i>the closed-loop 
+		gain holds true only if the open-loop gain (no external resistors) is 
+		much larger than the closed-loop gain</i>. Therefore, manufacturers of 
+		op amps strive to make this gain as large as possible (&gt;10000 V/V).</font></p>
+	</blockquote>
+	<p class="MsoNormal"><b><font face="Times New Roman">&nbsp;&nbsp;&nbsp; Why a low-pass filter?</font></b></p>
+	<blockquote>
+		<p class="MsoNormal"><font face="Arial" size="2">Too much open-loop gain 
+		at high frequencies may cause an op amp to ring or oscillate. Bad news! 
+		To prevent oscillation, the low-pass filter rolls off the open-loop gain 
+		to less than 1 (unity) at higher frequencies.</font></p>
+	</blockquote>
+	<p class="MsoNormal"><b><font face="Times New Roman">&nbsp;&nbsp;&nbsp; Why an output buffer?</font></b></p>
+	<blockquote>
+		<p class="MsoNormal"><font face="Arial" size="2">The gain and filter 
+		stages are typically low power stages. The output buffer provides output 
+		current drive and isolates the gain and low-pass filter components from 
+		the output.</font></p>
+	</blockquote>
+    <p class="MsoNormal">If you're designing a precision amplifier, you can 
+    use the model to see how open loop gain affects accuracy. If you're designing a high-speed amplifier, you can determine your 
+    circuit's bandwidth. </p>
+    <p class="MsoNormal">&nbsp;</p>
+    
+    <p class="MsoNormal"><font face="Arial" size="4">OPEN-LOOP FREQUENCY RESPONSE<br></font>
+    The open-loop response gives you some powerful insight 
+    into the op amp’s performance. Open-loop means NO feedback; the response of 
+    the “naked” op amp. Two important features are </p>
+	<blockquote>
+		<p><font face="Arial" size="2">1. <b>DC Gain, Aol</b> – the open-loop 
+		gain at DC. This gain is provided by the voltage controlled voltage 
+		source EGAIN. A higher gain means a higher bandwidth and more gain 
+		accuracy when you close the loop with feedback resistors.<br>
+		<br>
+		2. <b>First-Pole Frequency, fp1</b> – the frequency where the open-loop 
+		gain begins to fall. A simple RC creates this low-pass filter. <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		fp1 = 1/( 2 * &#960; * RP1 * CP1)<br>
+		<br>
+		3. <b>Unity-Gain Frequency, fu</b> - the frequency where the open-loop 
+		gain falls to 1 V/V. The bigger the fu, the faster your op amp responds. 
+		What determines this frequency? It’s a function of the DC Gain Aol and 
+		fp1.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		fu = Aol x fp1</font></p>
+	</blockquote>
+	
+	<p>Let’s create a SPICE model that we can take out for a spin. First, we'll 
+	specify it.</p>
+		<table border="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="644" id="table1" cellpadding="2">
+			<tbody><tr>
+				<td width="38">&nbsp;</td>
+				<td width="156" align="center" bgcolor="#EAEAEA"><i><b>
+				<font size="2" face="Arial">Op Amp Specification</font></b></i></td>
+				<td width="406" align="center" bgcolor="#EAEAEA">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="38">&nbsp;</td>
+				<td width="156" align="center"><font size="2" face="Arial">Aol = 
+				100k V/V</font></td>
+				<td width="406" align="left"><font size="2" face="Arial">DC Gain</font></td>
+			</tr>
+			<tr>
+				<td width="38">&nbsp;</td>
+				<td width="156" align="center">
+				<font size="2" face="Arial">fu = 10 MHz</font></td>
+				<td width="406" align="left">
+				<font size="2" face="Arial">Unity Gain Frequency, or (GBP) Gain Bandwidth Product</font></td>
+			</tr>
+			</tbody></table>
+    <p>Then, calculate the components.</p>
+		<table border="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="644" id="table2" cellpadding="2">
+			<tbody><tr>
+				<td width="38">&nbsp;</td>
+				<td width="156" align="center" bgcolor="#EAEAEA"><i><b>
+				<font size="2" face="Arial">SPICE Model Design</font></b></i></td>
+				<td width="406" align="center" bgcolor="#EAEAEA">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="38">&nbsp;</td>
+				<td width="156" align="center"><font size="2" face="Arial"><i>Choose</i></font></td>
+				<td width="406" align="left"><font size="2" face="Arial">RP1 = 
+				1k</font></td>
+			</tr>
+			<tr>
+				<td width="38">&nbsp;</td>
+				<td width="156" align="center">
+				<font size="2" face="Arial"><i>Calculate</i></font></td>
+				<td width="406" align="left">
+				<font size="2" face="Arial">K_EGAIN = Aol = 100k&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Set EGAIN to this value.)</font></td>
+			</tr>
+			<tr>
+				<td width="38">&nbsp;</td>
+				<td width="156" align="center">&nbsp;</td>
+				<td width="406" align="left"><font size="2" face="Arial">fp1 = 
+				fu / Aol = 10MHz / 100k = 100 Hz.</font></td>
+			</tr>
+			<tr>
+				<td width="38">&nbsp;</td>
+				<td width="156" align="center">&nbsp;</td>
+				<td width="406" align="left"><font size="2" face="Arial">CP1 = 
+				1/(2*pi*fp1*RP1) = 1.59 uF</font></td>
+			</tr>
+		</tbody></table>
+	<p>What about RIN and ROUT? Sometime these values can be read right from the 
+	data sheet. As a default, I typically set them to RIN=1e12 and ROUT=100 
+	ohms. As a convenience, 
+    we'll define this op amp model  as a <a href="http://www.ecircuitcenter.com/Basics.htm#subcircuit">subcircuit</a>.</p>
+    
+    
+    <p class="MsoNormal"><font color="#FFFFFF" face="Trebuchet MS">
+    <span style="background-color: #008080">&nbsp;CIRCUIT INSIGHT </span>
+    </font>&nbsp; The op amp is driven by AC source VS. There are no feedback 
+    resistors here – its running open-loop. Try out the model by running a 
+    simulation and plotting the AC magnitude <br>
+	VM(3). Can you see the DC gain = 
+    100k V/V and the first-pole at fp1 = 100 Hz? What is the unity gain 
+    frequency? Try changing the <b>Y-Axis</b> 
+    to a <b>log</b> scale to get a better view at high frequencies. If your 
+    plotting in dB, the unity-gain level is 0 dB.</p>
+    
+    <p class="MsoNormal"><font color="#FFFFFF" face="Trebuchet MS">
+    <span style="background-color: #008080">&nbsp;HANDS-ON DESIGN </span>
+    </font>&nbsp; Suppose you need to model a faster op amp with the same DC 
+	gain but a higher unity-gain frequency fu. Choose a higher fu such as 50 
+	MHz, then solve for a new fp1. For example,</p>
+	
+	<blockquote>
+		<p class="MsoNormal"><font size="2" face="Arial"><i>Choose</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		fu = 50 MHz. <br>
+		<i>Calculate</i>&nbsp;&nbsp;&nbsp;&nbsp; fp1 = fu / DCGAIN = 50 MHz / 100 k = 500 Hz
+		<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		CP1 = 1/( 2 * &#960; * 1k * 500 Hz) = 0.318 uF.</font></p>
+	</blockquote>
+	
+	<p class="MsoNormal">Try out your new op amp model. Did the magnitude VM(3) 
+	hit the unity-gain around 50 MHz?</p>
+    <p class="MsoNormal">&nbsp;</p>
+    
+    <p class="MsoNormal"><font face="Arial" size="4">CLOSED-LOOP TEST<br>
+	</font>Enough open-loop analysis already! Let’s see strap some 
+	feedback resistors around this device and see how it works in a closed-loop. 
+	All you need is to add the following resistors and change the XOP statement.</p>
+	<blockquote>
+		<p class="MsoNormal"><font face="Courier New" color="#800000" size="2">
+		R1&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp; 10K<br>
+		R2&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp; 3&nbsp;&nbsp;&nbsp; 10K<br>
+		XOP&nbsp;&nbsp; 1 2&nbsp;&nbsp; 3&nbsp;&nbsp;&nbsp; OPAMP1 </font></p>
+	</blockquote>
+	<p class="MsoNormal">Then, run a Transient Analysis (Time domain) using the 
+	.TRAN statement. The op amp is driven by 1V step function defined by the PWL 
+	source in the VS statement. With R1 = R2 = 10k, the gain should be R2/R1+1 = 
+	2 V/V. </p>
+    <p class="MsoNormal"><font color="#FFFFFF" face="Trebuchet MS">
+    <span style="background-color: #008080">&nbsp;CIRCUIT INSIGHT </span>
+    </font>&nbsp; Run a simulation and plotting the input V(1) and output V(3). 
+	You should see the output rise to 90% of its final value rather quickly 
+	(&lt;1us). To see the exact output, place a cursor on V(3) and see how close it 
+	gets to 2.000 V. How does the DC gain (Aol) affect closed-loop gain 
+	accuracy? Start dropping the DC gain (100k) in the EGAIN statement factors 
+	of 10x: 10k, 1k, …. At what point does the output drop noticeable from 2.000 
+	V?</p>
+	<p class="MsoNormal">Try lowering the fp1 by setting RP1 or CP1 to a higher 
+	value. This should consequently lower fu and slow down the rise time. Run a 
+	simulation and check out how fast the output responds.</p>
+	<p class="MsoNormal">&nbsp;</p>
+    <p class="MsoNormal"><font face="Arial" size="4">CURRENT SOURCE MODEL<br>
+	</font>Here’s <u>an important alternative to creating the same 
+	behavior using a current source</u> instead of a voltage source. This model 
+	lends itself to easily adding more behaviors such as max slew rate or 
+	voltage limits. The idea is simple - replace the series combination of a 
+	voltage source and a resistor with a parallel combination of current source 
+	and a resistor. Both models create a voltage at V(3)based on the input 
+	voltage V(1,2) multiplied by the DCGAIN. </p>
+	
+	<p class="MsoNormal" align="center"><img border="0" src="./Basic Op Amp Model_files/opmode2.gif"></p>
+				<blockquote>
+					<p class="MsoNormal">
+					<font face="Courier New" color="#800000" size="2">G1&nbsp;&nbsp; 0 3&nbsp; 1 2&nbsp; 
+					100<br>RP1&nbsp; 3&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp; 1k<br>CP1&nbsp; 4&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp; 1.5915UF</font></p>
+				</blockquote>
+	<p class="MsoNormal">Basically, G1’s current flows into RP1 creating V(3). 
+	In this model, the DC gain (Aol) defined by both RP1 and KG1 (the gain of G1 in 
+	units of A/V).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<font size="2" face="Arial">Aol = KG1 * RP1</font></p>
+	<p class="MsoNormal">The fp1 and RC calculations are the same. Let’s create the current source based model for the op 
+	amp defined above: Aol = 100k V/V and fu = 10 MHz. </p>
+		
+		<table border="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="648" id="table4" cellpadding="2">
+			<tbody><tr>
+				<td width="38">&nbsp;</td>
+				<td width="156" align="center" bgcolor="#EAEAEA"><i><b>
+				<font size="2" face="Arial">SPICE Model Design</font></b></i></td>
+				<td width="439" align="center" bgcolor="#EAEAEA">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="38">&nbsp;</td>
+				<td width="156" align="center"><font size="2" face="Arial"><i>Choose</i></font></td>
+				<td width="439" align="left"><font size="2" face="Arial">RP1 = 
+				1k</font></td>
+			</tr>
+			<tr>
+				<td width="38">&nbsp;</td>
+				<td width="156" align="center">
+				<font size="2" face="Arial"><i>Calculate</i></font></td>
+				<td width="439" align="left">
+				<font size="2" face="Arial">KG1 = Aol / RP1 = 100k / 1k = 
+		100&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Set G1 gain to this value.)</font></td>
+			</tr>
+			<tr>
+				<td width="38">&nbsp;</td>
+				<td width="156" align="center">&nbsp;</td>
+				<td width="439" align="left"><font size="2" face="Arial">fp1 = 
+				fu / Aol = 10MHz / 100k = 100 Hz.</font></td>
+			</tr>
+			<tr>
+				<td width="38">&nbsp;</td>
+				<td width="156" align="center">&nbsp;</td>
+				<td width="439" align="left"><font size="2" face="Arial">CP1 = 
+				1/(2*pi*fp1*RP1) = 1.59 uF</font></td>
+			</tr>
+		</tbody></table>
+		
+	<p class="MsoNormal">Try replacing EGAIN in the voltage model with G1 and 
+	place RP1 in parallel with CP1. Adjust the values of RP1 and CP1, then rerun the simulation. 
+	The results should be identical.</p>
+	<p class="MsoNormal">&nbsp;</p>
+    <p class="MsoNormal"><font face="Arial" size="4">PHASE SHIFT<br>
+	</font><font color="#FFFFFF" face="Trebuchet MS">
+    <span style="background-color: #008080">&nbsp;CIRCUIT INSIGHT </span>
+    </font>&nbsp;So far we’ve looked at the gain of the op amp. At some point, you may need to know the phase shift 
+    (time delay) as well. &nbsp;To check out the phase shift, add another plot to the 
+    window, then, add trace <span style="color:red">VP(3) </span>
+    <span style="color:black">where the </span><font color="#FF0000">P</font><span style="color:black"> 
+    tells SPICE to display the Phase.</span> 
+    A maximum of -90 degrees of phase shift should occur beyond the first pole 
+    fp1.</p>
+    
+    <p class="MsoNormal">What’s the big deal about phase anyway? Turns out, the 
+    phase shift (and gain) of the signal in a feedback circuit reveals how well 
+    a circuit performs. Too much negative phase can cause an amplifier circuit to 
+    overshoot, ring or even oscillate. Knowing the phase shift will help you fix 
+    the problem. On the other hand, if you’re designing an oscillator, you’ll 
+    intentionally add the right amount of negative phase at the right frequency. 
+    More on these topics in <a href="http://www.ecircuitcenter.com/Circuits/opfeedback1/opfeedback1.htm">Op Amp Feedback Analysis</a>.</p>
+	<p class="MsoNormal">&nbsp;</p>
+    <p class="MsoNormal"><font face="Arial" size="4">OP AMP CIRCUITS</font></p>
+    <p class="MsoNormal">This op amp model is used inside op 
+	amp 
+    circuits in this site: <a href="http://www.ecircuitcenter.com/Circuits/opinv/opinv.htm">Inverting Amplifier</a>,
+    <a href="http://www.ecircuitcenter.com/Circuits/opnon/opnon.htm">Non-Inverting 
+    Amplifier</a>, etc.&nbsp; Go ahead and turbo-charge some of the op amps by upping 
+    the Unity-Gain Frequency of the model and checking out its effect on the 
+    closed-loop bandwidth (with feedback components) of the amplifier.</p>
+    <p class="MsoNormal">&nbsp;&nbsp;</p>
+    <p class="MsoNormal"><font face="Arial" size="4">SIMULATION NOTE<br>
+	</font>The op amp model is created from several simple SPICE 
+    devices. The differential input and DCGAIN stage are implemented by a 
+    Voltage-Controlled Voltage Source (VCVS) named EGAIN. The device<br>
+	<font face="Courier New" size="2">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; EGAIN&nbsp;&nbsp;3 0&nbsp;&nbsp; 1 
+    2&nbsp; 100K<br>
+	<br>
+	</font>follows the syntax<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <font face="Courier New" size="2">E{name}&nbsp; {+output} {-output}&nbsp;&nbsp;{+control} 
+    {-control}&nbsp;&nbsp;{gain} <br>
+	<br>
+	</font>which creates a voltage source having positive and 
+    negative output terminals at nodes 3 and 0. The source is controlled by the 
+    voltage at positive and negative sense leads 1 and 2. This voltage is then 
+    multiplied by the gain 100k and applied at the output terminals. &nbsp;The output 
+    buffer EBUFFER is simply another VCVS.</p>
+    <p class="MsoNormal">SPICE makes three other controlled sources available: a 
+    Current-Controlled Voltage Source (CCVS), a Voltage-Controlled Current 
+    Source (VCCS) and Current-Controlled Current Source (CCCS). Check them out 
+    at the <a href="http://www.ecircuitcenter.com/SPICEsummary.htm">SPICE Command Summary</a>.</p>
+    <p>&nbsp;</p>
+    
+    <p><font face="Arial" size="4">RELATED TOPICS<br>
+	</font>To simulate more complex behaviors, check out the
+    <a href="http://www.ecircuitcenter.com/OpModels/OpampModels.htm">Intermediate Op Amp Model</a>. <br>
+    See a    description of all available op amps at
+	<a href="http://www.ecircuitcenter.com/OpModels/OpampModels.htm">Op Amp Models</a>.<br>
+    For a quick review of subcircuits, check out
+    <a href="http://www.ecircuitcenter.com/Basics.htm#subcircuit">Why Use Subcircuits?</a><br>
+    Get a crash course on SPICE simulation at <a href="http://www.ecircuitcenter.com/Basics.htm">
+    SPICE Basics</a>.<br>
+    To see how open-loop gain and bandwidth influence closed-loop bandwidth, 
+    see <a href="http://www.ecircuitcenter.com/Circuits/op_bandwidth1/op_bandwidth1.htm">Op Amp 
+    Bandwidth</a>.<br>
+    This op amp model can be used  many of the op amp 
+    circuits  available from the <a href="http://www.ecircuitcenter.com/Circuits.htm">Circuit 
+    Collection</a> page.</p>
+    <p>&nbsp;</p>
+    
+    <p><font face="Arial" size="4">SPICE FILE<br>
+	</font>
+	
+	<font size="2"><a href="http://www.ecircuitcenter.com/Circuits/opmodel1/opmodel1.cir">Download the file</a> 
+    or copy this netlist into a text file with the *.cir 
+    extention.</font></p>
+    
+<pre>OPMODEL1.CIR - OPAMP MODEL SINGLE-POLE 
+*
+VS	1	0	AC	1  PWL(0US 0V  0.01US 1V)
+XOP	1 0	3	OPAMP1
+RL	3	0	1K
+*
+* OPAMP MACRO MODEL, SINGLE-POLE 
+* connections:      non-inverting input
+*                   |   inverting input
+*                   |   |   output
+*                   |   |   |
+.SUBCKT OPAMP1      1   2   6
+* INPUT IMPEDANCE
+RIN	1	2	10MEG
+* DC GAIN=100K AND POLE1=100HZ
+* UNITY GAIN = DCGAIN X POLE1 = 10MHZ
+EGAIN	3 0	1 2	100K
+RP1	3	4	1K
+CP1	4	0	1.5915UF
+* OUTPUT BUFFER AND RESISTANCE
+EBUFFER	5 0	4 0	1
+ROUT	5	6	10
+.ENDS
+* 
+* ANALYSIS
+.AC 	DEC 	5 1 100MEG
+*.TRAN 	0.05US  2US
+* VIEW RESULTS
+.PROBE
+.END</pre>
+    <p class="MsoNormal" align="center"><a href="http://www.ecircuitcenter.com/Circuits/opmodel1/opmodel1.htm#top">
+    <font face="Arial" size="1">Top &#8593;</font></a></p><p align="center"><font face="Arial" size="1">
+    <a href="http://www.ecircuitcenter.com/OpModels/OpampModels.htm">&#9668;BACK TO OPAMP MODELS</a></font></p>
+    
+    <p class="MsoNormal" align="center">
+    <font size="1" face="Arial">© 2002-2024 eCircuit Center</font></p></td>
+    
+  </tr>
+</tbody></table>
+
+
+
+</body></html>

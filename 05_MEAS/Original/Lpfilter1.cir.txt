@@ -1,0 +1,27 @@
+LPFILTER.CIR - SIMPLE RC LOW-PASS FILTER
+*-------------------------------------
+VS	in	0	AC	1	SIN(0	10	2KHZ)
+*
+R1	in	out	{param_r1}
+C1	out	0	{param_c1}
+**-------------------------------------
+*Parameters
+.param param_r1 1k
+.param param_c1	0.032UF
+*-------------------------------------
+*Measures
+.meas Vout_avg	AVG V(out)FROM 0US TO 20US
+.meas Vout_max	MAX V(out)FROM 100Hz To 100Khz
+.meas Vout_min	MIN V(out)FROM 100Hz To 100Khz
+.meas AC Vout_Hz FIND V(out) at 500khz
+
+*-------------------------------------
+* ANALYSIS
+.AC DEC	50 10 10MEG
+*.TRAN 	5US  3mS
+* VIEW RESULTS
+*.PLOT	AC
+*.PLOT	AC	VM(2) VP(2)
+*.PLOT	TRAN 	V(1) V(2)
+.PROBE
+.END

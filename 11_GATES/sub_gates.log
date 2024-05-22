@@ -1,0 +1,5 @@
+Stray ".ends" card: .ends
+LTspice 24.0.9 for Windows
+Circuit: .SUBCKT NAND 1 2 3 4
+Start Time: Sun Mar 31 12:22:38 2024
+Fatal Error: No analysis request found.

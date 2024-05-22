@@ -1,0 +1,39 @@
+Questionable use of curly braces in ".meas tran t param {delta_t1/delta_sample}"
+    Error: undefined symbol in: "[delta_t1]/delta_sample"
+Questionable use of curly braces in ".meas tran cal_t param {cal_t_on+cal_t_off}"
+    Error: undefined symbol in: "[cal_t_on]+cal_t_off"
+Questionable use of curly braces in ".meas tran t_off param {t-t_on}"
+    Error: undefined symbol in: "[t]-t_on"
+Questionable use of curly braces in ".meas tran f param {1/t}"
+    Error: undefined symbol in: "1/[t]"
+Questionable use of curly braces in ".meas tran cal_f param {1/cal_t}"
+    Error: undefined symbol in: "1/[cal_t]"
+Questionable use of curly braces in ".meas tran duty_cycle param {(t_on/t)*100}"
+    Error: undefined symbol in: "([t_on]/t)*100"
+LTspice 24.0.9 for Windows
+Circuit: 555_TIMER1.CIR - ASTABLE MODE
+Start Time: Thu May  9 13:58:23 2024
+solver = Normal
+Maximum thread count: 12
+tnom = 27
+temp = 27
+method = modified trap
+Per .tran options, skipping operating point for transient analysis.
+Changing Tseed to 9.76562e-13
+Changing Tseed to 9.76562e-15
+
+v_ctrl_max: MAX(v(15))=4.84478 FROM 0 TO 1e-05
+t_on=2.00851e-07 FROM 2.54835e-06 TO 2.7492e-06
+cal_t_on: 8.675e-07=8.675e-07
+delta_t1=1.14836e-06 FROM 2.54835e-06 TO 3.69671e-06
+t: (delta_t1/delta_sample)=1.14836e-06
+cal_t: (cal_t_on+cal_t_off)=1.041e-06
+t_off: (t-t_on)=9.47507e-07
+cal_t_off: 1.735e-07=1.735e-07
+f: (1/t)=870809
+cal_f: (1/cal_t)=960615
+duty_cycle: ((t_on/t)*100)=17.4903
+cal_duty_cycle: 83.3333333333333=83.3333
+
+Total elapsed time: 0.232 seconds.
+

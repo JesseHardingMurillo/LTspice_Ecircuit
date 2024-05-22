@@ -1,0 +1,4 @@
+LTspice 24.0.9 for Windows
+Circuit: OP_COMP.CIR - OPAMP COMPARATOR WITH HYSTERESIS
+Start Time: Sat May 18 11:10:38 2024
+Fatal Error: Multiple instances of "Vnoise"

@@ -1,0 +1,44 @@
+Implementar con Behavioral Sources una función cuyo resultado es
+*- 1 si la medición de la magnitud está dentro del rango 1/sqrt(2) ± 1%
+*- 0 si la medición de la magnitud está fuera del rango 1/sqrt(2) ± 1%
+*-------------------------------------------------------------------------------------------------------------
+*Circuit
+*-------------------------------------------------------------------------------------------------------------
+*Vxxx n+ n- PWL(t1 v1 t2 v2 t3 v3...) is a Arbitrary Piece-wise linear voltage source
+V1		1	0	PWL({p_t1} {p_v1} {p_t2} {p_v2})
+R1		1	0	{p_r1}
+
+*Range
+*Erange 	2 	0 	TABLE {V(1,0)} = (p_limit1, 0)(p_limit1, 1) (p_limit2, 1) (p_limit2, 0)
+*R2		2	0	{p_r2}
+
+*Buff
+*Erange	2 	0 	Value{buf(p_limit1<V(1))& buf(p_limit2>V(1))}
+*R2		2	0	{p_r2}
+
+*If
+Erange	2 	0 	Value{if({p_limit1<V(1)}&{p_limit2>V(1)},1,0)}
+R2		2	0	{p_r2}
+*-------------------------------------------------------------------------------------------------------------
+*Parameters
+*-------------------------------------------------------------------------------------------------------------
+*Limits
+.param p_limit1 {1/sqrt(2) - (1/sqrt(2)*0.01)}
+.param p_limit2 {1/sqrt(2) + (1/sqrt(2)*0.01)}
+
+.param p_r1		1k
+.param p_r2		1k
+
+.param p_t1 	0
+.param p_t2 	1m
+.param p_v1 	-1
+.param p_v2 	1
+
+*-------------------------------------------------------------------------------------------------------------
+* ANALYSIS
+*-------------------------------------------------------------------------------------------------------------
+.TRAN 	0m  2m
+.PROBE
+.END
+
+*Slope is m = pendiente en si

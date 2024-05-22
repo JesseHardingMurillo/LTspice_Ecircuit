@@ -1,0 +1,29 @@
+LPFILTER.CIR - SIMPLE RC LOW-PASS FILTER
+*-------------------------------------
+VS	in	0	AC	1	SIN(0	10	5KHZ)
+*
+R1	in	out	{p_r1}
+C1	out	0	{p_c1}
+*-------------------------------------
+*Parameters
+.param p_fc	5k
+.param p_r1 1k
+.param p_c1	1/(2*pi*p_r1*p_fc)
+.param		p_c_start	1/p_fc *4
+.param		p_c_end		1/p_fc *6
+*-------------------------------------
+*Show Calculates Values
+Vfcu	a	0	{p_c1}
+*-------------------------------------
+*Measures
+.meas	TRAN	Vin_max				MAX		V(in)				From {1/5k *4} TO 2m
+.meas	TRAN	Vout_max			MAX 	V(out)				From {1/5k *4}
+.meas	TRAN	A_v			PARAM			Vout_max/Vin_max
+.meas	TRAN	V_C1		PARAM			1/(2*pi*p_r1*p_fc)
+*-------------------------------------
+* ANALYSIS
+*.TRAN {print step value} {final time}
+.TRAN 	5US  3mS
+.PROBE
+.END
+

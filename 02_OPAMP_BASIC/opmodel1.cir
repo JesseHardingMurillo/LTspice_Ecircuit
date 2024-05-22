@@ -1,0 +1,64 @@
+OPMODEL1.CIR - OPAMP MODEL SINGLE-POLE
+*-----------------------------------------------------------------------------
+*Observatios
+*-----------------------------------------------------------------------------
+*How does the DC gain (Aol) affect closed-loop gain accuracy?
+*https://toshiba.semicon-storage.com/ap-en/semiconductor/knowledge/faq/linear_opamp/what-are-open-loop-and-closed-loop-gains-of-an-op-amp.html
+*https://www.analog.com/media/en/training-seminars/tutorials/MT-033.pdf
+*https://electronics.stackexchange.com/questions/671013/why-is-open-loop-gain-important-in-an-op-amp
+*This gain is flat from dc to what is referred to as the dominant pole corner
+*frequency. From there the gain falls off at 6 dB/octave (20 dB/decade)
+*An op-amp with a large open-loop gain offers high precision when used as an inverting amplifier.
+*When the closed-loop gain of an op amp circuit is related to the loop gain, as it is in voltage-feedback op amps, the closed-loop gain can be used to stabilize the circuit.
+
+*-----------------------------------------------------------------------------
+*Funtions
+*-----------------------------------------------------------------------------
+.func dB_to_Av(dB)	{10**(db/20)}
+*-----------------------------------------------------------------------------
+*Circuit
+*-----------------------------------------------------------------------------
+*Vxxx n+ n- PWL(t1 v1 t2 v2 t3 v3...)
+VS	1	0	AC	{p_Vac}  PWL({p_t1} {p_v1} {p_t2} {p_v2}) 	; Piece-wise linear voltage source
+
+*Open loop
+*XOP	1	0	3	OPAMP1
+*RL	3	0		{p_rl}
+
+*Close loop
+R1		2   0 		{p_r1}
+R2    	2   3		{p_r2}
+XOP   	1 	2   3 	OPAMP1
+RL		3	0		{p_rl}
+
+*-----------------------------------------------------------------------------
+*Parameters
+*-----------------------------------------------------------------------------
+.param p_Vac 	1
+.param p_t1 	0us
+.param p_v1 	0
+.param p_t2 	0.01us
+.param p_v2 	1
+.param p_rl 	1k
+
+*Close loop
+.param p_r1 	10k
+.param p_r2 	10k
+*-----------------------------------------------------------------------------
+*Subcircuit
+*-----------------------------------------------------------------------------
+.include sub_basic_op_model.lib
+*-----------------------------------------------------------------------------
+*Mearurements
+*-----------------------------------------------------------------------------
+.include OPAMP_BASIC.meas
+*-----------------------------------------------------------------------------
+* ANALYSIS
+*-----------------------------------------------------------------------------
+*In 1k affect the value of output, but in 10k decreases rise speed
+*.step param	p_Egain list 100k 10k 1k 100 10
+*.TRAN 	0.05US  5US
+.AC	DEC	10 1 500MEG
+*.PLOT	TRAN VM(1) VM(3)
+.PROBE
+.END

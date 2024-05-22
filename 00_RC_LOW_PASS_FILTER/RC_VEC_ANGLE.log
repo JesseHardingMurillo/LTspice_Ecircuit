@@ -1,0 +1,41 @@
+Questionable use of curly braces in ".meas ac mag_impeance param {vec_mag(xc,p_r1)}"
+    Error: undefined symbol in: "(sqrt([xc]**2+p_r1**2))"
+Questionable use of curly braces in ".meas ac real param {re(gain_at_fc)}"
+    Error: undefined symbol in: "[re](gain_at_fc)"
+Questionable use of curly braces in ".meas ac imaginary param {im(gain_at_fc)}"
+    Error: undefined symbol in: "[im](gain_at_fc)"
+Questionable use of curly braces in ".meas ac mag_voltage param {vec_mag(real,imaginary)}"
+    Error: undefined symbol in: "(sqrt([real]**2+imaginary**2))"
+Questionable use of curly braces in ".meas ac angle_vec1 param {vec_angle(xc,p_r1)}"
+    Error: undefined symbol in: "(atan([xc]/p_r1))"
+Questionable use of curly braces in ".meas ac angle_vec2 param {vec_angle(imaginary,real)}"
+    Error: undefined symbol in: "(atan([imaginary]/real))"
+Questionable use of curly braces in ".meas ac m param {20*log10(num1)-20*log10(num2)}"
+    Error: undefined symbol in: "20*log10([num1])-20*log10(num2)"
+LTspice 24.0.9 for Windows
+Circuit: *Measures in Tran and AC
+Start Time: Sat May 18 14:25:57 2024
+solver = Normal
+Maximum thread count: 12
+tnom = 27
+temp = 27
+method = modified trap
+.OP point found by inspection.
+
+gain_dc_aol: MAX(v(out))=(0.999996,-0.00199999) FROM 10 TO 1e+07
+fc_ol: mag(v(out))=(gain_dc_aol/sqrt(2)) AT 5000.54
+gain_at_fc: v(out)=(0.500059,-0.499859) at 5000.54
+gain_at_fc_mag: mag(v(out))=(0.707104,0) at 5000.54
+xc: -1000=(-1000,0)
+mag_impeance: (vec_mag(xc,p_r1))=(1414.21,0)
+real: (re(gain_at_fc))=(0.500059,0)
+imaginary: (im(gain_at_fc))=(-0.499859,0)
+mag_voltage: (vec_mag(real,imaginary))=(0.707049,0)
+angle_vec1: (vec_angle(xc,p_r1))=(-45,0)
+angle_vec2: (vec_angle(imaginary,real))=(-44.9885,0)
+num1: v(out)=(0.00249377,-0.0498753) at 100000
+num2: v(out)=(2.49994e-05,-0.00499988) at 1e+06
+m: (20*log10(num1)-20*log10(num2))=(19.9893,0.390504)
+
+Total elapsed time: 0.115 seconds.
+

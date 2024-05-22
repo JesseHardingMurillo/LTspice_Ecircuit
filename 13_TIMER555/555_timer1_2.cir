@@ -1,0 +1,143 @@
+555_TIMER1.CIR - ASTABLE MODE
+
+*---------------------------------------------------------------------------------------------------
+*Notes
+*---------------------------------------------------------------------------------------------------
+*Free Running Oscillator = Astable Mode
+*Thresholds = umbrales
+*Histéresis = evita oscilaciones no deseadas
+
+*---------------------------------------------------------------------------------------------------
+*Like a switch
+*Time on	=	Charge C from 1/3 to 2/3 Vcc	RA+RB to Vcc	0.693(RA+RB)C
+*Time off	=	Discharge C from 2/3 to 1/3 Vcc	RB to GND		0.693 (RB)C
+*Tosc 		= 	0.693  (RA + 2RB) * C
+
+*---------------------------------------------------------------------------------------------------
+*El metodo para saber cuando cargar y descargar es mediante opamp conectados
+*como comparadores. Ademas estan las resistencias R1,R2 y R3 que son dos
+*divisores de frecuencia que van al comparador y la otra entrada del compara
+*dor va conectar a la salida del capacitor a si se cumple el funcionamiento
+*como switch(on or off the transistor).Esto ayuda a que haga el set y
+*el reset del FF.
+
+*---------------------------------------------------------------------------------------------------
+*Debemos recordar que el NE555 en astable tiene las siguientes formulas:
+* T = t1 + t2 = 0.693  (RA + 2RB) * C
+* f = 1 / T	  = 1.44 / [(RA + 2RB) * C]
+* DutyCycle = Ton /(Toff+Ton) = (RA+RB) / (RA + 2RB) %
+
+*---------------------------------------------------------------------------------------------------
+*Si se sube el valor del capacitor disminuye la frecuencia ya que es inversamente proporcinal
+*Pero el ciclo de trabajo de mantuvo
+*Si Ra>Rb el tiempo en bajo es mas grande que el tiempo en alto
+*Si Ra<Rb el tiempo en alto es mas grande que el tiempo en bajo
+
+*Si cambiamos el valor Vcc el valor T varia muy poco casi no se percibe
+*El Capacitor en las gates es necesario porque si no el pulso que indica la subida y bajada
+*es muy pequeno y debil,como consecuencia no los detecta la FF, provocando que no oscile
+
+*Vcc tambien activa o desactiva el opamp
+*---------------------------------------------------------------------------------------------------
+*Circuit
+*---------------------------------------------------------------------------------------------------
+VCC	1	0	{p_vcc}
+*
+* EXTERNAL TIMING COMPONENTS
+RA	1	2	{p_ra}
+RB	2	3	{p_rb}
+C1	3	0	{p_c1}
+*
+* DISCHARGE TRANSISTOR
+*Q{name} {c} {b} {e} [{subs}] {model} [{area}]
+Q1	2 	6 	0	QNOM
+
+RBQ	15	6	{p_rbq}
+*
+* 1/3 AND 2/3 VCC DIVIDER
+R1	1	4	{p_r1}
+R2	4	5	{p_r2}
+R3	5	0	{p_r3}
+*
+* COMPARATORS
+XCMP1	3 4 11 COMP1 ; V(11) es el que dice cuando inicia
+XCMP2	5 3 12 COMP1 ; V(12) determina cuando debe bajar
+*
+* RS FLIP-FLOP
+XNOT1	11 13 1 	NOT
+XNOT2	12 16 1 	NOT
+XNAND1	13 14 15 1	NAND
+XNAND2	15 16 14 1	NAND
+*---------------------------------------------------------------------------------------------------
+*PARAMETERS
+*---------------------------------------------------------------------------------------------------
+.param p_vcc 	5
+;.param p_vcc 	4
+;.param p_vcc 	6
+
+;.param p_ra 1k
+;.param p_ra		15k
+.param p_ra		20k
+
+;.param p_rb 10k
+;.param p_rb 	5k
+.param p_rb 	5k
+
+;.param p_c1 	100pF
+;.param p_c1 	100pF*2
+.param p_c1 	100pF*0.5
+.param p_rbq 	15k
+
+.param p_r1 	5k
+.param p_r2 	5k
+.param p_r3 	5k
+*---------------------------------------------------------------------------------------------------
+* Measurements
+*---------------------------------------------------------------------------------------------------
+* EVENT MEASURE
+.PARAM threshold  0.5 								; Mesaure in in the middle in that case
+.PARAM Start_measure 2								; Rise and fall start value
+.PARAM Final_measure 3								; Rise and fall end value
+.PARAM Delta_sample  {final_measure-start_measure}	; difference because we use a measurement range
+
+*---------------------------------------------------------------------------------------------------
+*VCTRL MEASURE
+.MEAS TRAN v_ctrl_max MAX(V(15))					; Max voltage control
+
+.MEAS TRAN t_on										; Period on
++TRIG V(15)= V_CTRL_MAX*threshold RISE={start_measure}
++TARG V(15)= V_CTRL_MAX*threshold FALL={start_measure}
+.MEAS TRAN cal_t_on			PARAM	{0.694*(p_ra+p_rb)*p_c1}
+
+.MEAS TRAN delta_t1
++TRIG V(15)= V_CTRL_MAX*threshold RISE={start_measure}
++TARG V(15)= V_CTRL_MAX*threshold RISE={final_measure}
+
+.MEAS TRAN T 				PARAM 	{delta_t1/delta_sample}	; Period
+.MEAS TRAN cal_T			PARAM	{cal_t_on+cal_t_off}
+
+.MEAS TRAN t_off			PARAM 	{T-t_on}
+.MEAS TRAN cal_t_off		PARAM 	{0.694*+p_rb*p_c1}
+
+.MEAS TRAN F 				PARAM 	{1/T}				; Frequency
+.MEAS TRAN cal_F 			PARAM 	{1/cal_T}
+
+.MEAS TRAN duty_cycle 		PARAM 	{(t_on/T)*100}		; Duty Cycle (D)
+.MEAS TRAN cal_duty_cycle	PARAM 	{100*(p_ra+p_rb)/(p_ra+2*p_rb)}
+
+*---------------------------------------------------------------------------------------------------
+* SUBCIRCUITS AND MODELS
+*---------------------------------------------------------------------------------------------------
+.include And_Not_Comp1.lib
+*---------------------------------------------------------------------------------------------------
+* ANALYSIS
+*---------------------------------------------------------------------------------------------------
+.TRAN 	0.05US  10US UIC
+*.ic[V(<n1>)=<voltage>] [I(<inductor>)=<current>]
+.IC V(15)=0V V(14)=5V V(3)=0V		; .IC =Set Initial Conditions
+*---------------------------------------------------------------------------------------------------
+* VIEW RESULTS
+*---------------------------------------------------------------------------------------------------
+.PRINT	TRAN 	V(3) V(4) V(11) V(12) V(14) V(15)
+.PROBE
+.END

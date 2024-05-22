@@ -1,0 +1,4 @@
+LTspice 24.0.9 for Windows
+Circuit: * C:\Users\jesse\OneDrive - Universidad Técnica Nacional\Cursos Actuales\Proyecto Electronico\CIRCUITS\15_LM741_IMPORTED\Draft1.asc
+Start Time: Thu Apr 18 17:05:11 2024
+Fatal Error: e1: Unknown circuit node: "49" requested in behavioral source

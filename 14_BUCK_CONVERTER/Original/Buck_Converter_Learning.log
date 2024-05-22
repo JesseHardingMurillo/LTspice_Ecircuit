@@ -1,0 +1,47 @@
+Questionable use of curly braces in ".meas tran time_tus param {t2-t1}"
+    Error: undefined symbol in: "[t2]-t1"
+Questionable use of curly braces in ".meas tran time_ton param {t4-t3}"
+    Error: undefined symbol in: "[t4]-t3"
+Questionable use of curly braces in ".meas tran v_vout_max max (v(out)) trig time={time_start_meas+(20u*50)} targ time=10m"
+    Error: undefined symbol in: "[time_start_meas]+(20u*50)"
+Questionable use of curly braces in ".meas tran v_vout_ripple param {v_vout_max-v_vout_min}"
+    Error: undefined symbol in: "[v_vout_max]-v_vout_min"
+Questionable use of curly braces in ".meas tran i_iload_ripple param {i_iload_max-i_iload_min}"
+    Error: undefined symbol in: "[i_iload_max]-i_iload_min"
+LTspice 24.0.9 for Windows
+Circuit: * C:\Users\jesse\OneDrive - Universidad Técnica Nacional\Cursos Actuales\Proyecto Electronico\CIRCUITS\14_BUCK_CONVERTER\Original\Buck_Converter_Learning.asc
+Start Time: Sun Apr  7 10:33:43 2024
+solver = Normal
+Maximum thread count: 12
+tnom = 27
+temp = 27
+method = modified trap
+Direct Newton iteration for .op point succeeded.
+
+v_vin_max: MAX(v(in))=12 FROM 0 TO 0.01
+v_vout_avg_test: AVG(v(out))=4.51845 FROM 0 TO 0.01
+i_iload_avg_test: AVG(i(rload))=0.903691 FROM 0 TO 0.01
+t1: time=2e-05 at 2e-05
+t2: time=4e-05 at 4e-05
+time_tus: (t2-t1)=2e-05
+t3: time=2e-05 at 2e-05
+t4: time=2.835e-05 at 2.835e-05
+time_ton: (t4-t3)=8.35e-06
+v_ctrl_max: MAX(v(ctrl))=5 FROM 0 TO 0.01
+t_on=8.34e-06 FROM 4.0005e-05 TO 4.8345e-05
+delta_t1=8e-05 FROM 4.0005e-05 TO 0.000120005
+ts: delta_t1/delta_sample=2e-05
+duty_cycle: (t_on/ts)=0.417
+fs: 1/ts=50000
+time_start_meas: time=5.96153e-05 at 5.96153e-05
+v_vout_max: MAX(v(out))=4.91518 FROM 0.00105962 TO 0.01
+v_vout_min: MIN(v(out))=4.08287 FROM 0.005 TO 0.006
+v_vout_ripple: (v_vout_max-v_vout_min)=0.832304
+v_vout_avg: AVG(v(out))=4.51643 FROM 0.005 TO 0.006
+i_iload_max: MAX(i(rload))=0.982931 FROM 0.005 TO 0.006
+i_iload_min: MIN(i(rload))=0.816574 FROM 0.005 TO 0.006
+i_iload_ripple: (i_iload_max-i_iload_min)=0.166357
+i_iload_avg: AVG(i(rload))=0.903286 FROM 0.005 TO 0.006
+
+Total elapsed time: 0.724 seconds.
+

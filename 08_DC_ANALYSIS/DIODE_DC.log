@@ -1,0 +1,28 @@
+LTspice 24.0.9 for Windows
+Circuit: * C:\Users\jesse\OneDrive - Universidad Técnica Nacional\Cursos Actuales\Proyecto Electronico\CIRCUITS\08_DC_ANALYSIS\DIODE_DC.asc
+Start Time: Tue Mar 26 19:44:01 2024
+solver = Normal
+Maximum thread count: 12
+
+
+
+.step dmodel=1
+.OP point found by inspection.
+
+
+
+.step dmodel=2
+tnom = 27
+temp = 27
+method = modified trap
+.step dmodel=3
+
+
+Measurement: vth
+  step	v(n001)	at
+     1	0.385488	0.385488
+     2	0.0197337	0.0197337
+     3	0.713454	0.713455
+
+Total elapsed time: 0.145 seconds.
+

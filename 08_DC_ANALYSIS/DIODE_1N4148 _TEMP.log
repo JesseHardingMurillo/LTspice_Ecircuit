@@ -1,0 +1,43 @@
+LTspice 24.0.9 for Windows
+Circuit: * C:\Users\jesse\OneDrive - Universidad Técnica Nacional\Cursos Actuales\Proyecto Electronico\CIRCUITS\08_DC_ANALYSIS\DIODE_1N4148 _TEMP.asc
+Start Time: Tue Mar 26 20:10:38 2024
+solver = Normal
+Maximum thread count: 12
+tnom = 27
+temp = 27
+method = modified trap
+.step v1=1
+.step v1=1.4
+.step v1=1.8
+.step v1=2.2
+.step v1=2.6
+.step v1=3
+.step v1=3.4
+.step v1=3.8
+.step v1=4.2
+.step v1=4.6
+.step v1=5
+
+
+Measurement "vth1" FAIL'ed
+
+Measurement "vth2" FAIL'ed
+
+Measurement "vth3" FAIL'ed
+
+Measurement: vth4
+  step	v(out)	at
+     1	0	0
+     2	0.887309	0.00669092
+     3	0.946975	4.97442e-06
+     4	1.00041	7.41515e-08
+     5	1.05068	3.78582e-09
+     6	1.09906	3.79218e-10
+     7	1.14617	5.81312e-11
+     8	1.19238	1.19452e-11
+     9	1.2379	3.0405e-12
+    10	1.2829	9.11119e-13
+    11	1.32747	3.1047e-13
+
+Total elapsed time: 0.423 seconds.
+

@@ -1,0 +1,51 @@
+OP_LIMITER1.CIR - OPAMP WITH ZENER LIMITING
+*
+VS	1	0	SIN(0V 0.5VPEAK 1KHZ)
+*
+* INVERTING AMPLIFIER
+R1	1	2	10K
+R2	2	4	10K
+XOP1	0 2	4	OPAMP1
+*
+* ZENER LIMITER 
+D1	2	3	D1N746
+D2	4	3	D1N746
+*
+*
+* ZENER DIODES
+.model	D1N746	D(Is=5u Rs=14 Bv=2.81 Ibv=5u)
+.model	D1N749	D(Is=1u Rs=11 Bv=3.82 Ibv=1u)
+.model	D1N752	D(Is=0.5u Rs=6 Bv=5.20 Ibv=0.5u)
+.model	D1N755	D(Is=0.05u Rs=3 Bv=7.11 Ibv=0.05u)
+.model	D1N757	D(Is=0.05u Rs=5 Bv=8.67 Ibv=0.05u)
+.model	D1N758	D(Is=0.05u Rs=9 Bv=9.49 Ibv=0.05u)
+* DIODES
+.model	D1N4148	D(Is=0.1p Rs=16 CJO=2p Tt=12n Bv=100 Ibv=0.1p)
+*
+*
+* OPAMP MACRO MODEL, SINGLE-POLE 
+* connections:      non-inverting input
+*                   |   inverting input
+*                   |   |   output
+*                   |   |   |
+.SUBCKT OPAMP1      1   2   6
+* INPUT IMPEDANCE
+RIN	1	2	10MEG
+* DCGAIN =100K AND POLE1=1/(2*PI*RP1*CP1)=100HZ
+* GBP = DCGAIN X POLE1 = 10MHZ
+EGAIN	3 0	1 2	100K
+RP1	3	4	1000
+CP1	4	0	1.5915UF
+* OUTPUT BUFFER AND RESISTANCE
+EBUFFER	5 0	4 0	1
+ROUT	5	6	10
+.ENDS
+*
+*
+* ANALYSIS
+.TRAN 	10US  1000US
+*
+* VIEW RESULTS
+.PRINT	TRAN 	V(4)
+.PROBE
+.END

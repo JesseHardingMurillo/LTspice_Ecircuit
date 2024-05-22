@@ -1,0 +1,72 @@
+*---------------------------------------------------------------------------------------------------
+*Cheaking Automatic Calculations
+*---------------------------------------------------------------------------------------------------
+.MEAS TRAN Rload 		PARAM {Rload_cal}
+.MEAS TRAN Frequency 	PARAM {Freq_cal}
+.MEAS TRAN L			PARAM	{L_cal}
+.MEAS TRAN C			PARAM	{C_cal}
+
+*---------------------------------------------------------------------------------------------------
+*VCTRL MEASURE
+*---------------------------------------------------------------------------------------------------
+* EVENT MEASURE
+.PARAM threshold  0.5 								; Mesaure in in the middle in that case
+.PARAM Start_measure 3								; Rise and fall start value
+.PARAM Final_measure 7								; Rise and fall end value
+.PARAM Delta_sample  {final_measure-start_measure}	; difference because we use a measurement range
+
+*---------------------------------------------------------------------------------------------------
+*VCTRL MEASURE
+.MEAS TRAN v_ctrl_max MAX(V(ctrl))					; Max voltage control
+
+.MEAS TRAN t_on										; Period on
++TRIG V(ctrl)= V_CTRL_MAX*threshold RISE={start_measure}
++TARG V(ctrl)= V_CTRL_MAX*threshold FALL={start_measure}
+.MEAS TRAN delta_t1
++TRIG V(ctrl)= V_CTRL_MAX*threshold RISE={start_measure}
++TARG V(ctrl)= V_CTRL_MAX*threshold RISE={final_measure}
+.MEAS TRAN ts PARAM delta_t1/delta_sample			; Period
+.MEAS TRAN duty_cycle PARAM (t_on/ts)				; Duty Cycle (D)
+.MEAS TRAN fs PARAM  1/ts							; Frequency
+
+*---------------------------------------------------------------------------------------------------
+*Determinate de start time
+*---------------------------------------------------------------------------------------------------
+;.MEAS TRAN time_start_meas FIND time WHEN V(out)<5
+;.MEAS TRAN time_start_meas FIND time CROSS(V(out),5)
+;.MEAS TRAN time_start_meas WHEN time CROSS(V(out),5)
+.MEAS TRAN time_start_meas FIND time WHEN V(out)=5 FALL=1
+;.MEAS TRAN time_start_meas FIND time WHEN V(write)=5 RISE=1
+
+*---------------------------------------------------------------------------------------------------
+*Input voltage Max MEASURE
+*---------------------------------------------------------------------------------------------------
+.meas TRAN v_vin_MAX MAX V(in)															; Max 	Input 	Voltege
+
+*---------------------------------------------------------------------------------------------------
+* Ripple Voltage MEASURE
+*---------------------------------------------------------------------------------------------------
+.MEAS TRAN v_vout_max MAX(V(out)) TRIG time={time_start_meas+(20u*50)} TARG time=10m	; Max Output Voltege
+.MEAS TRAN v_vout_min MIN(V(out)) TRIG time={time_start_meas+(20u*50)} TARG time=10m	; Min Output Voltege
+.MEAS TRAN v_vout_ripple 		PARAM 	{v_vout_max - v_vout_min}						; Calculos of Vriple
+.MEAS TRAN V_vout_ripple_porcent Param 	{(v_vout_ripple *100)/v_vout_AVG}				; Calculos of Vriple in %
+
+*---------------------------------------------------------------------------------------------------
+* Output Voltage Average MEASURE
+*---------------------------------------------------------------------------------------------------
+.meas TRAN v_vout_AVG AVG V(out) TRIG time={time_start_meas+(20u*50)} TARG time=10m		; Correct Measure
+.meas TRAN v_vout_AVG_TEST AVG V(out)													; Vout 	Average test
+
+*---------------------------------------------------------------------------------------------------
+* Ripple Courrent Load MEASURE
+*---------------------------------------------------------------------------------------------------
+.MEAS TRAN i_ILoad_max MAX(I(rload)) TRIG time={time_start_meas+(20u*50)} TARG time=10m	; Max Loafd Courrrent
+.MEAS TRAN i_ILoad_min MIN(I(rload)) TRIG time={time_start_meas+(20u*50)} TARG time=10m	; Min Loafd Courrrent
+.MEAS TRAN i_ILoad_ripple 			PARAM 	{i_ILoad_max - i_ILoad_min}					;Calculos of Iload_ripple
+.MEAS TRAN i_ILoad_ripple_porcent 	PARAM 	{(i_ILoad_ripple*100)/i_ILoad_AVG}			;Calculos of Iload_ripple in %
+
+*---------------------------------------------------------------------------------------------------
+* Output Courrente Average MEASURE
+*---------------------------------------------------------------------------------------------------
+.meas TRAN i_ILoad_AVG AVG I(rload) TRIG time=5m TARG time=6m 							; Correct Measure
+.meas TRAN i_iload_AVG_TEST AVG I(Rload)												; Iload Average test

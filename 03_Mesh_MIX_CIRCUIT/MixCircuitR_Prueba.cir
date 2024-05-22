@@ -1,0 +1,35 @@
+Ciruito Mallas
+*------------------------------------
+*Circuitry
+*------------------------------------
+*Fuente
+VS	in	0	{param_vin}
+*Resistencias
+R1	in	out	{param_r1}
+R2	out	0	{param_r2}
+*R3	out	0	{param_r3}
+*------------------------------------
+*Parameters
+.param  param_vin 5
+.param param_r1	10k
+.param param_r2	20k
+.param param_r3	10k
+*------------------------------------
+*Sweep ->Barrido
+*------------------------------------
+*.step param param_r2 list 10k 20k
+.step param param_r2 1k 20k 3k
+*.step param param_r2 list 1k 20k 3k
+*------------------------------------
+.step param param_r1 1k 20k 3k
+*.step param param_r1 list 1k 20k 3k
+*------------------------------------
+*ANALYSIS
+*Tran
+.Tran 500us
+*.op
+*
+*Resultados
+.Plot
+.PROBE
+.END

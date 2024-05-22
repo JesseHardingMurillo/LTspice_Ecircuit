@@ -1,0 +1,21 @@
+*.TF  This is an analysis mode that finds the DC small signal transfer function of a node voltage
+*or branch current due to small variations of an independent source
+*.TF Trabaja en DC por ende los capacitores se comportan como un circuito abierto
+*Y los inductores como un corto circuito
+*-----------------------------------------------------------------------------
+*Circuit
+*-----------------------------------------------------------------------------
+VS in 0 {p_vs}
+R1 in out {p_r1}
+R2 out 0 {p_r2}
+*-----------------------------------------------------------------------------
+*PARAMETERS
+*-----------------------------------------------------------------------------
+.param p_vs 4
+.param p_r1	1
+.param p_r2 3
+
+*.tran 3ms
+
+
+.TF V(out,0) Vs

@@ -1,0 +1,17 @@
+
+*-----------------------------------------------------------------------------
+*AC Mearurements
+*-----------------------------------------------------------------------------
+.meas 	AC	AOL	MAX(V(out3))								; Open-Loop Gain
+.meas 	AC 	FP1 WHEN	mag(V(out3))=(Mag(AOL)/sqrt(2))	; 1St Pole Frequency
+.meas 	AC 	gain_at_fp1		FIND 	V(out3) 		AT=FP1 	; Gain at 1St Pole Frquency
+.meas 	AC 	FU	FIND V(out3) at	1Meg ; Unirty Gain Frequency (Open Loop)
+
+*-----------------------------------------------------------------------------
+*Tran Mearurements
+*-----------------------------------------------------------------------------
+.meas 	TRAN 		num1	FIND V(out) at	1US
+.meas 	TRAN 		num2	FIND V(out) at	2us
+.meas 	TRAN 		T_1V	FIND TIME WHEN V(OUT)=1v
+;m = y2-y1/x2-x1
+.meas 	TRAN		m 		PARAM {(num2-num1)/(40us-10use)}

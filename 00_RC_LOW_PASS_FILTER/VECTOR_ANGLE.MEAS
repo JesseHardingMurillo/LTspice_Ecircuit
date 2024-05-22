@@ -1,0 +1,37 @@
+*-----------------------------------------------------------------------------
+* MEASUREMENTS AC
+*-----------------------------------------------------------------------------
+.MEAS 	AC 		gain_dc_aol	max 		V(out)								; peak response, A = Amplification Factor or Gain, OL = Open-Loop
+*-----------------------------------------------------------------------------
+.MEAS 	AC 		fc_ol 			WHEN	mag(V(out))=(gain_dc_aol/sqrt(2))	; cutoff frequency
+*-----------------------------------------------------------------------------
+.MEAS 	AC 		gain_at_fc		FIND 	V(out) 		AT=fc_ol 				; Cartesian
+.MEAS 	AC 		gain_at_fc_mag	FIND 	mag(V(out))	AT=fc_ol
+*-----------------------------------------------------------------------------
+.meas 	AC		Xc 				param 	{cal_Xc(p_Fin, p_c1)}				; Reactance
+.meas 	AC		Mag_Impeance 	param 	{Vec_Mag(Xc,p_r1)}					; Impedace
+.meas 	AC		Real			param	{Re(gain_at_fc)} 					; Observar
+.meas 	AC		Imaginary		param	{IM(gain_at_fc)}
+.meas 	AC		Mag_Voltage 	param 	{Vec_Mag(Real,Imaginary)}
+.meas 	AC		Angle_Vec1 		param 	{Vec_angle(Xc,p_r1)}				; Calculated with resistance and reactance
+.meas 	AC		Angle_Vec2 		param 	{Vec_angle(Imaginary,Real)}			; Calculated with real and imaginary values
+
+.meas 	AC 		num1	FIND V(out) at	100k
+.meas 	AC 		num2	FIND V(out) at	1Meg
+;.meas 	AC 		m 		PARAM {num1 / num2}									; Bode
+.meas 	AC 		m 		PARAM {20*log10(num1) - 20*log10(num2)}				; Cartesian
+*-----------------------------------------------------------------------------
+* MEASUREMENTS TRAN
+*-----------------------------------------------------------------------------
+.meas	TRAN	Vin_max			MAX		V(in)		From p_c_start To p_c_end
+.meas	TRAN	Vout_max		MAX 	V(out)		From p_c_start To p_c_end
+
+.meas	TRAN	Diff_Vin_Vout	PARAM	Vin_max-Vout_max					; Vmax(in) - Vmax(out)
+.meas	TRAN	Av				PARAM	Vout_max/Vin_max					; Av
+.meas	TRAN	AvtodB_cal		PARAM	AvtodB(Av)							; Pass dB to V/V
+
+*Offset
+.meas 	TRAN 	T1 	FIND time WHEN V(IN)=0 cross = 3 rise = 2
+.meas 	TRAN 	T2 	FIND time WHEN V(OUT)=0 cross = 3 rise = 2
+.meas 	TRAN 	phase param (360*(T1 - T2)*p_fin)
+.meas 	TRAN 	phase_cal param -arctan(2*pi*{p_fc}*{p_r1}*{p_c1})	; Calculated theorical values

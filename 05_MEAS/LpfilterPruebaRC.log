@@ -1,0 +1,18 @@
+LTspice 24.0.9 for Windows
+Circuit: LPFILTER.CIR - SIMPLE RC LOW-PASS FILTER
+Start Time: Mon Mar 18 07:58:35 2024
+solver = Normal
+Maximum thread count: 12
+tnom = 27
+temp = 27
+method = modified trap
+WARNING: Less than two connections to node a.  This node is used by vfcu.
+Direct Newton iteration for .op point succeeded.
+
+vin_max: MAX(v(in))=9.99993 FROM 0.000804248 TO 0.00120637
+vout_max: MAX(v(out))=6.70742 FROM 0.000804248 TO 0.1
+a_v: vout_max/vin_max=0.670746
+fcu: 4973.59197162173=4973.59
+
+Total elapsed time: 0.231 seconds.
+

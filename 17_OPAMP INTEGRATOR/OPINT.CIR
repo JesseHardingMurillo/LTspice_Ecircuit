@@ -1,0 +1,84 @@
+OPINT.CIR - OPAMP INTEGRATOR
+*--------------------------------------------------------------------------
+*Notes
+*--------------------------------------------------------------------------
+*One great application of the integrator is generating a ramp voltage.
+*You can do this by placing a fixed voltage at VS
+*--------------------------------------------------------------------------
+*MODEL AND LIBRARIES
+*--------------------------------------------------------------------------
+.MODEL	SRES	VSWITCH(VON=0 VOFF=5 RON=100 ROFF=1MEG)
+.LIB LM741.lib
+*--------------------------------------------------------------------------
+*CIRCUIT WITH OPAMP BASIC
+*--------------------------------------------------------------------------
+* CONTROL VOLTAGE FOR S1
+			   ;PULSE(V1 V2 Tdelay Trise Tfall Ton Tperiod Ncycles)
+VRESET	4	0	PULSE(0V 5V 0 0.1US 0.1US 100US 110US)
+R4		4	0	1MEG
+
+* INPUT VOLTAGE
+VS		IN	0	DC	{p_Vs}
+*
+R1		IN	2		{p_R1}
+C1		2	OUT		{p_C1}
+*
+S1		2 	OUT	4 	0 	SRES
+*
+XOP		0 	2	OUT	OPAMP1
+
+*--------------------------------------------------------------------------
+*CIRCUIT WITH OPAMP LM741 **REVISAR PORQUE NO OSCILA
+*--------------------------------------------------------------------------
+* INPUT VOLTAGE
+V_Vneg  0 	VEE 	{p_Vsat}
+V_Vpos  VCC 0 		{p_Vsat}
+*
+R2		IN	5		{p_R1}
+C2		5	OUT2	{p_C1}
+*
+*		+	-	Vpp	Vnn	out
+XLM741	0 	5	VCC	VEE	OUT2 LM741
+*--------------------------------------------------------------------------
+*PARAMETERS
+*--------------------------------------------------------------------------
+.PARAM p_R1 	{10k}
+;.PARAM p_R1 {20k}
+.PARAM p_C1 	{1000pf}						; 1000pf = 1nf
+;.PARAM p_C1 {0.5nf}
+;.PARAM p_C1 {5nf}
+;.PARAM p_Vs {-7}
+.PARAM p_Vs 	{-10}
+.PARAM p_Vsat 	{10}
+*--------------------------------------------------------------------------
+*SUBCIRCUIT
+*--------------------------------------------------------------------------
+* OPAMP MACRO MODEL, SINGLE-POLE
+* connections:      non-inverting input
+*                   |   inverting input
+*                   |   |   output
+*                   |   |   |
+.SUBCKT OPAMP1      1   2   6
+* INPUT IMPEDANCE
+RIN	1	2	10MEG
+* GAIN BW PRODUCT = 10MHZ = DCGAIN x POLE1
+* DC GAIN (100K) AND POLE 1 (100HZ)
+EGAIN	3 0	1 2	100K
+RP1	3	4	1K
+CP1	4	0	1.5915UF
+* OUTPUT BUFFER AND RESISTANCE
+EOUT	5 0	4 0	1
+ROUT	5	6	10
+.ENDS
+
+*--------------------------------------------------------------------------
+* ANALYSIS
+*--------------------------------------------------------------------------
+*.TRAN 	1US  	220US STARTUP
+.TRAN 	1US  	40US STARTUP
+*.TRAN 	1US  	110US STARTUP ; Si no agrega el STARTUP no funciona el LM741
+* VIEW RESULTS
+.PLOT	TRAN	V(IN) V(OUT)
+*.PRINT	TRAN V(IN) V(OUT)
+.PROBE
+.END

@@ -1,0 +1,3 @@
+Questionable use of curly braces in ".meas tran m param {(num2-num1)/(40us-10use)}"
+    Error: undefined symbol in: "([num2]-num1)/(40us-10use)"
+Fatal Error: No circuit found in source

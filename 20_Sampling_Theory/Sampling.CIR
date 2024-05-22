@@ -1,0 +1,71 @@
+SAMPLING.CIR - SAMPLING CIRCUIT
+*----------------------------------------------------------------------------
+*NOTES
+*----------------------------------------------------------------------------
+*fs = sampling frequency, in this circuit is 20khz
+*You can see the value of 50us change how long is the line in V(5)
+
+*Samples (captures, takes) the voltage of a continuously varying analog signal
+*and holds (locks, freezes) its value at a constant level for a specified minimum period of time.
+
+*Preguntar a Douglas sobre como se ve la interferencia porque no la logro visualizar
+
+*----------------------------------------------------------------------------
+*MODELS
+*----------------------------------------------------------------------------
+.MODEL	SRES	VSWITCH(VON=5V VOFF=0V RON=10 ROFF=10MEG)
+
+*----------------------------------------------------------------------------
+*PARAMETERS
+*----------------------------------------------------------------------------
+.PARAM p_R1		{1MEG}
+.PARAM p_R3		{1MEG}
+.PARAM p_RH		{10MEG}
+.PARAM p_R10	{1MEG}
+.PARAM p_CH		{0.01UF}
+*----------------------------------------------------------------------------
+*Circuit
+*----------------------------------------------------------------------------
+VS		1	0	SIN(0VOFF	5VPEAK 1KHZ)
+*VS		1	0	SIN(0VOFF	5VPEAK 10KHZ) ; Limit fs/2 but is really bad
+*VS		1	0	SIN(0VOFF	5VPEAK 15KHZ) ; Lost information
+;VS		1	0	SIN(0VOFF	0.5VPEAK 25KHZ)
+R1		1	0	{p_R1}
+*
+* FILTER BLOCK
+* NO FILTER
+*Exxx 	n+ 	n- 	nc+ nc- <gain>
+*EBUFFER	2 	0	1 0	1 	; Se activa cada vez que Vin llega a 5
+R3		2	0	{P_R3}
+*
+* 2ND ORDER LP FILTER
+;E_LPFILTER 2 0 LAPLACE { V(1) }  {1 / ( (s*s)/(6.28*6.28*10000*10000) + s/(0.707*6.28*10000) + 1) }
+;E_LPFILTER 2 0 LAPLACE { V(1) }  {1 / ( (s*s)/(6.28*6.28*5000*5000) + s/(0.707*6.28*5000) + 1) }
+E_LPFILTER 2 0 LAPLACE { V(1) }  {1 / ( (s*s)/(6.28*6.28*10000*10000) + s/(0.541*6.28*10000) + 1) } ; low-pass filter
+R4		2	3	1k
+E_LPFILTER2 3 0 LAPLACE { V(1) }  {1 / ( (s*s)/(6.28*6.28*10000*10000) + s/(0.541*6.28*5000) + 1) } ; low-pass filter
+
+
+*
+*
+* SAMPLE & HOLD CIRCUIT
+*Sxxx n1 n2 nc+ nc- <model>
+S1		3 	5	10 0 	SRES
+CH		5	0	{p_CH}
+RH		5	0	{p_RH}
+*
+* S/H CONTROL VOLTAGE
+
+VC1		10	0	PULSE(0V 5V 0US 0.1US 0.1US 1US 50US) 			; Controla el switch del sample and hold
+R10		10	0	{p_R10}
+*
+*
+*---------------------------------------------------------------------------
+* ANALYSIS
+*----------------------------------------------------------------------------
+.TRAN 	1US  	1000US  0US 2US
+*
+* VIEW RESULTS
+.PLOT	TRAN	V(2) V(5)
+.PROBE
+.END

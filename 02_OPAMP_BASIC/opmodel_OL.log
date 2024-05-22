@@ -1,0 +1,24 @@
+Questionable use of curly braces in ".meas ac m param {mag(num1/num2)}"
+    Error: undefined symbol in: "[mag](num1/num2)"
+LTspice 24.0.9 for Windows
+Circuit: OPMODEL1.CIR - OPAMP MODEL SINGLE-POLE
+Start Time: Sat Mar 30 14:08:41 2024
+solver = Normal
+Maximum thread count: 12
+tnom = 27
+temp = 27
+method = modified trap
+.OP point found by inspection.
+
+rp1: 1000.03105932702=(60.0003dB,0°)
+fu_cal: 10000000=(140dB,0°)
+aol: MAX(v(3))=(99.9131dB,-0.572939°) FROM 1 TO 5e+08
+fp1: mag(v(3))=(mag(aol)/sqrt(2)) AT 100.011
+gain_at_fp1: v(3)=(96.9028dB,-45.0024°) at 100.011
+fu: mag(v(3))=db_to_av(0) AT 9.92057e+06
+num1: v(3)=(79.8704dB,-84.2894°) at 1000
+num2: v(3)=(59.9131dB,-89.4271°) at 10000
+m: (mag(num1/num2))=(19.9572dB,0°)
+
+Total elapsed time: 0.091 seconds.
+

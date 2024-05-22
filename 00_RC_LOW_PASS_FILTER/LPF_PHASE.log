@@ -1,0 +1,14 @@
+LTspice 24.0.9 for Windows
+Circuit: * C:\Users\jesse\OneDrive - Universidad Técnica Nacional\Cursos Actuales\Proyecto Electronico\CIRCUITS\00_RC_LOW_PASS_FILTER\LPF_PHASE.asc
+Start Time: Fri Apr  5 17:16:04 2024
+solver = Normal
+Maximum thread count: 12
+tnom = 27
+temp = 27
+method = modified trap
+.OP point found by inspection.
+
+av: v(out)=(-3.01018dB,-44.9547°) at 5000
+
+Total elapsed time: 0.087 seconds.
+

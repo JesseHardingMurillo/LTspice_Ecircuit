@@ -1,0 +1,20 @@
+ABM_TABLE1.CIR
+V1	1	0	PWL(0US -5V 500US 5V)
+R1	1	0	1MEG
+*
+*Seguidor de voltajew
+ELIM 2 0 TABLE {V(1,0)} = (-4,-4V) (4V, 4V) ; mimics a unity gain buffer that clips the output at ± 4 V.
+R2	2	0	1MEG
+*ECMP	3	0	TABLE {V(1,0)} = (-10MV, 0V) (10MV, 5V) ; Comparador cuando se mayor de 10mv deje conducir
+*R3	3	0	1MEG
+*
+* ANALYSIS
+.TRAN 	5US  500US
+
+*
+* VIEW RESULTS
+*.PRINT	TRAN 	V(1) V(2) V(3)
+.PROBE
+.END
+
+*Slope is m = pendiente en si
