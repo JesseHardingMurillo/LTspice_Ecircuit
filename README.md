@@ -19,7 +19,8 @@ This repository contains LTspice circuit simulations based on examples from [eCi
 
 ## Resources
 LTspice Software Download: https://www.analog.com/en/resources/design-tools-and-calculators/ltspice-simulator.html
-eCircuit Center for more examples: [https://www.analog.com/en/resources/design-tools-and-calculators/ltspice-simulator.html](http://www.ecircuitcenter.com/Circuits.htm)
+
+Ecircuit Center for more examples: [https://www.analog.com/en/resources/design-tools-and-calculators/ltspice-simulator.html](http://www.ecircuitcenter.com/Circuits.htm)
 
 ## Contributing
 Contributions are welcome! Fork the repository, make your changes, and submit a pull request.
