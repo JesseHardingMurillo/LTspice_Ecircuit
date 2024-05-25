@@ -1,0 +1,93 @@
+OP_AOL_DC.CIR
+*----------------------------------------------------------------------------
+*NOTES
+*----------------------------------------------------------------------------
+*-NON-INVERTING AMPLIFIER
+* Revisiting the circuit, for the op amp itself you can write the open-loop
+* gain equation as vo = (v+ - v-)·A and for the resistors you can write the
+* feedback factor as B = v-/vo = R1/(R1+R2). Now combine these along with
+* v+=vin to get the closed-loop gain.
+*									Kcl = vo / vin = A / (1+AB)
+* The power of feedback control systems occur when A*B >> 1, making the
+* ideal closed loop gain
+*						Kcl' = 1 / B = (R1+R2) / R1
+
+*-Gain Error
+* 						Kcl = 1/B · AB / (1+AB)
+*						Kcl' = 1/B   times an error term   Err = AB / (1+AB)
+*						Kcl_err = [ 1 - AB/(1+AB) ] / 1
+*						Kcl_err = 1/(A·B)
+*--GAIN ERROR IN PERCENT
+*						Kcl_err = 1/(A B) · 100%
+*--OUTPUT VOLTAGE ERROR
+*						vo_err = vin · Kcl' · 1/(A B)
+* The higher the Egain, the lower the output error.
+
+*-INVERTING AMPLIFIER
+*						Kcl    = vo / vin = -R2/R1· AB /(1+AB)
+*						vo_err = vin · Kcl' · Kcl_err
+*					           = vin · -R2/R1 · 1/(AB)
+
+* Summary de gain in open loop afect de output of the voltage and the amount
+* of Serror.
+*----------------------------------------------------------------------------
+*PARAMETERS
+*----------------------------------------------------------------------------
+.PARAM p_R1		1k
+.PARAM p_R2		9k
+
+.PARAM p_R11	1k
+.PARAM p_R12	10k
+
+
+*----------------------------------------------------------------------------
+*CIRCUIT
+*----------------------------------------------------------------------------
+* INPUT
+VS		1	0	ac	1	PWL(0US 0V   0.01US 1V)
+*
+* NON-INVERTING AMP
+R1		2	0	{p_R1}
+R2		3	2	{p_R2}
+XOP1	1 	2	3   op_001
+*
+* IDEAL NON-INVERTING GAIN
+EAMP1	5 	0 	1 	0		10
+
+*
+* INVERTING AMP
+R11		1	12	{p_R11}
+R12		12	13	{p_R2}
+
+XOP2	0 	12  13    op_001
+*
+* IDEAL INVERTING GAIN
+EAMP2	15 0 1 0		-10
+
+*----------------------------------------------------------------------------
+*MEASURMENTS
+*----------------------------------------------------------------------------
+.MEAS TRAN Vout_Op1_max			max(V(3))
+.MEAS TRAN Vout_OpIdeal_max		max(V(5))
+.MEAS TRAN OUT_ERROR	PARAM	{(Vout_OpIdeal_max-Vout_Op1_max)*100}
+
+.MEAS TRAN Vout_Op2_max			max(V(13))
+.MEAS TRAN Vout_OpIdeal2_max		max(V(12))
+.MEAS TRAN OUT_ERROR2	PARAM	{(Vout_OpIdeal_max-Vout_Op1_max)*100}
+
+*----------------------------------------------------------------------------
+*SUBCIRCUIT
+*----------------------------------------------------------------------------
+* BASIC OP AMP MODEL
+*                 In+ In- Vout
+.SUBCKT op_001    1   2   3
+RIN   1   2   1e12
+* OPEN LOOP GAIN
+EGAIN   3 0 1 2	2000000
+*
+.ENDS
+*
+* ANALYSIS *************************************
+.TRAN 	1us  100us
+.PROBE
+.END

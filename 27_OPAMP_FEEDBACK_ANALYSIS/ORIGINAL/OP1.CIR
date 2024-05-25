@@ -1,0 +1,38 @@
+OP1.CIR - OPAMP CLOSED-LOOP STEP RESPONSE
+* STEP INPUT
+VS	1	0	AC	1	PWL(0US 0V   0.1US 1V   10US 1V)
+*
+R1	2	0	10K
+* CS	2	0	10PF
+R2	2	4	10K
+*CCOMP	2	4	10PF
+XOP	1 2	4	OPAMP1	
+*
+* OPAMP MACRO MODEL, SINGLE-POLE 
+* connections:      non-inverting input
+*                   |   inverting input
+*                   |   |   output
+*                   |   |   |
+.SUBCKT OPAMP1      1   2   6
+* INPUT IMPEDANCE
+RIN	1	2	10MEG
+* DC GAIN (100K) AND POLE 1 (100HZ)
+EGAIN	3 0	1 2	100K
+RP1	3	4	1K
+CP1	4	0	1.5915UF
+* OUTPUT BUFFER AND RESISTANCE
+EBUFFER	5 0	4 0	1
+ROUT	5	6	10
+.ENDS
+*
+* ANALYSIS
+.AC 	DEC 	10 10 10MEG
+.TRAN 	0.01US  1US
+*
+* VIEW RESULTS
+.PRINT	AC 	VM(4)
+.PLOT AC	VM(4)
+.PLOT	TRAN 	V(1) V(4)
+.PRINT	TRAN 	V(1) V(4)
+.PROBE
+.END

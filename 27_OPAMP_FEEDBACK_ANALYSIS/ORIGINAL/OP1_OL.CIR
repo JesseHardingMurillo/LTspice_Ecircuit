@@ -1,0 +1,35 @@
+OP1.CIR - OPAMP OPEN-LOOP FEEDBACK ANALYSIS
+*
+VTEST	20	0	AC	1
+*
+XOP	0 20	4	OPAMP1	
+R1	2	0	10K
+* CS	2	0	10PF
+R2	2	4	10K
+* CCOMP	2	4	10PF
+*
+* OPAMP MACRO MODEL, SINGLE-POLE 
+* connections:      non-inverting input
+*                   |   inverting input
+*                   |   |   output
+*                   |   |   |
+.SUBCKT OPAMP1      1   2   6
+* INPUT IMPEDANCE
+RIN	1	2	10MEG
+* DC GAIN (100K) AND POLE 1 (100HZ)
+EGAIN	3 0	1 2	100K
+RP1	3	4	1K
+CP1	4	0	1.5915UF
+* OUTPUT BUFFER AND RESISTANCE
+EBUFFER	5 0	4 0	1
+ROUT	5	6	10
+.ENDS
+*
+* ANALYSIS
+.AC 	DEC 	10 10 100MEG
+*
+* VIEW RESULTS
+.PRINT	AC 	VDB(2) VP(2)
+.PLOT AC	VDB(2) VP(2)
+.PROBE
+.END

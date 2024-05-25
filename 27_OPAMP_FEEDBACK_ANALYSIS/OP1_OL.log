@@ -1,0 +1,15 @@
+LTspice 24.0.9 for Windows
+Circuit: OP1.CIR - OPAMP OPEN-LOOP FEEDBACK ANALYSIS
+Start Time: Fri May 24 18:43:42 2024
+solver = Normal
+Maximum thread count: 12
+tnom = 27
+temp = 27
+method = modified trap
+.OP point found by inspection.
+
+fu: frequency=(5.00055e+06,0) at 5.00055e+06
+phaseshif_max: MAX(ph(v(2)))=(174.29,0) FROM 10 TO 1e+08
+
+Total elapsed time: 0.067 seconds.
+

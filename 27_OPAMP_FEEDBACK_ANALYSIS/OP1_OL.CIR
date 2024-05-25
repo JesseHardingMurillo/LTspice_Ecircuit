@@ -1,0 +1,67 @@
+OP1.CIR - OPAMP OPEN-LOOP FEEDBACK ANALYSIS
+*------------------------------------------------------------------------------
+*NOTES
+*------------------------------------------------------------------------------
+* To perform open-loop analysis, just follow these three steps:
+
+* 1. Short the voltage source, VS.
+
+* 2. Open the loop in the forward or feedback path.
+
+* 3. Apply an AC test signal VTEST where the loop was opened and observe
+* the AC gain and phase around the loop.
+
+*------------------------------------------------------------------------------
+*PARAMETERS
+*------------------------------------------------------------------------------
+.PARAM 	p_R1	10k
+.PARAM 	p_R2	10k
+*------------------------------------------------------------------------------
+*CIRCUIT
+*------------------------------------------------------------------------------
+
+VTEST	20	0	AC	1
+*
+XOP	0 20	4	OPAMP1
+R1	2	0	{p_R1}
+* CS	2	0	10PF
+R2	2	4	{p_R2}
+* CCOMP	2	4	10PF
+
+
+*------------------------------------------------------------------------------
+*MEASURMENTS
+*------------------------------------------------------------------------------
+.meas AC Fu	Find frequency when	mag(V(2))=1	;Cartesian
+.option meascplxfmt=cartesian
+.meas AC PhaseShif_Max max(ph(V(2)))
+*------------------------------------------------------------------------------
+*Subcircuit
+*------------------------------------------------------------------------------
+* OPAMP MACRO MODEL, SINGLE-POLE
+* connections:      non-inverting input
+*                   |   inverting input
+*                   |   |   output
+*                   |   |   |
+.SUBCKT OPAMP1      1   2   6
+* INPUT IMPEDANCE
+RIN	1	2	10MEG
+* DC GAIN (100K) AND POLE 1 (100HZ)
+EGAIN	3 0	1 2	100K
+RP1	3	4	1K
+CP1	4	0	1.5915UF
+* OUTPUT BUFFER AND RESISTANCE
+EBUFFER	5 0	4 0	1
+ROUT	5	6	10
+.ENDS
+
+*------------------------------------------------------------------------------
+*ANALYSIS
+*------------------------------------------------------------------------------
+.AC 	DEC 	10 10 100MEG
+*
+* VIEW RESULTS
+;.PRINT	AC 	VDB(2) VP(2)
+;.PLOT AC	VDB(2) VP(2)
+.PROBE
+.END

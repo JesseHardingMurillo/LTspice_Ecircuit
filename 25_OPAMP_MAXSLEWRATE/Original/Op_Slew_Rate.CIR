@@ -1,0 +1,82 @@
+OP_SLEW_RATE.CIR
+*
+* SQUARE WAVE INPUT
+VS1	1	0	AC 1	PWL(0NS 0V 1NS 10V)
+*
+* SIN WAVE INPUT
+VS2	11	0	AC 1	SIN(0V 10VPEAK 2E6HZ)
+*
+*
+* NON INVERTING AMP 1
+R1	0	2	1000K
+R2	2	3	1
+XOP1	1 2 3     op_000
+RL1	3	0	10k
+
+* NON INVERTING AMP 2
+R11	0	12	1000K
+R12	12	13	1
+XOP11	11 12 13   op_000
+RL11	13	0	10k
+
+
+* OP AMP MODELS *******************************
+* Device Pins     In+ In- Vout
+.SUBCKT op_000    1   2   82
+*
+* INPUT R
+RIN   1   2   1e9
+*
+*  AMPLIFIER STAGE: GAIN, POLE, SLEW
+*   Aol=1000000, fu=40000000 Hz, Slew=100 V/us 
+G1   0   10  VALUE = {  2.51322e-3 * V(1,2) }
+R1   10  0   3.97897e8
+C1   10  0   1e-11
+*
+* OUTPUT STAGE
+EOUT 80 0    10  0    1
+ROUT 80      82        100
+*
+.ENDS
+************************************************
+* Device Pins     In+ In- Vout
+.SUBCKT op_001    1   2    82
+*
+* INPUT R
+RIN   1   2   1e9
+*
+*  AMPLIFIER STAGE: GAIN, POLE, SLEW
+*   Aol=1000000, fu=40000000 Hz, Slew=100 V/us 
+G1   0    10  VALUE = { LIMIT( 2.51322e-3 * V(1,2), +0.001, -0.001 ) }
+R1   10   0   3.97897e8
+C1   10   0   1e-11
+*
+* OUTPUT STAGE
+EOUT 80 0    10  0    1
+ROUT 80      82        100
+*
+.ENDS
+************************************************
+* Device Pins     In+ In-   Vout
+.SUBCKT op_002    1   2     82
+*
+* INPUT R
+RIN   1   2   1e9
+*
+*  AMPLIFIER STAGE: GAIN, POLE, SLEW
+*   Aol=1000000, fu=40000000 Hz, Slew=200 V/us
+G1   0    10  VALUE = { LIMIT( 1.25661e-3 * V(1,2), +0.001, -0.001 ) }
+R1   10   0   7.95793e8
+C1   10   0   5e-12
+*
+* OUTPUT STAGE
+EOUT 80 0    10  0    1
+ROUT 80      82        100
+*
+.ENDS
+
+* ANALYSIS *************************************
+.TRAN 	0.1NS  500NS
+*.AC 	DEC 	20 0.1 1000MEG
+.PROBE
+.END

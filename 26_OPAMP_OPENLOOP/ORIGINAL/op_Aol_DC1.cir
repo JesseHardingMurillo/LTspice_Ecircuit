@@ -1,0 +1,35 @@
+OP_AOL_DC.CIR
+* INPUT
+VS	1	0	ac	1	PWL(0US 0V   0.01US 1V)
+*
+* NON-INVERTING AMP
+R1	2	0	1K
+R2	3	2	9k
+XOP1	1 2     3       op_001
+*
+* IDEAL NON-INVERTING GAIN
+EAMP1	5 0 1 0		10
+
+*
+* INVERTING AMP
+R11	1	12	1K
+R12	12	13	10k
+XOP2	0 12  13    op_001
+*
+* IDEAL INVERTING GAIN
+EAMP2	15 0 1 0		-10
+*
+*
+* BASIC OP AMP MODEL
+*                 In+ In- Vout
+.SUBCKT op_001    1   2   3
+RIN   1   2   1e12
+* OPEN LOOP GAIN
+EGAIN   3 0 1 2	200000
+*
+.ENDS
+*
+* ANALYSIS *************************************
+.TRAN 	1us  100us
+.PROBE
+.END
