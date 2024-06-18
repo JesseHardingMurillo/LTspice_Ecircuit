@@ -1,6 +1,6 @@
 LTspice 24.0.9 for Windows
 Circuit: *NOTE:
-Start Time: Sun Mar 31 12:57:30 2024
+Start Time: Mon Jun 17 07:04:58 2024
 solver = Normal
 Maximum thread count: 12
 
@@ -50,19 +50,7 @@ method = modified trap
 .step temp=150°C
 
 
-Measurement: vth
-  step	v(in)	at
-     1	0.554655	0.554655
-     2	0.504276	0.504276
-     3	0.453521	0.453521
-     4	0.402439	0.402439
-     5	0.351086	0.351086
-     6	0.299502	0.299502
-     7	0.247827	0.247827
-     8	0.196711	0.196711
-     9	0.147402	0.147402
-    10	0.102444	0.102444
-    11	0.065363	0.065363
+Measurement "vth" FAIL'ed
 
-Total elapsed time: 0.630 seconds.
+Total elapsed time: 0.350 seconds.
 

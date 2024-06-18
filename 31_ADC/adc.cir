@@ -1,0 +1,84 @@
+* Definición de parámetros
+.param p_vfullscale  15 ; Voltaje de referencia para el ADC (Full Scale)
+*.param Nbits = 24
+
+
+
+VDD  VDD 0 DC {p_vfullscale}
+VCLK CLK 0 PULSE(0 15 0 1n 1n 1m 2m)
+*V2   in 0 pwl (1u 0 1.0001u 8v)
+*V2 in 0    pwl (1m 0 1.0001ms {(15/((2**8)-1))*200}
+*+                                               )
+V2 in 0    pwl (0m 1 9.99ms 1v 10ms 5v 19.99ms 5v 20ms 8v
++               29.99ms 8v 30ms 10v 39.99ms 10v 40ms 15v)
+
+*V3 in1x 0 PULSE(0 1 0m 32768u 32768u 0m 655.36u)
+
+
+
+
+; Número de bits del ADC
+*XX4 CLK in  VDD D0 D1 D2 D3 RES1 4bit_adc_pipe
+xx5  CLK In VDD D0 D1 D2 D3 D4 D5 D6 D7 8bit_adc
+
+* block symbol definitions
+.subckt 4bit_adc_pipe CLK In1 VDD D0 D1 D2 D3 Out
+B1 D3 0 V=round(V(in)/V(VDD))*V(VDD)
+B2 D2 0 V=round((V(in)*2-V(D3))/V(VDD))*V(VDD)
+B3 D1 0 V=round((V(in)*4-V(D3)*2-V(D2))/V(VDD))*V(VDD)
+B4 D0 0 V=round((V(in)*8-V(D3)*4-V(D2)*2-V(D1))/V(VDD))*V(VDD)
+*XX1 In1 IN CLK VDD sample_hold
+xs_and_h in1 clk in s_and_h
+.ends
+
+
+.subckt 8bit_adc CLK In1 VDD D0 D1 D2 D3 D4 D5 D6 D7
+
+B7 D7 0 V=round(V(in)/V(VDD))*V(VDD)
+B6 D6 0 V=round((V(in)*2-V(D7))/V(VDD))*V(VDD)
+B5 D5 0 V=round((V(in)*4-V(D7)*2-V(D6))/V(VDD))*V(VDD)
+B4 D4 0 V=round((V(in)*8-V(D7)*4-V(D6)*2-V(D5))/V(VDD))*V(VDD)
+B3 D3 0 V=round((V(in)*16-V(D7)*8-V(D6)*4-V(D5)*2-V(D4))/V(VDD))*V(VDD)
+B2 D2 0 V=round((V(in)*32-V(D7)*16-V(D6)*8-V(D5)*4-V(D4)*2-V(D3))/V(VDD))*V(VDD)
+B1 D1 0 V=round((V(in)*64-V(D7)*32-V(D6)*16-V(D5)*8-V(D4)*4-V(D3)*2-V(D2))/V(VDD))*V(VDD)
+B0 D0 0 V=round((V(in)*128-V(D7)*64-V(D6)*32-V(D5)*16-V(D4)*8-V(D3)*4-V(D2)*2-V(D1))/V(VDD))*V(VDD)
+XX1 In1 IN CLK VDD sample_hold
+*s_and_h in1 clk in s_and_h
+.ends
+
+.subckt sample_hold P1 P2 clk VDD
+S1 P2 P1 clk Vtrip switmod
+R1 Vtrip 0 100Meg
+R2 VDD Vtrip 100Meg
+C1 P2 0 10n
+.model switmod SW
+.ends
+
+.SUBCKT s_and_h in clk out
+
+*-----------------------------------------------------
+*|PARAMETER                                          |
+*-----------------------------------------------------
+.PARAM p_rh    10MEG    ; resistor  for holding the sampled value
+.PARAM p_ch    100pF      ; Capacitor for holding the sampled value
+.PARAM p_von   5V       ; Control voltage at which the switch turns on
+.PARAM p_voff  0V       ; Control voltage at which the switch turns off
+
+*The sample and hold switch
+SH	in	out	CLK 0 SRES
+
+*The hold capacitor
+CH	out	0		   {p_ch} ic=0
+
+*The hold resistor
+RH	out 0	       {p_rh}
+
+*Define the switch model with on/off control voltages and resistances
+.MODEL	SRES	VSWITCH(VON={p_von } VOFF={p_voff} RON=10 ROFF=10MEG)
+
+.ENDS
+
+.tran 50ms
+
+
+.end

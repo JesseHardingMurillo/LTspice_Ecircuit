@@ -1,6 +1,6 @@
 LTspice 24.0.9 for Windows
 Circuit: *Half wave circuit with Diode
-Start Time: Tue Mar 26 19:31:23 2024
+Start Time: Wed Jun  5 11:49:50 2024
 solver = Normal
 Maximum thread count: 12
 
@@ -20,5 +20,5 @@ Measurement: vout_max
      1	0.400965	0	0.01
      2	0.83888	0	0.01
 
-Total elapsed time: 0.266 seconds.
+Total elapsed time: 0.104 seconds.
 

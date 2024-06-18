@@ -1,0 +1,60 @@
+StepSubckt
+*-----------------------------------------------------------------------------
+*NOTES
+*-----------------------------------------------------------------------------
+*STEP WIT LPF AND HPF
+
+
+*=============================================================================
+* Calibration
+*=============================================================================
+.PARAM C 	5n
+.PARAM fc 	5k
+
+
+
+*-----------------------------------------------------------------------------
+*Libraries, Models and includes
+*-----------------------------------------------------------------------------
+.lib LPF.LIB
+.lib HPF.LIB
+
+;.lib 1 ako:LPF
+;.lib 2 ako:HPF
+
+;.lib 1 ako:LPF.LIB
+;.lib 2 ako:HPF.LIB
+
+;.lib 1 ako:{.lib LPF.LIB}
+;.lib 2 ako:{.lib HPF.LIB}
+
+;.model 1 ako:LPF
+;.model 2 ako:HPF
+
+;.PARAM 1 {LPF}
+;.PARAM 2 {HPF}
+
+;.PARAM PRUBA {if (Filter = 1, LPF , HPF)}
+;.PARAM PRUBA {if (Filter = 1, 1 , 2)}
+
+.func change(FILTER) {if (Filter = 1, LPF , HPF)}
+
+;https://ez.analog.com/design-tools-and-calculators/ltspice/f/q-a/121723/ltspice-stepping-build-in-opamp-models
+*-----------------------------------------------------------------------------
+*CIRCUIT
+*-----------------------------------------------------------------------------
+*
+VS	1	0	AC 1 SIN(0VOFF 1VPEAK 2KHZ)
+
+*
+;XLPF 1 OUT {PRUEBA}	;PARAMS: C = {C}	fc = {fc}
+XLPF 1 OUT {change(FILTER)}	;PARAMS: C = {C}	fc = {fc}
+
+*-----------------------------------------------------------------------------
+* ANALYSIS
+*-----------------------------------------------------------------------------
+;.step param Filter list 100 101
+.step param Filter list 1 2
+.AC 	DEC 	10 	10 	10MEG
+.PROBE
+.END

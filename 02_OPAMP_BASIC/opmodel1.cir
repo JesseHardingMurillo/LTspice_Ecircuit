@@ -19,8 +19,8 @@ OPMODEL1.CIR - OPAMP MODEL SINGLE-POLE
 *Circuit
 *-----------------------------------------------------------------------------
 *Vxxx n+ n- PWL(t1 v1 t2 v2 t3 v3...)
-VS	1	0	AC	{p_Vac}  PWL({p_t1} {p_v1} {p_t2} {p_v2}) 	; Piece-wise linear voltage source
-
+;VS	1	0	AC	{p_Vac}  PWL({p_t1} {p_v1} {p_t2} {p_v2}) 	; Piece-wise linear voltage source
+VS	1	0	AC	{p_Vac}  SIN(0 1V 5k)
 *Open loop
 *XOP	1	0	3	OPAMP1
 *RL	3	0		{p_rl}
@@ -28,7 +28,7 @@ VS	1	0	AC	{p_Vac}  PWL({p_t1} {p_v1} {p_t2} {p_v2}) 	; Piece-wise linear voltage
 *Close loop
 R1		2   0 		{p_r1}
 R2    	2   3		{p_r2}
-XOP   	1 	2   3 	OPAMP1
+XOP   	1 	2   3 	OPAMP1 PARAMS: p_fp1 =5k
 RL		3	0		{p_rl}
 
 *-----------------------------------------------------------------------------
@@ -57,8 +57,9 @@ RL		3	0		{p_rl}
 *-----------------------------------------------------------------------------
 *In 1k affect the value of output, but in 10k decreases rise speed
 *.step param	p_Egain list 100k 10k 1k 100 10
-*.TRAN 	0.05US  5US
-.AC	DEC	10 1 500MEG
+;.TRAN 	0.05US  5US
+.TRAN 	0.05US  30ms
+;.AC	DEC	10 1 500MEG
 *.PLOT	TRAN VM(1) VM(3)
 .PROBE
 .END

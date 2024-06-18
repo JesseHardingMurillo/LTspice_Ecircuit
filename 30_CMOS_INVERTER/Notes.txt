@@ -1,0 +1,14 @@
+--
+
+Copied from
+"C:\Users\<username>\AppData\Local\LTspice\examples\Applications\ADG5233.asc"
+
+--
+
+
+10*300/(Rswitch+300)=7
+
+Rswitch = ???
+
+
+--

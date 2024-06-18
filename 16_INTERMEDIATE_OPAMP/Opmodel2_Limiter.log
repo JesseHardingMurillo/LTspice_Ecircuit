@@ -2,7 +2,7 @@ Questionable use of curly braces in ".meas tran m param {(num2-num1)/(40us-10use
     Error: undefined symbol in: "([num2]-num1)/(40us-10use)"
 LTspice 24.0.9 for Windows
 Circuit: OPAMP2.CIR - OPAMP MODEL (LEVEL 2)
-Start Time: Tue May 21 07:13:49 2024
+Start Time: Mon Jun 10 05:47:20 2024
 solver = Normal
 Maximum thread count: 12
 tnom = 27
@@ -18,5 +18,5 @@ fp1: mag(v(out3))=(mag(aol)/sqrt(2)) AT 10.0014
 gain_at_fp1: v(out3)=(96.9858dB,-45.0022°) at 10.0014
 fu: v(out3)=(-0.00312849dB,-89.9994°) at 1e+06
 
-Total elapsed time: 0.083 seconds.
+Total elapsed time: 0.148 seconds.
 

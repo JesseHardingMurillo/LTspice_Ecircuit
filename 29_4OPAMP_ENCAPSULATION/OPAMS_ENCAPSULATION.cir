@@ -1,0 +1,112 @@
+OPAMS_ENCAPSULATION
+*-----------------------------------------------------------------------------
+*NOTES
+*-----------------------------------------------------------------------------
+
+
+
+*-----------------------------------------------------------------------------
+*Parameters: User Input
+*-----------------------------------------------------------------------------
+*Inversor
+.PARAM p_R1 	{5k}
+.PARAM p_R2 	{10k}
+
+
+*Integrator
+.PARAM p_R3 	{10k}
+.PARAM p_R4 	{1MEG}
+.PARAM p_C1 	{1000pf}
+
+*Non-inversor
+
+.PARAM p_R5 	{5k}
+.PARAM p_R6 	{10k}
+
+*=============================================================================
+* Calibration
+*=============================================================================
+
+
+
+
+*-----------------------------------------------------------------------------
+*Libraries, Models and includes
+*-----------------------------------------------------------------------------
+.LIB OPAMP_BASIC_V.lib
+.LIB OPAMP_BASIC_I.lib
+.MODEL	SRES	VSWITCH(VON=0 VOFF=5 RON=100 ROFF=1MEG)
+*-----------------------------------------------------------------------------
+*CIRCUIT
+*-----------------------------------------------------------------------------
+* connections:      non-inverting input
+*                   |   inverting input
+*                   |   |   output
+*                   |   |   |
+;		 OPAMP1	    1   2   7
+;		 OPAMP2	    8   9   3
+;		 OPAMP3	    4   5   10
+;		 OPAMP4	    11  12  6
+
+;					|OPAMP1 |	OPAMP2	|	OPAMP 3	|	OPAMP4	|
+.SUBCKT OPAMP_ENCAP1	1	2 	7  	8	9	3	4	5	10	11	12	6
+
+XOP1   	1 	2   7	OPAMP1 PARAMS: p_fp1 = {5k}
+XOP2   	8 	9   3	OPAMP1 PARAMS: p_fp1 = {5k}
+XOP3  	4 	5   10	OPAMP1 PARAMS: p_fp1 = {5k}
+XOP4   	11 	12   6	OPAMP1 PARAMS: p_fp1 = {5k}
+
+.END
+
+
+;					|OPAMP1 |	OPAMP2	|	OPAMP 3	|	OPAMP4	|
+.SUBCKT OPAMP_ENCAP2	1	2 	7  	8	9	3	4	5	10	11	12	6
+
+XOP1   	1 	2   7	OPAMP2 PARAMS: p_fp1 = {5k}
+XOP2   	8 	9   3	OPAMP2 PARAMS: p_fp1 = {5k}
+XOP3  	4 	5   10	OPAMP2 PARAMS: p_fp1 = {5k}
+XOP4   	11 	12   6	OPAMP2 PARAMS: p_fp1 = {5k}
+
+.END
+
+
+.SUBCKT 1000	1	2 	7  	8	9	3	4	5	10	11	12	6
+XOPAMP_ENCAP 	1	2 	7  	8	9	3	4	5	10	11	12	6 OPAMP_ENCAP1
+.ENDS 1000
+
+.SUBCKT 1001	1	2 	7  	8	9	3	4	5	10	11	12	6
+XOPAMP_ENCAP 	1	2 	7  	8	9	3	4	5	10	11	12	6 OPAMP_ENCAP2
+.ENDS 1000
+
+
+*-----------------------------------------------------------------------------
+*MEASUREMENTS
+*-----------------------------------------------------------------------------
+VS IN 0 SIN(0 1V 5K)
+;				|   OPAMP1 				|	OPAMP2		    |	OPAMP 3			|			OPAMP4				|
+XOPAMP_ENCAP 	0 	1	 OPAMP_OUT1 	0	2	OPAMP_OUT2	3	0	OPAMP_OUT3 	OPAMP_OUT3	OPAMP_OUT4 OPAMP_OUT4			{MODEL_OPAMP_ENCAP}
+
+
+*OPAMP 1: INVERSOR
+R1 		IN 	1				{p_R1}
+R2 		1 	OPAMP_OUT1		{p_R2}
+
+*OPAMP 2: Integrator
+VRESET	4	0	PULSE(0V 5V 0 0.1US 0.1US 100US 110US)
+R4		4	0				{p_R4}
+R3		IN	2				{p_R3}
+C1		2	OPAMP_OUT2		{p_C1}
+S1		2 	OUT	4 	0 	SRES
+
+*OPAMP 3: Non-inversor
+R5 		IN 	3				{p_R5}
+R6 		3 	OPAMP_OUT1		{p_R6}
+
+*-----------------------------------------------------------------------------
+* ANALYSIS
+*-----------------------------------------------------------------------------
+;.AC 	DEC 	10 	10 	10MEG
+.STEP PARAM MODEL_OPAMP_ENCAP list 1000 1001
+.TRAN 	1US  	1m
+.PROBE
+.END

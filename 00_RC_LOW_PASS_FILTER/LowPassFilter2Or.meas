@@ -1,0 +1,24 @@
+*-----------------------------------------------------------------------------
+* MEASUREMENTS AC
+*-----------------------------------------------------------------------------
+.MEAS AC cal_Fc         PARAM {1/(2*pi * p_R1 * p_C1)}
+.MEAS AC gain_dc_aol    max V(Out); peak response, A = Amplification Factor or Gain, OL = Open-Loop
+.MEAS AC fc_ol          WHEN mag(V(Out))=(gain_dc_aol/sqrt(2))               ; cutoff frequency
+.MEAS AC Av_At_FC       FIND Mag(V(Out)) AT {fc_ol} ;  v(out_firstor)= 0.707104 or -3.01034dB
+.MEAS AC PhaseShif_F   FIND ph(V(Out)) AT {fc_ol}
+.MEAS AC PhaseShif_Max  max(ph(V(Out)))
+*-----------------------------------------------------------------------------
+* MEASUREMENTS TRAN
+*-----------------------------------------------------------------------------
+.meas	TRAN	Vin_max			MAX		V(in)		From p_c_start To p_c_end
+.meas	TRAN	Vout_max		MAX 	V(out)		From p_c_start To p_c_end
+
+.meas	TRAN	Diff_Vin_Vout	PARAM	Vin_max-Vout_max					; Vmax(in) - Vmax(out)
+.meas	TRAN	Av				PARAM	Vout_max/Vin_max					; Av
+.meas	TRAN	AvtodB_cal		PARAM	AvtodB(Av)							; Pass dB to V/V
+
+*Offset
+.meas 	TRAN 	T1 	FIND time WHEN V(IN)=0 cross = 3 rise = 2
+.meas 	TRAN 	T2 	FIND time WHEN V(OUT)=0 cross = 3 rise = 2
+.meas 	TRAN 	phase param (360*(T1 - T2)*p_fin)
+

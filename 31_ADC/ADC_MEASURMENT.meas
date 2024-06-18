@@ -1,0 +1,27 @@
+*Dac 4 bits
+
+.MEAS TRAN _____________________________________ADC_4BITS_____________________________________ param 0
+.MEAS TRAN 4B_inteval0 Find V(in) WHEN V(out[0]) = Vhigh rise = 1
+.MEAS TRAN 4B_inteval1 Find V(in) WHEN V(out[0]) = Vhigh fall = 1
+.MEAS TRAN 4B_inteval2 Find V(in) WHEN V(out[0]) = Vhigh rise = 2
+.MEAS TRAN 4B_inteval3 Find V(in) WHEN V(out[0]) = Vhigh fall = 2
+.MEAS TRAN 4B_inteval4 Find V(in) WHEN V(out[0]) = Vhigh rise = 3
+.MEAS TRAN 4B_inteval5 Find V(in) WHEN V(out[0]) = Vhigh fall = 3
+.MEAS TRAN 4B_inteval6 Find V(in) WHEN V(out[0]) = Vhigh rise = 4
+.MEAS TRAN 4B_inteval7 Find V(in) WHEN V(out[0]) = Vhigh fall = 4
+.MEAS TRAN 4B_inteval8 Find V(in) WHEN V(out[0]) = Vhigh rise = 5
+.MEAS TRAN 4B_inteval9 Find V(in) WHEN V(out[0]) = Vhigh fall = 5
+.MEAS TRAN 4B_inteval10 Find V(in) WHEN V(out[0]) = Vhigh rise = 6
+.MEAS TRAN 4B_inteval11 Find V(in) WHEN V(out[0]) = Vhigh fall = 6
+.MEAS TRAN 4B_inteval12 Find V(in) WHEN V(out[0]) = Vhigh rise = 7
+.MEAS TRAN 4B_inteval13 Find V(in) WHEN V(out[0]) = Vhigh fall = 7
+.MEAS TRAN 4B_inteval14 Find V(in) WHEN V(out[0]) = Vhigh rise = 8
+.MEAS TRAN _____________________________________ADC_3BITS_____________________________________ param 0
+*Dac 3 bits
+.MEAS TRAN 3B_inteval0 Find V(in) WHEN V(out1[0]) = Vhigh rise = 1
+.MEAS TRAN 3B_inteval1 Find V(in) WHEN V(out1[0]) = Vhigh fall = 1
+.MEAS TRAN 3B_inteval2 Find V(in) WHEN V(out1[0]) = Vhigh rise = 2
+.MEAS TRAN 3B_inteval3 Find V(in) WHEN V(out1[0]) = Vhigh fall = 2
+.MEAS TRAN 3B_inteval4 Find V(in) WHEN V(out1[0]) = Vhigh rise = 3
+.MEAS TRAN 3B_inteval5 Find V(in) WHEN V(out1[0]) = Vhigh fall = 3
+.MEAS TRAN 3B_inteval6 Find V(in) WHEN V(out1[0]) = Vhigh rise = 4

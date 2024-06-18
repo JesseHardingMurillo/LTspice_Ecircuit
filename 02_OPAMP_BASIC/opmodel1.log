@@ -6,7 +6,7 @@ Questionable use of curly braces in ".meas tran av1 param {vout_max/vin_max}"
     Error: undefined symbol in: "[vout_max]/vin_max"
 LTspice 24.0.9 for Windows
 Circuit: OPMODEL1.CIR - OPAMP MODEL SINGLE-POLE
-Start Time: Sat May 18 13:52:40 2024
+Start Time: Mon Jun 10 06:01:19 2024
 solver = Normal
 Maximum thread count: 12
 tnom = 27
@@ -14,13 +14,12 @@ temp = 27
 method = modified trap
 .OP point found by inspection.
 
-aol: MAX(v(3))=(6.02042dB,-3.66351e-05°) FROM 1 TO 5e+08
-fp1: mag(v(3))=(mag(aol)/sqrt(2)) AT 4.94839e+06
-gain_at_fp1: v(3)=(3.00654dB,-44.9374°) at 4.94839e+06
-fu: mag(v(3))=db_to_av(0) AT 8.63189e+06
-num1: v(3)=(6.02042dB,-0.011585°) at 1000
-num2: v(3)=(6.02041dB,-0.11585°) at 10000
-m: (mag(num1/num2))=(1.75779e-05dB,0°)
+vin_max: MAX(v(1))=0.999448 FROM 0 TO 0.03
+vout_max: MAX(v(3))=1.99281 FROM 0 TO 0.03
+vout_90: (vout_max*0.9)=1.79352
+av1: (vout_max/vin_max)=1.9939
+av_cal: 2=2
+time_vout_90: time=3.61214e-05 at 3.61214e-05
 
-Total elapsed time: 0.116 seconds.
+Total elapsed time: 0.104 seconds.
 

@@ -1,0 +1,7 @@
+Questionable use of curly braces in "xlpf 1 out {change(filter)}"
+    Error: undefined symbol in: "(if(filter=1,[lpf],hpf))"
+LTspice 24.0.9 for Windows
+Circuit: StepSubckt
+Start Time: Wed Jun  5 12:17:53 2024
+Fatal Error: Unknown subcircuit called in:
+   xlpf 1 out (change(filter))

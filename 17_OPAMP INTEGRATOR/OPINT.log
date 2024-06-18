@@ -1,6 +1,6 @@
 LTspice 24.0.9 for Windows
 Circuit: OPINT.CIR - OPAMP INTEGRATOR
-Start Time: Mon May 13 06:50:59 2024
+Start Time: Mon Jun 10 06:12:04 2024
 solver = Normal
 Maximum thread count: 12
 tnom = 27
@@ -8,5 +8,5 @@ temp = 27
 method = modified trap
 Direct Newton iteration for .op point succeeded.
 Heightened Def Con from 9.72011e-12 to 3.00972e-09
-Total elapsed time: 0.072 seconds.
+Total elapsed time: 0.058 seconds.
 
