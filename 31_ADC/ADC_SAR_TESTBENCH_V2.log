@@ -1,0 +1,77 @@
+LTspice 24.0.9 for Windows
+Circuit: adc_converter
+Start Time: Mon Jun 24 10:37:38 2024
+Error: unknown token in: "v(in)>=v(vdac[[]7])?{vhigh}:{vlow}"
+Error: unknown token in: "{vdac_vref}*v(quantization_step_size)*(v(out[[]7])/2+{vhigh}/4+{vlow}/8+{vlow}/16+{vlow}/32+{vlow}/64+{vlow}/128+{vlow}/256)"
+Error: unknown token in: "v(in)>=v(vdac[[]6])?{vhigh}:{vlow}"
+Error: unknown token in: "{vdac_vref}*v(quantization_step_size)*(v(out[[]7])/2+v(out[6])/4+{vhigh}/8+{vlow}/16+{vlow}/32+{vlow}/64+{vlow}/128+{vlow}/256)"
+Error: unknown token in: "v(in)>=v(vdac[[]5])?{vhigh}:{vlow}"
+Error: unknown token in: "{vdac_vref}*v(quantization_step_size)*(v(out[[]7])/2+v(out[6])/4+v(out[5])/8+{vhigh}/16+{vlow}/32+{vlow}/64+{vlow}/128+{vlow}/256)"
+Error: unknown token in: "v(in)>=v(vdac[[]4])?{vhigh}:{vlow}"
+Error: unknown token in: "{vdac_vref}*v(quantization_step_size)*(v(out[[]7])/2+v(out[6])/4+v(out[5])/8+v(out[4])/16+{vhigh}/32+{vlow}/64+{vlow}/128+{vlow}/256)"
+Error: unknown token in: "v(in)>=v(vdac[[]3])?{vhigh}:{vlow}"
+Error: unknown token in: "{vdac_vref}*v(quantization_step_size)*(v(out[[]7])/2+v(out[6])/4+v(out[5])/8+v(out[4])/16+v(out[3])/32+{vhigh}/64+{vlow}/128+{vlow}/256)"
+Error: unknown token in: "v(in)>=v(vdac[[]2])?{vhigh}:{vlow}"
+Error: unknown token in: "{vdac_vref}*v(quantization_step_size)*(v(out[[]7])/2+v(out[6])/4+v(out[5])/8+v(out[4])/16+v(out[3])/32+v(out[2])/64+{vhigh}/128+{vlow}/256)"
+Error: unknown token in: "v(in)>=v(vdac[[]1])?{vhigh}:{vlow}"
+Error: unknown token in: "{vdac_vref}*v(quantization_step_size)*(v(out[[]7])/2+v(out[6])/4+v(out[5])/8+v(out[4])/16+v(out[3])/32+v(out[2])/64+v(out[1])/128+{vhigh}/256)"
+Error: unknown token in: "v(in)>=v(vdac[[]0])?{vhigh}:{vlow}"
+Error: unknown token in: "((1*v(bit[[]0]))+2*v(bit[1])+4*v(bit[2])+8*v(bit[3])+16*v(bit[4])+32*v(bit[5])+64*v(bit[6])+128*v(bit[7]))*(v(vdd)/2**({n_bits}))"
+solver = Normal
+Maximum thread count: 12
+tnom = 27
+temp = 27
+method = modified trap
+WARNING: Less than two connections to node adc_sar_8bitsv2:calc_n_quant_levels.  This node is used by v:adc_sar_8bitsv2:quant_level.
+WARNING: Less than two connections to node out_dac.  This node is used by e:dac:_dac.
+Direct Newton iteration for .op point succeeded.
+
+_____________________________________adc_4bits_____________________________________: 0=0
+
+Measurement "4b_range_max_lvl_0" FAIL'ed
+
+Measurement "4b_range_max_lvl_1" FAIL'ed
+
+Measurement "4b_range_max_lvl_2" FAIL'ed
+
+Measurement "4b_range_max_lvl_3" FAIL'ed
+
+Measurement "4b_range_max_lvl_4" FAIL'ed
+
+Measurement "4b_range_max_lvl_5" FAIL'ed
+
+Measurement "4b_range_max_lvl_6" FAIL'ed
+
+Measurement "4b_range_max_lvl_7" FAIL'ed
+
+Measurement "4b_range_max_lvl_8" FAIL'ed
+
+Measurement "4b_range_max_lvl_9" FAIL'ed
+
+Measurement "4b_range_max_lvl_10" FAIL'ed
+
+Measurement "4b_range_max_lvl_11" FAIL'ed
+
+Measurement "4b_range_max_lvl_12" FAIL'ed
+
+Measurement "4b_range_max_lvl_13" FAIL'ed
+
+Measurement "4b_range_max_lvl_14" FAIL'ed
+_____________________________________adc_3bits_____________________________________: 0=0
+
+Measurement "3b_range_max_lvl_0" FAIL'ed
+
+Measurement "3b_range_max_lvl_1" FAIL'ed
+
+Measurement "3b_range_max_lvl_2" FAIL'ed
+
+Measurement "3b_range_max_lvl_3" FAIL'ed
+
+Measurement "3b_range_max_lvl_4" FAIL'ed
+
+Measurement "3b_range_max_lvl_5" FAIL'ed
+
+Measurement "3b_range_max_lvl_6" FAIL'ed
+
+Total elapsed time: 0.331 seconds.
+

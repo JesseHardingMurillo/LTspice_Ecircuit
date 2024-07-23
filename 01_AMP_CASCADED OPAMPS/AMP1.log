@@ -1,11 +1,11 @@
 LTspice 24.0.9 for Windows
 Circuit: AMP2.CIR – CASCADED OPAMPS
-Start Time: Mon Jun 10 05:48:00 2024
+Start Time: Thu Jun 27 15:35:35 2024
 solver = Normal
 Maximum thread count: 12
 tnom = 27
 temp = 27
 method = modified trap
 .OP point found by inspection.
-Total elapsed time: 0.069 seconds.
+Total elapsed time: 0.099 seconds.
 

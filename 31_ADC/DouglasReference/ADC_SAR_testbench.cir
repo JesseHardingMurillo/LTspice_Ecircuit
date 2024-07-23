@@ -1,0 +1,23 @@
+
+
+*Vin in 0 pwl (0 0 20 20)
+Vin in 0 13.2
+
+.param vdd 15
+Vdd vdd 0 {vdd}
+
+.param vthreshold 1
+
+.INC ADC_SAR.lib
+.INC ADC_SAR.MEAS
+
+E1	out[0]	0	out1[0]	0	1
+
+*.SUBCKT ADC_SAR_4_bits_v2 out[3] out[2] out[1] out[0] in vdd vss
+X1 out1[3] out1[2] out1[1] out1[0] in vdd 0 ADC_SAR_4_bits_v2
+
+
+
+* ADC 8-bits using two 4-bits ADCs
+
+.TRAN 20

@@ -1,0 +1,408 @@
+Questionable use of curly braces in ".meas tran t_edge_ev0 find time when v(clk) = {vclkmax/2} rise = 1"
+    Error: undefined symbol in: "[vclkmax]/2"
+Questionable use of curly braces in ".meas tran v_ain_at_ev0 avg v(in) trig time={t_edge_ev0-td1} targ time={t_edge_ev0-td2}"
+    Error: undefined symbol in: "[t_edge_ev0]-td1"
+Questionable use of curly braces in ".meas tran v_ain_at_ev0 avg v(in) trig time=(t_edge_ev0-td1) targ time={t_edge_ev0-td2}"
+    Error: undefined symbol in: "[t_edge_ev0]-td2"
+Questionable use of curly braces in ".meas tran v_sample_at_ev0 avg v(in_sample) trig time={t_edge_ev0-td1} targ time={t_edge_ev0-td2}"
+    Error: undefined symbol in: "[t_edge_ev0]-td1"
+Questionable use of curly braces in ".meas tran v_sample_at_ev0 avg v(in_sample) trig time=(t_edge_ev0-td1) targ time={t_edge_ev0-td2}"
+    Error: undefined symbol in: "[t_edge_ev0]-td2"
+Questionable use of curly braces in ".meas tran v_aout_at_ev0 avg v(out_dac) trig time={t_edge_ev0-td1} targ time={t_edge_ev0-td2}"
+    Error: undefined symbol in: "[t_edge_ev0]-td1"
+Questionable use of curly braces in ".meas tran v_aout_at_ev0 avg v(out_dac) trig time=(t_edge_ev0-td1) targ time={t_edge_ev0-td2}"
+    Error: undefined symbol in: "[t_edge_ev0]-td2"
+Questionable use of curly braces in ".meas tran v_vdd_at_ev0 avg v(vdd) trig time={t_edge_ev0-td1} targ time={t_edge_ev0-td2}"
+    Error: undefined symbol in: "[t_edge_ev0]-td1"
+Questionable use of curly braces in ".meas tran v_vdd_at_ev0 avg v(vdd) trig time=(t_edge_ev0-td1) targ time={t_edge_ev0-td2}"
+    Error: undefined symbol in: "[t_edge_ev0]-td2"
+Questionable use of curly braces in ".meas tran v_dout7_at_ev0 avg v(out[7]) trig time={t_edge_ev0-td1} targ time={t_edge_ev0-td2}"
+    Error: undefined symbol in: "[t_edge_ev0]-td1"
+Questionable use of curly braces in ".meas tran v_dout7_at_ev0 avg v(out[7]) trig time=(t_edge_ev0-td1) targ time={t_edge_ev0-td2}"
+    Error: undefined symbol in: "[t_edge_ev0]-td2"
+Questionable use of curly braces in ".meas tran v_dout6_at_ev0 avg v(out[6]) trig time={t_edge_ev0-td1} targ time={t_edge_ev0-td2}"
+    Error: undefined symbol in: "[t_edge_ev0]-td1"
+Questionable use of curly braces in ".meas tran v_dout6_at_ev0 avg v(out[6]) trig time=(t_edge_ev0-td1) targ time={t_edge_ev0-td2}"
+    Error: undefined symbol in: "[t_edge_ev0]-td2"
+Questionable use of curly braces in ".meas tran v_dout5_at_ev0 avg v(out[5]) trig time={t_edge_ev0-td1} targ time={t_edge_ev0-td2}"
+    Error: undefined symbol in: "[t_edge_ev0]-td1"
+Questionable use of curly braces in ".meas tran v_dout5_at_ev0 avg v(out[5]) trig time=(t_edge_ev0-td1) targ time={t_edge_ev0-td2}"
+    Error: undefined symbol in: "[t_edge_ev0]-td2"
+Questionable use of curly braces in ".meas tran v_dout4_at_ev0 avg v(out[4]) trig time={t_edge_ev0-td1} targ time={t_edge_ev0-td2}"
+    Error: undefined symbol in: "[t_edge_ev0]-td1"
+Questionable use of curly braces in ".meas tran v_dout4_at_ev0 avg v(out[4]) trig time=(t_edge_ev0-td1) targ time={t_edge_ev0-td2}"
+    Error: undefined symbol in: "[t_edge_ev0]-td2"
+Questionable use of curly braces in ".meas tran v_dout3_at_ev0 avg v(out[3]) trig time={t_edge_ev0-td1} targ time={t_edge_ev0-td2}"
+    Error: undefined symbol in: "[t_edge_ev0]-td1"
+Questionable use of curly braces in ".meas tran v_dout3_at_ev0 avg v(out[3]) trig time=(t_edge_ev0-td1) targ time={t_edge_ev0-td2}"
+    Error: undefined symbol in: "[t_edge_ev0]-td2"
+Questionable use of curly braces in ".meas tran v_dout2_at_ev0 avg v(out[2]) trig time={t_edge_ev0-td1} targ time={t_edge_ev0-td2}"
+    Error: undefined symbol in: "[t_edge_ev0]-td1"
+Questionable use of curly braces in ".meas tran v_dout2_at_ev0 avg v(out[2]) trig time=(t_edge_ev0-td1) targ time={t_edge_ev0-td2}"
+    Error: undefined symbol in: "[t_edge_ev0]-td2"
+Questionable use of curly braces in ".meas tran v_dout1_at_ev0 avg v(out[1]) trig time={t_edge_ev0-td1} targ time={t_edge_ev0-td2}"
+    Error: undefined symbol in: "[t_edge_ev0]-td1"
+Questionable use of curly braces in ".meas tran v_dout1_at_ev0 avg v(out[1]) trig time=(t_edge_ev0-td1) targ time={t_edge_ev0-td2}"
+    Error: undefined symbol in: "[t_edge_ev0]-td2"
+Questionable use of curly braces in ".meas tran v_dout0_at_ev0 avg v(out[0]) trig time={t_edge_ev0-td1} targ time={t_edge_ev0-td2}"
+    Error: undefined symbol in: "[t_edge_ev0]-td1"
+Questionable use of curly braces in ".meas tran v_dout0_at_ev0 avg v(out[0]) trig time=(t_edge_ev0-td1) targ time={t_edge_ev0-td2}"
+    Error: undefined symbol in: "[t_edge_ev0]-td2"
+Questionable use of curly braces in ".meas tran adc_decimal_ev0 param {(v_dout7_at_ev0*(2**7))+(v_dout6_at_ev0*(2**6))+(v_dout5_at_ev0*(2**5))+(v_dout4_at_ev0*(2**4))+(v_dout3_at_ev0*(2**3))+(v_dout2_at_ev0*(2**2))+(v_dout1_at_ev0*(2**1))+(v_dout0_at_ev0*(2**0))}"
+    Error: undefined symbol in: "([v_dout7_at_ev0]*(2**7))+(v_dout6_at_ev0*(2**6))+(v_dout5_at_ev0*(2**5))+(v_dout4_at_ev0*(2**4))+(v_dout3_at_ev0*(2**3))+(v_dout2_at_ev0*(2**2))+(v_dout1_at_ev0*(2**1))+(v_dout0_at_ev0*(2**0))"
+Questionable use of curly braces in ".meas tran quantization_error_left_ev0 param {abs(v_sample_at_ev0-(adc_decimal_ev0*v_vdd_at_ev0/2**8))}"
+    Error: undefined symbol in: "abs([v_sample_at_ev0]-(adc_decimal_ev0*v_vdd_at_ev0/2**8))"
+Questionable use of curly braces in ".meas tran quantization_error_right_ev0 param {abs(v_sample_at_ev0-((adc_decimal_ev0+1)*v_vdd_at_ev0/2**8))}"
+    Error: undefined symbol in: "abs([v_sample_at_ev0]-((adc_decimal_ev0+1)*v_vdd_at_ev0/2**8))"
+Questionable use of curly braces in ".meas tran t_edge_ev1 find time when v(clk) = {vclkmax/2} rise = 2"
+    Error: undefined symbol in: "[vclkmax]/2"
+Questionable use of curly braces in ".meas tran v_ain_at_ev1 avg v(in) trig time={t_edge_ev1-td1} targ time={t_edge_ev1-td2}"
+    Error: undefined symbol in: "[t_edge_ev1]-td1"
+Questionable use of curly braces in ".meas tran v_ain_at_ev1 avg v(in) trig time=(t_edge_ev1-td1) targ time={t_edge_ev1-td2}"
+    Error: undefined symbol in: "[t_edge_ev1]-td2"
+Questionable use of curly braces in ".meas tran v_sample_at_ev1 avg v(in_sample) trig time={t_edge_ev1-td1} targ time={t_edge_ev1-td2}"
+    Error: undefined symbol in: "[t_edge_ev1]-td1"
+Questionable use of curly braces in ".meas tran v_sample_at_ev1 avg v(in_sample) trig time=(t_edge_ev1-td1) targ time={t_edge_ev1-td2}"
+    Error: undefined symbol in: "[t_edge_ev1]-td2"
+Questionable use of curly braces in ".meas tran v_aout_at_ev1 avg v(out_dac) trig time={t_edge_ev1-td1} targ time={t_edge_ev1-td2}"
+    Error: undefined symbol in: "[t_edge_ev1]-td1"
+Questionable use of curly braces in ".meas tran v_aout_at_ev1 avg v(out_dac) trig time=(t_edge_ev1-td1) targ time={t_edge_ev1-td2}"
+    Error: undefined symbol in: "[t_edge_ev1]-td2"
+Questionable use of curly braces in ".meas tran v_vdd_at_ev1 avg v(vdd) trig time={t_edge_ev1-td1} targ time={t_edge_ev1-td2}"
+    Error: undefined symbol in: "[t_edge_ev1]-td1"
+Questionable use of curly braces in ".meas tran v_vdd_at_ev1 avg v(vdd) trig time=(t_edge_ev1-td1) targ time={t_edge_ev1-td2}"
+    Error: undefined symbol in: "[t_edge_ev1]-td2"
+Questionable use of curly braces in ".meas tran v_dout7_at_ev1 avg v(out[7]) trig time={t_edge_ev1-td1} targ time={t_edge_ev1-td2}"
+    Error: undefined symbol in: "[t_edge_ev1]-td1"
+Questionable use of curly braces in ".meas tran v_dout7_at_ev1 avg v(out[7]) trig time=(t_edge_ev1-td1) targ time={t_edge_ev1-td2}"
+    Error: undefined symbol in: "[t_edge_ev1]-td2"
+Questionable use of curly braces in ".meas tran v_dout6_at_ev1 avg v(out[6]) trig time={t_edge_ev1-td1} targ time={t_edge_ev1-td2}"
+    Error: undefined symbol in: "[t_edge_ev1]-td1"
+Questionable use of curly braces in ".meas tran v_dout6_at_ev1 avg v(out[6]) trig time=(t_edge_ev1-td1) targ time={t_edge_ev1-td2}"
+    Error: undefined symbol in: "[t_edge_ev1]-td2"
+Questionable use of curly braces in ".meas tran v_dout5_at_ev1 avg v(out[5]) trig time={t_edge_ev1-td1} targ time={t_edge_ev1-td2}"
+    Error: undefined symbol in: "[t_edge_ev1]-td1"
+Questionable use of curly braces in ".meas tran v_dout5_at_ev1 avg v(out[5]) trig time=(t_edge_ev1-td1) targ time={t_edge_ev1-td2}"
+    Error: undefined symbol in: "[t_edge_ev1]-td2"
+Questionable use of curly braces in ".meas tran v_dout4_at_ev1 avg v(out[4]) trig time={t_edge_ev1-td1} targ time={t_edge_ev1-td2}"
+    Error: undefined symbol in: "[t_edge_ev1]-td1"
+Questionable use of curly braces in ".meas tran v_dout4_at_ev1 avg v(out[4]) trig time=(t_edge_ev1-td1) targ time={t_edge_ev1-td2}"
+    Error: undefined symbol in: "[t_edge_ev1]-td2"
+Questionable use of curly braces in ".meas tran v_dout3_at_ev1 avg v(out[3]) trig time={t_edge_ev1-td1} targ time={t_edge_ev1-td2}"
+    Error: undefined symbol in: "[t_edge_ev1]-td1"
+Questionable use of curly braces in ".meas tran v_dout3_at_ev1 avg v(out[3]) trig time=(t_edge_ev1-td1) targ time={t_edge_ev1-td2}"
+    Error: undefined symbol in: "[t_edge_ev1]-td2"
+Questionable use of curly braces in ".meas tran v_dout2_at_ev1 avg v(out[2]) trig time={t_edge_ev1-td1} targ time={t_edge_ev1-td2}"
+    Error: undefined symbol in: "[t_edge_ev1]-td1"
+Questionable use of curly braces in ".meas tran v_dout2_at_ev1 avg v(out[2]) trig time=(t_edge_ev1-td1) targ time={t_edge_ev1-td2}"
+    Error: undefined symbol in: "[t_edge_ev1]-td2"
+Questionable use of curly braces in ".meas tran v_dout1_at_ev1 avg v(out[1]) trig time={t_edge_ev1-td1} targ time={t_edge_ev1-td2}"
+    Error: undefined symbol in: "[t_edge_ev1]-td1"
+Questionable use of curly braces in ".meas tran v_dout1_at_ev1 avg v(out[1]) trig time=(t_edge_ev1-td1) targ time={t_edge_ev1-td2}"
+    Error: undefined symbol in: "[t_edge_ev1]-td2"
+Questionable use of curly braces in ".meas tran v_dout0_at_ev1 avg v(out[0]) trig time={t_edge_ev1-td1} targ time={t_edge_ev1-td2}"
+    Error: undefined symbol in: "[t_edge_ev1]-td1"
+Questionable use of curly braces in ".meas tran v_dout0_at_ev1 avg v(out[0]) trig time=(t_edge_ev1-td1) targ time={t_edge_ev1-td2}"
+    Error: undefined symbol in: "[t_edge_ev1]-td2"
+Questionable use of curly braces in ".meas tran adc_decimal_ev1 param {(v_dout7_at_ev1*(2**7))+(v_dout6_at_ev1*(2**6))+(v_dout5_at_ev1*(2**5))+(v_dout4_at_ev1*(2**4))+(v_dout3_at_ev1*(2**3))+(v_dout2_at_ev1*(2**2))+(v_dout1_at_ev1*(2**1))+(v_dout0_at_ev1*(2**0))}"
+    Error: undefined symbol in: "([v_dout7_at_ev1]*(2**7))+(v_dout6_at_ev1*(2**6))+(v_dout5_at_ev1*(2**5))+(v_dout4_at_ev1*(2**4))+(v_dout3_at_ev1*(2**3))+(v_dout2_at_ev1*(2**2))+(v_dout1_at_ev1*(2**1))+(v_dout0_at_ev1*(2**0))"
+Questionable use of curly braces in ".meas tran quantization_error_left_ev1 param {abs(v_sample_at_ev1-(adc_decimal_ev1*v_vdd_at_ev1/2**8))}"
+    Error: undefined symbol in: "abs([v_sample_at_ev1]-(adc_decimal_ev1*v_vdd_at_ev1/2**8))"
+Questionable use of curly braces in ".meas tran quantization_error_right_ev1 param {abs(v_sample_at_ev1-((adc_decimal_ev1+1)*v_vdd_at_ev1/2**8))}"
+    Error: undefined symbol in: "abs([v_sample_at_ev1]-((adc_decimal_ev1+1)*v_vdd_at_ev1/2**8))"
+Questionable use of curly braces in ".meas tran t_edge_ev2 find time when v(clk) = {vclkmax/2} rise = 3"
+    Error: undefined symbol in: "[vclkmax]/2"
+Questionable use of curly braces in ".meas tran v_ain_at_ev2 avg v(in) trig time={t_edge_ev2-td1} targ time={t_edge_ev2-td2}"
+    Error: undefined symbol in: "[t_edge_ev2]-td1"
+Questionable use of curly braces in ".meas tran v_ain_at_ev2 avg v(in) trig time=(t_edge_ev2-td1) targ time={t_edge_ev2-td2}"
+    Error: undefined symbol in: "[t_edge_ev2]-td2"
+Questionable use of curly braces in ".meas tran v_sample_at_ev2 avg v(in_sample) trig time={t_edge_ev2-td1} targ time={t_edge_ev2-td2}"
+    Error: undefined symbol in: "[t_edge_ev2]-td1"
+Questionable use of curly braces in ".meas tran v_sample_at_ev2 avg v(in_sample) trig time=(t_edge_ev2-td1) targ time={t_edge_ev2-td2}"
+    Error: undefined symbol in: "[t_edge_ev2]-td2"
+Questionable use of curly braces in ".meas tran v_aout_at_ev2 avg v(out_dac) trig time={t_edge_ev2-td1} targ time={t_edge_ev2-td2}"
+    Error: undefined symbol in: "[t_edge_ev2]-td1"
+Questionable use of curly braces in ".meas tran v_aout_at_ev2 avg v(out_dac) trig time=(t_edge_ev2-td1) targ time={t_edge_ev2-td2}"
+    Error: undefined symbol in: "[t_edge_ev2]-td2"
+Questionable use of curly braces in ".meas tran v_vdd_at_ev2 avg v(vdd) trig time={t_edge_ev2-td1} targ time={t_edge_ev2-td2}"
+    Error: undefined symbol in: "[t_edge_ev2]-td1"
+Questionable use of curly braces in ".meas tran v_vdd_at_ev2 avg v(vdd) trig time=(t_edge_ev2-td1) targ time={t_edge_ev2-td2}"
+    Error: undefined symbol in: "[t_edge_ev2]-td2"
+Questionable use of curly braces in ".meas tran v_dout7_at_ev2 avg v(out[7]) trig time={t_edge_ev2-td1} targ time={t_edge_ev2-td2}"
+    Error: undefined symbol in: "[t_edge_ev2]-td1"
+Questionable use of curly braces in ".meas tran v_dout7_at_ev2 avg v(out[7]) trig time=(t_edge_ev2-td1) targ time={t_edge_ev2-td2}"
+    Error: undefined symbol in: "[t_edge_ev2]-td2"
+Questionable use of curly braces in ".meas tran v_dout6_at_ev2 avg v(out[6]) trig time={t_edge_ev2-td1} targ time={t_edge_ev2-td2}"
+    Error: undefined symbol in: "[t_edge_ev2]-td1"
+Questionable use of curly braces in ".meas tran v_dout6_at_ev2 avg v(out[6]) trig time=(t_edge_ev2-td1) targ time={t_edge_ev2-td2}"
+    Error: undefined symbol in: "[t_edge_ev2]-td2"
+Questionable use of curly braces in ".meas tran v_dout5_at_ev2 avg v(out[5]) trig time={t_edge_ev2-td1} targ time={t_edge_ev2-td2}"
+    Error: undefined symbol in: "[t_edge_ev2]-td1"
+Questionable use of curly braces in ".meas tran v_dout5_at_ev2 avg v(out[5]) trig time=(t_edge_ev2-td1) targ time={t_edge_ev2-td2}"
+    Error: undefined symbol in: "[t_edge_ev2]-td2"
+Questionable use of curly braces in ".meas tran v_dout4_at_ev2 avg v(out[4]) trig time={t_edge_ev2-td1} targ time={t_edge_ev2-td2}"
+    Error: undefined symbol in: "[t_edge_ev2]-td1"
+Questionable use of curly braces in ".meas tran v_dout4_at_ev2 avg v(out[4]) trig time=(t_edge_ev2-td1) targ time={t_edge_ev2-td2}"
+    Error: undefined symbol in: "[t_edge_ev2]-td2"
+Questionable use of curly braces in ".meas tran v_dout3_at_ev2 avg v(out[3]) trig time={t_edge_ev2-td1} targ time={t_edge_ev2-td2}"
+    Error: undefined symbol in: "[t_edge_ev2]-td1"
+Questionable use of curly braces in ".meas tran v_dout3_at_ev2 avg v(out[3]) trig time=(t_edge_ev2-td1) targ time={t_edge_ev2-td2}"
+    Error: undefined symbol in: "[t_edge_ev2]-td2"
+Questionable use of curly braces in ".meas tran v_dout2_at_ev2 avg v(out[2]) trig time={t_edge_ev2-td1} targ time={t_edge_ev2-td2}"
+    Error: undefined symbol in: "[t_edge_ev2]-td1"
+Questionable use of curly braces in ".meas tran v_dout2_at_ev2 avg v(out[2]) trig time=(t_edge_ev2-td1) targ time={t_edge_ev2-td2}"
+    Error: undefined symbol in: "[t_edge_ev2]-td2"
+Questionable use of curly braces in ".meas tran v_dout1_at_ev2 avg v(out[1]) trig time={t_edge_ev2-td1} targ time={t_edge_ev2-td2}"
+    Error: undefined symbol in: "[t_edge_ev2]-td1"
+Questionable use of curly braces in ".meas tran v_dout1_at_ev2 avg v(out[1]) trig time=(t_edge_ev2-td1) targ time={t_edge_ev2-td2}"
+    Error: undefined symbol in: "[t_edge_ev2]-td2"
+Questionable use of curly braces in ".meas tran v_dout0_at_ev2 avg v(out[0]) trig time={t_edge_ev2-td1} targ time={t_edge_ev2-td2}"
+    Error: undefined symbol in: "[t_edge_ev2]-td1"
+Questionable use of curly braces in ".meas tran v_dout0_at_ev2 avg v(out[0]) trig time=(t_edge_ev2-td1) targ time={t_edge_ev2-td2}"
+    Error: undefined symbol in: "[t_edge_ev2]-td2"
+Questionable use of curly braces in ".meas tran adc_decimal_ev2 param {(v_dout7_at_ev2*(2**7))+(v_dout6_at_ev2*(2**6))+(v_dout5_at_ev2*(2**5))+(v_dout4_at_ev2*(2**4))+(v_dout3_at_ev2*(2**3))+(v_dout2_at_ev2*(2**2))+(v_dout1_at_ev2*(2**1))+(v_dout0_at_ev2*(2**0))}"
+    Error: undefined symbol in: "([v_dout7_at_ev2]*(2**7))+(v_dout6_at_ev2*(2**6))+(v_dout5_at_ev2*(2**5))+(v_dout4_at_ev2*(2**4))+(v_dout3_at_ev2*(2**3))+(v_dout2_at_ev2*(2**2))+(v_dout1_at_ev2*(2**1))+(v_dout0_at_ev2*(2**0))"
+Questionable use of curly braces in ".meas tran quantization_error_left_ev2 param {abs(v_sample_at_ev2-(adc_decimal_ev2*v_vdd_at_ev2/2**8))}"
+    Error: undefined symbol in: "abs([v_sample_at_ev2]-(adc_decimal_ev2*v_vdd_at_ev2/2**8))"
+Questionable use of curly braces in ".meas tran quantization_error_right_ev2 param {abs(v_sample_at_ev2-((adc_decimal_ev2+1)*v_vdd_at_ev2/2**8))}"
+    Error: undefined symbol in: "abs([v_sample_at_ev2]-((adc_decimal_ev2+1)*v_vdd_at_ev2/2**8))"
+Questionable use of curly braces in ".meas tran t_edge_ev3 find time when v(clk) = {vclkmax/2} rise = 4"
+    Error: undefined symbol in: "[vclkmax]/2"
+Questionable use of curly braces in ".meas tran v_ain_at_ev3 avg v(in) trig time={t_edge_ev3-td1} targ time={t_edge_ev3-td2}"
+    Error: undefined symbol in: "[t_edge_ev3]-td1"
+Questionable use of curly braces in ".meas tran v_ain_at_ev3 avg v(in) trig time=(t_edge_ev3-td1) targ time={t_edge_ev3-td2}"
+    Error: undefined symbol in: "[t_edge_ev3]-td2"
+Questionable use of curly braces in ".meas tran v_sample_at_ev3 avg v(in_sample) trig time={t_edge_ev3-td1} targ time={t_edge_ev3-td2}"
+    Error: undefined symbol in: "[t_edge_ev3]-td1"
+Questionable use of curly braces in ".meas tran v_sample_at_ev3 avg v(in_sample) trig time=(t_edge_ev3-td1) targ time={t_edge_ev3-td2}"
+    Error: undefined symbol in: "[t_edge_ev3]-td2"
+Questionable use of curly braces in ".meas tran v_aout_at_ev3 avg v(out_dac) trig time={t_edge_ev3-td1} targ time={t_edge_ev3-td2}"
+    Error: undefined symbol in: "[t_edge_ev3]-td1"
+Questionable use of curly braces in ".meas tran v_aout_at_ev3 avg v(out_dac) trig time=(t_edge_ev3-td1) targ time={t_edge_ev3-td2}"
+    Error: undefined symbol in: "[t_edge_ev3]-td2"
+Questionable use of curly braces in ".meas tran v_vdd_at_ev3 avg v(vdd) trig time={t_edge_ev3-td1} targ time={t_edge_ev3-td2}"
+    Error: undefined symbol in: "[t_edge_ev3]-td1"
+Questionable use of curly braces in ".meas tran v_vdd_at_ev3 avg v(vdd) trig time=(t_edge_ev3-td1) targ time={t_edge_ev3-td2}"
+    Error: undefined symbol in: "[t_edge_ev3]-td2"
+Questionable use of curly braces in ".meas tran v_dout7_at_ev3 avg v(out[7]) trig time={t_edge_ev3-td1} targ time={t_edge_ev3-td2}"
+    Error: undefined symbol in: "[t_edge_ev3]-td1"
+Questionable use of curly braces in ".meas tran v_dout7_at_ev3 avg v(out[7]) trig time=(t_edge_ev3-td1) targ time={t_edge_ev3-td2}"
+    Error: undefined symbol in: "[t_edge_ev3]-td2"
+Questionable use of curly braces in ".meas tran v_dout6_at_ev3 avg v(out[6]) trig time={t_edge_ev3-td1} targ time={t_edge_ev3-td2}"
+    Error: undefined symbol in: "[t_edge_ev3]-td1"
+Questionable use of curly braces in ".meas tran v_dout6_at_ev3 avg v(out[6]) trig time=(t_edge_ev3-td1) targ time={t_edge_ev3-td2}"
+    Error: undefined symbol in: "[t_edge_ev3]-td2"
+Questionable use of curly braces in ".meas tran v_dout5_at_ev3 avg v(out[5]) trig time={t_edge_ev3-td1} targ time={t_edge_ev3-td2}"
+    Error: undefined symbol in: "[t_edge_ev3]-td1"
+Questionable use of curly braces in ".meas tran v_dout5_at_ev3 avg v(out[5]) trig time=(t_edge_ev3-td1) targ time={t_edge_ev3-td2}"
+    Error: undefined symbol in: "[t_edge_ev3]-td2"
+Questionable use of curly braces in ".meas tran v_dout4_at_ev3 avg v(out[4]) trig time={t_edge_ev3-td1} targ time={t_edge_ev3-td2}"
+    Error: undefined symbol in: "[t_edge_ev3]-td1"
+Questionable use of curly braces in ".meas tran v_dout4_at_ev3 avg v(out[4]) trig time=(t_edge_ev3-td1) targ time={t_edge_ev3-td2}"
+    Error: undefined symbol in: "[t_edge_ev3]-td2"
+Questionable use of curly braces in ".meas tran v_dout3_at_ev3 avg v(out[3]) trig time={t_edge_ev3-td1} targ time={t_edge_ev3-td2}"
+    Error: undefined symbol in: "[t_edge_ev3]-td1"
+Questionable use of curly braces in ".meas tran v_dout3_at_ev3 avg v(out[3]) trig time=(t_edge_ev3-td1) targ time={t_edge_ev3-td2}"
+    Error: undefined symbol in: "[t_edge_ev3]-td2"
+Questionable use of curly braces in ".meas tran v_dout2_at_ev3 avg v(out[2]) trig time={t_edge_ev3-td1} targ time={t_edge_ev3-td2}"
+    Error: undefined symbol in: "[t_edge_ev3]-td1"
+Questionable use of curly braces in ".meas tran v_dout2_at_ev3 avg v(out[2]) trig time=(t_edge_ev3-td1) targ time={t_edge_ev3-td2}"
+    Error: undefined symbol in: "[t_edge_ev3]-td2"
+Questionable use of curly braces in ".meas tran v_dout1_at_ev3 avg v(out[1]) trig time={t_edge_ev3-td1} targ time={t_edge_ev3-td2}"
+    Error: undefined symbol in: "[t_edge_ev3]-td1"
+Questionable use of curly braces in ".meas tran v_dout1_at_ev3 avg v(out[1]) trig time=(t_edge_ev3-td1) targ time={t_edge_ev3-td2}"
+    Error: undefined symbol in: "[t_edge_ev3]-td2"
+Questionable use of curly braces in ".meas tran v_dout0_at_ev3 avg v(out[0]) trig time={t_edge_ev3-td1} targ time={t_edge_ev3-td2}"
+    Error: undefined symbol in: "[t_edge_ev3]-td1"
+Questionable use of curly braces in ".meas tran v_dout0_at_ev3 avg v(out[0]) trig time=(t_edge_ev3-td1) targ time={t_edge_ev3-td2}"
+    Error: undefined symbol in: "[t_edge_ev3]-td2"
+Questionable use of curly braces in ".meas tran adc_decimal_ev3 param {(v_dout7_at_ev3*(2**7))+(v_dout6_at_ev3*(2**6))+(v_dout5_at_ev3*(2**5))+(v_dout4_at_ev3*(2**4))+(v_dout3_at_ev3*(2**3))+(v_dout2_at_ev3*(2**2))+(v_dout1_at_ev3*(2**1))+(v_dout0_at_ev3*(2**0))}"
+    Error: undefined symbol in: "([v_dout7_at_ev3]*(2**7))+(v_dout6_at_ev3*(2**6))+(v_dout5_at_ev3*(2**5))+(v_dout4_at_ev3*(2**4))+(v_dout3_at_ev3*(2**3))+(v_dout2_at_ev3*(2**2))+(v_dout1_at_ev3*(2**1))+(v_dout0_at_ev3*(2**0))"
+Questionable use of curly braces in ".meas tran quantization_error_left_ev3 param {abs(v_sample_at_ev3-(adc_decimal_ev3*v_vdd_at_ev3/2**8))}"
+    Error: undefined symbol in: "abs([v_sample_at_ev3]-(adc_decimal_ev3*v_vdd_at_ev3/2**8))"
+Questionable use of curly braces in ".meas tran quantization_error_right_ev3 param {abs(v_sample_at_ev3-((adc_decimal_ev3+1)*v_vdd_at_ev3/2**8))}"
+    Error: undefined symbol in: "abs([v_sample_at_ev3]-((adc_decimal_ev3+1)*v_vdd_at_ev3/2**8))"
+Questionable use of curly braces in ".meas tran t_edge_ev4 find time when v(clk) = {vclkmax/2} fall = 4"
+    Error: undefined symbol in: "[vclkmax]/2"
+Questionable use of curly braces in ".meas tran adc_decimal_ev4 param {v_dout7_at_ev4*2**7+v_dout6_at_ev4*2**6+v_dout5_at_ev4*2**5+v_dout4_at_ev4*2**4+v_dout3_at_ev4*2**3+v_dout2_at_ev4*2**2+v_dout1_at_ev4*2**1+v_dout0_at_ev4*2**0}"
+    Error: undefined symbol in: "[v_dout7_at_ev4]*2**7+v_dout6_at_ev4*2**6+v_dout5_at_ev4*2**5+v_dout4_at_ev4*2**4+v_dout3_at_ev4*2**3+v_dout2_at_ev4*2**2+v_dout1_at_ev4*2**1+v_dout0_at_ev4*2**0"
+Questionable use of curly braces in ".meas tran quantization_error_left_ev4 param {abs(v_sample_at_ev4-(adc_decimal_ev4*v_vdd_at_ev4/2**8))}"
+    Error: undefined symbol in: "abs([v_sample_at_ev4]-(adc_decimal_ev4*v_vdd_at_ev4/2**8))"
+Questionable use of curly braces in ".meas tran quantization_error_right_ev4 param {abs(v_sample_at_ev4-((adc_decimal_ev4+1)*v_vdd_at_ev4/2**8))}"
+    Error: undefined symbol in: "abs([v_sample_at_ev4]-((adc_decimal_ev4+1)*v_vdd_at_ev4/2**8))"
+Questionable use of curly braces in ".meas tran clk_counter_t1 find time when v(clk_counter)={clk_counter_vmax/2} rise=2"
+    Error: undefined symbol in: "[clk_counter_vmax]/2"
+Questionable use of curly braces in ".meas tran clk_counter_t2 find time when v(clk_counter)={clk_counter_vmax/2} rise=3"
+    Error: undefined symbol in: "[clk_counter_vmax]/2"
+Questionable use of curly braces in ".meas tran clk_counter_period param {clk_counter_t2-clk_counter_t1}"
+    Error: undefined symbol in: "[clk_counter_t2]-clk_counter_t1"
+Questionable use of curly braces in ".meas tran atb0_quant_step_ev0 avg v(atb) trig time={t_edge_ev0-td1} targ time={t_edge_ev0}"
+    Error: undefined symbol in: "[t_edge_ev0]-td1"
+Questionable use of curly braces in ".meas tran atb0_quant_step_ev0 avg v(atb) trig time=(t_edge_ev0-td1) targ time={t_edge_ev0}"
+    Error: undefined symbol in: "[t_edge_ev0]"
+Questionable use of curly braces in ".meas tran atb0_quant_step_ev1 avg v(atb) trig time={t_edge_ev1-td1} targ time={t_edge_ev1}"
+    Error: undefined symbol in: "[t_edge_ev1]-td1"
+Questionable use of curly braces in ".meas tran atb0_quant_step_ev1 avg v(atb) trig time=(t_edge_ev1-td1) targ time={t_edge_ev1}"
+    Error: undefined symbol in: "[t_edge_ev1]"
+Questionable use of curly braces in ".meas tran atb0_quant_step_ev2 avg v(atb) trig time={t_edge_ev2-td1} targ time={t_edge_ev2}"
+    Error: undefined symbol in: "[t_edge_ev2]-td1"
+Questionable use of curly braces in ".meas tran atb0_quant_step_ev2 avg v(atb) trig time=(t_edge_ev2-td1) targ time={t_edge_ev2}"
+    Error: undefined symbol in: "[t_edge_ev2]"
+Questionable use of curly braces in ".meas tran atb0_quant_step_ev3 avg v(atb) trig time={t_edge_ev3-td1} targ time={t_edge_ev3}"
+    Error: undefined symbol in: "[t_edge_ev3]-td1"
+Questionable use of curly braces in ".meas tran atb0_quant_step_ev3 avg v(atb) trig time=(t_edge_ev3-td1) targ time={t_edge_ev3}"
+    Error: undefined symbol in: "[t_edge_ev3]"
+Questionable use of curly braces in ".meas tran atb2_quant_step_ev0 find v(atb) when time={time_atb_ev0+501u}"
+    Error: undefined symbol in: "[time_atb_ev0]+501u"
+Questionable use of curly braces in ".meas tran atb3_quant_step_ev0 find v(atb) when time={time_atb_ev0+1001u}"
+    Error: undefined symbol in: "[time_atb_ev0]+1001u"
+LTspice 24.0.9 for Windows
+Circuit: adc_converter
+Start Time: Tue Jul  2 12:30:47 2024
+Questionable use of curly braces in "bedge_up_detector edge_up_of_clk 0  v={(buf(ddt((v(clk)))))*{{{vdd}}}}"
+    Error: undefined symbol in: "(buf([ddt]((v(clk)))))*(((vdd)))"
+Error: unknown token in: "v(in_sample)>=v(vdac[[]7])?{vhigh}:{vlow}"
+Error: unknown token in: "{vdac_vref}*v(quantization_step_size)*(v(out[[]7])/2+{vhigh}/4+{vlow}/8+{vlow}/16+{vlow}/32+{vlow}/64+{vlow}/128+{vlow}/256)"
+Error: unknown token in: "v(in_sample)>=v(vdac[[]6])?{vhigh}:{vlow}"
+Error: unknown token in: "{vdac_vref}*v(quantization_step_size)*(v(out[[]7])/2+v(out[6])/4+{vhigh}/8+{vlow}/16+{vlow}/32+{vlow}/64+{vlow}/128+{vlow}/256)"
+Error: unknown token in: "v(in_sample)>=v(vdac[[]5])?{vhigh}:{vlow}"
+Error: unknown token in: "{vdac_vref}*v(quantization_step_size)*(v(out[[]7])/2+v(out[6])/4+v(out[5])/8+{vhigh}/16+{vlow}/32+{vlow}/64+{vlow}/128+{vlow}/256)"
+Error: unknown token in: "v(in_sample)>=v(vdac[[]4])?{vhigh}:{vlow}"
+Error: unknown token in: "{vdac_vref}*v(quantization_step_size)*(v(out[[]7])/2+v(out[6])/4+v(out[5])/8+v(out[4])/16+{vhigh}/32+{vlow}/64+{vlow}/128+{vlow}/256)"
+Error: unknown token in: "v(in_sample)>=v(vdac[[]3])?{vhigh}:{vlow}"
+Error: unknown token in: "{vdac_vref}*v(quantization_step_size)*(v(out[[]7])/2+v(out[6])/4+v(out[5])/8+v(out[4])/16+v(out[3])/32+{vhigh}/64+{vlow}/128+{vlow}/256)"
+Error: unknown token in: "v(in_sample)>=v(vdac[[]2])?{vhigh}:{vlow}"
+Error: unknown token in: "{vdac_vref}*v(quantization_step_size)*(v(out[[]7])/2+v(out[6])/4+v(out[5])/8+v(out[4])/16+v(out[3])/32+v(out[2])/64+{vhigh}/128+{vlow}/256)"
+Error: unknown token in: "v(in_sample)>=v(vdac[[]1])?{vhigh}:{vlow}"
+Error: unknown token in: "{vdac_vref}*v(quantization_step_size)*(v(out[[]7])/2+v(out[6])/4+v(out[5])/8+v(out[4])/16+v(out[3])/32+v(out[2])/64+v(out[1])/128+{vhigh}/256)"
+Error: unknown token in: "v(in_sample)>=v(vdac[[]0])?{vhigh}:{vlow}"
+Error: unknown token in: "{(v(out[[]7])*(2**7))+(v(out[6])*(2**6))+(v(out[5])*(2**5))+(v(out[4])*(2**4))+(v(out[3])*(2**3))+(v(out[2])*(2**2))+(v(out[1])*(2**1))+(v(out[0])*(2**0))}"
+Questionable use of curly braces in "bquantlevel quantization_level 0 v={(v(out[7])*(2**7))+(v(out[6])*(2**6))+(v(out[5])*(2**5))+(v(out[4])*(2**4))+(v(out[3])*(2**3))+(v(out[2])*(2**2))+(v(out[1])*(2**1))+(v(out[0])*(2**0))}"
+    Error: unknown token in: "(v(out[[]7])*(2**7))+(v(out[6])*(2**6))+(v(out[5])*(2**5))+(v(out[4])*(2**4))+(v(out[3])*(2**3))+(v(out[2])*(2**2))+(v(out[1])*(2**1))+(v(out[0])*(2**0))"
+Questionable use of curly braces in "bquant_level_range_from quantization_level_range_from 0 v={v(quantization_level)*v(vdd)/2**8}"
+    Error: undefined symbol in: "[v](quantization_level)*v(vdd)/2**8"
+Questionable use of curly braces in "bquant_level_range_to quantization_level_range_to 0 v={(v(quantization_level)+1)*v(vdd)/2**8}"
+    Error: undefined symbol in: "([v](quantization_level)+1)*v(vdd)/2**8"
+Error: unknown token in: "((1*v(bit[[]0]))+2*v(bit[1])+4*v(bit[2])+8*v(bit[3])+16*v(bit[4])+32*v(bit[5])+64*v(bit[6])+128*v(bit[7]))*(v(vdd)/2**({n_bits}))"
+Error: unknown token in: "{if(v(sel[[]0])<1&v(sel[1])<1,v(in[0]),if(v(sel[0])>=1&v(sel[1])<1,v(in[1]),if(v(sel[0])<1&v(sel[1])>=1,v(in[2]),v(in[3]))))}"
+Questionable use of curly braces in "bmux out 0 v={if(v(sel[0])<1&v(sel[1])<1,v(in[0]),if(v(sel[0])>=1&v(sel[1])<1,v(in[1]),if(v(sel[0])<1&v(sel[1])>=1,v(in[2]),v(in[3]))))}"
+    Error: unknown token in: "if(v(sel[[]0])<1&v(sel[1])<1,v(in[0]),if(v(sel[0])>=1&v(sel[1])<1,v(in[1]),if(v(sel[0])<1&v(sel[1])>=1,v(in[2]),v(in[3]))))"
+solver = Normal
+Maximum thread count: 12
+tnom = 27
+temp = 27
+method = modified trap
+WARNING: Less than two connections to node adc_dac:adc_sar_8bitsv2_clk:calc_n_quant_levels.  This node is used by v:adc_dac:adc_sar_8bitsv2_clk:quant_level.
+WARNING: Less than two connections to node atb.  This node is used by b:adc_dac:adc_sar_8bitsv2_clk:mux4_1:mux.
+WARNING: Less than two connections to node out_dac.  This node is used by a:adc_dac:dac_v2_clk:sh.
+Direct Newton iteration for .op point succeeded.
+
+vclkmax: MAX(v(clk))=15 FROM 0 TO 0.05
+vclk_counter_max: MAX(v(clk_counter))=15 FROM 0 TO 0.05
+______________________________________event_0_______________________________________: 0=0
+t_edge_ev0: time=0.006995 at 0.006995
+v_ain_at_ev0: AVG(v(in))=1 FROM 0.006885 TO 0.006985
+v_sample_at_ev0: AVG(v(in_sample))=0 FROM 0.006885 TO 0.006985
+v_aout_at_ev0: AVG(v(out_dac))=0 FROM 0.006885 TO 0.006985
+v_vdd_at_ev0: AVG(v(vdd))=15 FROM 0.006885 TO 0.006985
+-----------------------dac_event_0----------------------: 0=0
+v_dout7_at_ev0: AVG(v(out[7]))=0 FROM 0.006885 TO 0.006985
+v_dout6_at_ev0: AVG(v(out[6]))=0 FROM 0.006885 TO 0.006985
+v_dout5_at_ev0: AVG(v(out[5]))=0 FROM 0.006885 TO 0.006985
+v_dout4_at_ev0: AVG(v(out[4]))=0 FROM 0.006885 TO 0.006985
+v_dout3_at_ev0: AVG(v(out[3]))=0 FROM 0.006885 TO 0.006985
+v_dout2_at_ev0: AVG(v(out[2]))=0 FROM 0.006885 TO 0.006985
+v_dout1_at_ev0: AVG(v(out[1]))=0 FROM 0.006885 TO 0.006985
+v_dout0_at_ev0: AVG(v(out[0]))=0 FROM 0.006885 TO 0.006985
+adc_decimal_ev0: ((v_dout7_at_ev0*(2**7))+(v_dout6_at_ev0*(2**6))+(v_dout5_at_ev0*(2**5))+(v_dout4_at_ev0*(2**4))+(v_dout3_at_ev0*(2**3))+(v_dout2_at_ev0*(2**2))+(v_dout1_at_ev0*(2**1))+(v_dout0_at_ev0*(2**0)))=0
+quantization_error_left_ev0: (abs(v_sample_at_ev0-(adc_decimal_ev0*v_vdd_at_ev0/2**8)))=0
+quantization_error_right_ev0: (abs(v_sample_at_ev0-((adc_decimal_ev0+1)*v_vdd_at_ev0/2**8)))=0.0585937
+______________________________________event_1_______________________________________: 0=0
+t_edge_ev1: time=0.012995 at 0.012995
+v_ain_at_ev1: AVG(v(in))=5 FROM 0.012885 TO 0.012985
+v_sample_at_ev1: AVG(v(in_sample))=1 FROM 0.012885 TO 0.012985
+v_aout_at_ev1: AVG(v(out_dac))=0.996094 FROM 0.012885 TO 0.012985
+v_vdd_at_ev1: AVG(v(vdd))=15 FROM 0.012885 TO 0.012985
+-----------------------dac_event_1----------------------: 0=0
+v_dout7_at_ev1: AVG(v(out[7]))=0 FROM 0.012885 TO 0.012985
+v_dout6_at_ev1: AVG(v(out[6]))=0 FROM 0.012885 TO 0.012985
+v_dout5_at_ev1: AVG(v(out[5]))=0 FROM 0.012885 TO 0.012985
+v_dout4_at_ev1: AVG(v(out[4]))=1 FROM 0.012885 TO 0.012985
+v_dout3_at_ev1: AVG(v(out[3]))=0 FROM 0.012885 TO 0.012985
+v_dout2_at_ev1: AVG(v(out[2]))=0 FROM 0.012885 TO 0.012985
+v_dout1_at_ev1: AVG(v(out[1]))=0 FROM 0.012885 TO 0.012985
+v_dout0_at_ev1: AVG(v(out[0]))=1 FROM 0.012885 TO 0.012985
+adc_decimal_ev1: ((v_dout7_at_ev1*(2**7))+(v_dout6_at_ev1*(2**6))+(v_dout5_at_ev1*(2**5))+(v_dout4_at_ev1*(2**4))+(v_dout3_at_ev1*(2**3))+(v_dout2_at_ev1*(2**2))+(v_dout1_at_ev1*(2**1))+(v_dout0_at_ev1*(2**0)))=17
+quantization_error_left_ev1: (abs(v_sample_at_ev1-(adc_decimal_ev1*v_vdd_at_ev1/2**8)))=0.00390625
+quantization_error_right_ev1: (abs(v_sample_at_ev1-((adc_decimal_ev1+1)*v_vdd_at_ev1/2**8)))=0.0546875
+______________________________________event_2_______________________________________: 0=0
+t_edge_ev2: time=0.031995 at 0.031995
+v_ain_at_ev2: AVG(v(in))=10 FROM 0.031885 TO 0.031985
+v_sample_at_ev2: AVG(v(in_sample))=5 FROM 0.031885 TO 0.031985
+v_aout_at_ev2: AVG(v(out_dac))=4.98047 FROM 0.031885 TO 0.031985
+v_vdd_at_ev2: AVG(v(vdd))=15 FROM 0.031885 TO 0.031985
+-----------------------dac_event_2----------------------: 0=0
+v_dout7_at_ev2: AVG(v(out[7]))=0 FROM 0.031885 TO 0.031985
+v_dout6_at_ev2: AVG(v(out[6]))=1 FROM 0.031885 TO 0.031985
+v_dout5_at_ev2: AVG(v(out[5]))=0 FROM 0.031885 TO 0.031985
+v_dout4_at_ev2: AVG(v(out[4]))=1 FROM 0.031885 TO 0.031985
+v_dout3_at_ev2: AVG(v(out[3]))=0 FROM 0.031885 TO 0.031985
+v_dout2_at_ev2: AVG(v(out[2]))=1 FROM 0.031885 TO 0.031985
+v_dout1_at_ev2: AVG(v(out[1]))=0 FROM 0.031885 TO 0.031985
+v_dout0_at_ev2: AVG(v(out[0]))=1 FROM 0.031885 TO 0.031985
+adc_decimal_ev2: ((v_dout7_at_ev2*(2**7))+(v_dout6_at_ev2*(2**6))+(v_dout5_at_ev2*(2**5))+(v_dout4_at_ev2*(2**4))+(v_dout3_at_ev2*(2**3))+(v_dout2_at_ev2*(2**2))+(v_dout1_at_ev2*(2**1))+(v_dout0_at_ev2*(2**0)))=85
+quantization_error_left_ev2: (abs(v_sample_at_ev2-(adc_decimal_ev2*v_vdd_at_ev2/2**8)))=0.0195312
+quantization_error_right_ev2: (abs(v_sample_at_ev2-((adc_decimal_ev2+1)*v_vdd_at_ev2/2**8)))=0.0390625
+______________________________________event_3_______________________________________: 0=0
+t_edge_ev3: time=0.043995 at 0.043995
+v_ain_at_ev3: AVG(v(in))=7 FROM 0.043885 TO 0.043985
+v_sample_at_ev3: AVG(v(in_sample))=10 FROM 0.043885 TO 0.043985
+v_aout_at_ev3: AVG(v(out_dac))=9.96094 FROM 0.043885 TO 0.043985
+v_vdd_at_ev3: AVG(v(vdd))=15 FROM 0.043885 TO 0.043985
+-----------------------dac_event_3----------------------: 0=0
+v_dout7_at_ev3: AVG(v(out[7]))=1 FROM 0.043885 TO 0.043985
+v_dout6_at_ev3: AVG(v(out[6]))=0 FROM 0.043885 TO 0.043985
+v_dout5_at_ev3: AVG(v(out[5]))=1 FROM 0.043885 TO 0.043985
+v_dout4_at_ev3: AVG(v(out[4]))=0 FROM 0.043885 TO 0.043985
+v_dout3_at_ev3: AVG(v(out[3]))=1 FROM 0.043885 TO 0.043985
+v_dout2_at_ev3: AVG(v(out[2]))=0 FROM 0.043885 TO 0.043985
+v_dout1_at_ev3: AVG(v(out[1]))=1 FROM 0.043885 TO 0.043985
+v_dout0_at_ev3: AVG(v(out[0]))=0 FROM 0.043885 TO 0.043985
+adc_decimal_ev3: ((v_dout7_at_ev3*(2**7))+(v_dout6_at_ev3*(2**6))+(v_dout5_at_ev3*(2**5))+(v_dout4_at_ev3*(2**4))+(v_dout3_at_ev3*(2**3))+(v_dout2_at_ev3*(2**2))+(v_dout1_at_ev3*(2**1))+(v_dout0_at_ev3*(2**0)))=170
+quantization_error_left_ev3: (abs(v_sample_at_ev3-(adc_decimal_ev3*v_vdd_at_ev3/2**8)))=0.0390625
+quantization_error_right_ev3: (abs(v_sample_at_ev3-((adc_decimal_ev3+1)*v_vdd_at_ev3/2**8)))=0.0195313
+______________________________________event_4_______________________________________: 0=0
+t_edge_ev4: time=0.044995 at 0.044995
+v_ain_at_ev4: AVG(v(in))=7 FROM 0.04989 TO 0.04999
+v_sample_at_ev4: AVG(v(in_sample))=7 FROM 0.04989 TO 0.04999
+v_aout_at_ev4: AVG(v(out_dac))=6.97266 FROM 0.04989 TO 0.04999
+v_vdd_at_ev4: AVG(v(vdd))=15 FROM 0.04989 TO 0.04999
+-----------------------dac_event_4----------------------: 0=0
+v_dout7_at_ev4: AVG(v(out[7]))=0 FROM 0.04989 TO 0.04999
+v_dout6_at_ev4: AVG(v(out[6]))=1 FROM 0.04989 TO 0.04999
+v_dout5_at_ev4: AVG(v(out[5]))=1 FROM 0.04989 TO 0.04999
+v_dout4_at_ev4: AVG(v(out[4]))=1 FROM 0.04989 TO 0.04999
+v_dout3_at_ev4: AVG(v(out[3]))=0 FROM 0.04989 TO 0.04999
+v_dout2_at_ev4: AVG(v(out[2]))=1 FROM 0.04989 TO 0.04999
+v_dout1_at_ev4: AVG(v(out[1]))=1 FROM 0.04989 TO 0.04999
+v_dout0_at_ev4: AVG(v(out[0]))=1 FROM 0.04989 TO 0.04999
+adc_decimal_ev4: (v_dout7_at_ev4*2**7+v_dout6_at_ev4*2**6+v_dout5_at_ev4*2**5+v_dout4_at_ev4*2**4+v_dout3_at_ev4*2**3+v_dout2_at_ev4*2**2+v_dout1_at_ev4*2**1+v_dout0_at_ev4*2**0)=119
+quantization_error_left_ev4: (abs(v_sample_at_ev4-(adc_decimal_ev4*v_vdd_at_ev4/2**8)))=0.0273437
+quantization_error_right_ev4: (abs(v_sample_at_ev4-((adc_decimal_ev4+1)*v_vdd_at_ev4/2**8)))=0.03125
+clk_counter_vmax: MAX(v(clk_counter))=15 FROM 0 TO 0.05
+clk_counter_t1: time=0.0008 at 0.0008
+clk_counter_t2: time=0.0013 at 0.0013
+clk_counter_period: (clk_counter_t2-clk_counter_t1)=0.0005
+atb0_quant_step_ev0: AVG(v(atb))=0.0585938 FROM 0.006885 TO 0.006995
+atb0_quant_step_ev1: AVG(v(atb))=0.0585938 FROM 0.012885 TO 0.012995
+atb0_quant_step_ev2: AVG(v(atb))=0.0585938 FROM 0.031885 TO 0.031995
+atb0_quant_step_ev3: AVG(v(atb))=0.0585938 FROM 0.043885 TO 0.043995
+atb0_quant_step_ev4: AVG(v(atb))=0.0585938 FROM 0.04989 TO 0.04999
+time_atb_ev0: v(atb_sel[0])=15/2 AT 0.0073
+atb1_quant_step_ev0: v(atb)=17 at 0.0073
+atb2_quant_step_ev0: v(atb)=0.996094 at 0.007801
+atb3_quant_step_ev0: v(atb)=1.05469 at 0.008301
+time_atb1: v(atb_sel[0])=15/2 AT 0.0133
+
+Total elapsed time: 0.748 seconds.
+

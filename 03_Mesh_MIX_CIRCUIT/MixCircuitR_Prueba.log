@@ -1,6 +1,6 @@
 LTspice 24.0.9 for Windows
 Circuit: Ciruito Mallas
-Start Time: Sun Mar 31 12:59:04 2024
+Start Time: Thu Jun 27 15:35:52 2024
 solver = Normal
 Maximum thread count: 12
 
@@ -260,5 +260,5 @@ tnom = 27
 temp = 27
 method = modified trap
 .step param_r2=20000 param_r1=20000
-Total elapsed time: 2.018 seconds.
+Total elapsed time: 1.105 seconds.
 

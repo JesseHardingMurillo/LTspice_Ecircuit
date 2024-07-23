@@ -1,0 +1,52 @@
+LTspice 24.0.9 for Windows
+Circuit: *
+Start Time: Wed Jun 19 21:16:22 2024
+Error: unknown token in: "v(in)>=v(vdac[[]3])?{{vhigh}}:{{vlow}}"
+Error: unknown token in: "{vdac_vref}*v(quantization_step_size)*(v(out[[]3])/2**1+{vhigh}/2**2+{vlow}/2**3+{vlow}/2**4)"
+Error: unknown token in: "(v(in)>=v(vdac[[]2])?{vhigh}:{vlow})"
+Error: unknown token in: "{vdac_vref}*v(quantization_step_size)*(v(out[[]3])/2**1+v(out[2])/2**2+{vhigh}/2**3+{vlow}/2**4)"
+Error: unknown token in: "(v(in)>=v(vdac[[]1])?{vhigh}:{vlow})"
+Error: unknown token in: "{vdac_vref}*v(quantization_step_size)*(v(out[[]3])/2**1+v(out[2])/2**2+v(out[1])/2**3+{vhigh}/2**4)"
+Error: unknown token in: "(v(in)>=v(vdac[[]0])?{vhigh}:{vlow})"
+solver = Normal
+Maximum thread count: 12
+tnom = 27
+temp = 27
+method = modified trap
+WARNING: Less than two connections to node out[0].  This node is used by e1.
+WARNING: Less than two connections to node 1:calc_nr_quantization_levels.  This node is used by v:1:1.
+Direct Newton iteration for .op point succeeded.
+
+
+Measurement "range_max_lvl_0" FAIL'ed
+
+Measurement "range_max_lvl_1" FAIL'ed
+
+Measurement "range_max_lvl_2" FAIL'ed
+
+Measurement "range_max_lvl_3" FAIL'ed
+
+Measurement "range_max_lvl_4" FAIL'ed
+
+Measurement "range_max_lvl_5" FAIL'ed
+
+Measurement "range_max_lvl_6" FAIL'ed
+
+Measurement "range_max_lvl_7" FAIL'ed
+
+Measurement "range_max_lvl_8" FAIL'ed
+
+Measurement "range_max_lvl_9" FAIL'ed
+
+Measurement "range_max_lvl_10" FAIL'ed
+
+Measurement "range_max_lvl_11" FAIL'ed
+
+Measurement "range_max_lvl_12" FAIL'ed
+
+Measurement "range_max_lvl_13" FAIL'ed
+
+Measurement "range_max_lvl_14" FAIL'ed
+
+Total elapsed time: 0.149 seconds.
+

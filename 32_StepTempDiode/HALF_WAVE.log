@@ -1,0 +1,40 @@
+LTspice 24.0.9 for Windows
+Circuit: *NOTE:
+Start Time: Thu Jul 18 15:09:58 2024
+solver = Normal
+Maximum thread count: 12
+
+
+
+.step temp=-40°C
+.OP point found by inspection.
+
+
+
+.step temp=0°C
+
+
+
+.step temp=40°C
+
+
+
+.step temp=80°C
+
+
+
+.step temp=120°C
+
+
+
+.step temp=160°C
+tnom = 27
+temp = 180
+method = modified trap
+.step temp=180°C
+
+
+Measurement "vth" FAIL'ed
+
+Total elapsed time: 0.342 seconds.
+

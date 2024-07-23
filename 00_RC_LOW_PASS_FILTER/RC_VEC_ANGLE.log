@@ -14,7 +14,7 @@ Questionable use of curly braces in ".meas ac m param {20*log10(num1)-20*log10(n
     Error: undefined symbol in: "20*log10([num1])-20*log10(num2)"
 LTspice 24.0.9 for Windows
 Circuit: *Measures in Tran and AC
-Start Time: Wed Jun  5 10:41:12 2024
+Start Time: Thu Jun 27 15:35:14 2024
 solver = Normal
 Maximum thread count: 12
 tnom = 27
@@ -37,5 +37,5 @@ num1: v(out)=(0.00249377,-0.0498753) at 100000
 num2: v(out)=(2.49994e-05,-0.00499988) at 1e+06
 m: (20*log10(num1)-20*log10(num2))=(19.9893,0.390504)
 
-Total elapsed time: 0.125 seconds.
+Total elapsed time: 0.110 seconds.
 

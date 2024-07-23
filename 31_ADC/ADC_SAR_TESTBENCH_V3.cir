@@ -1,0 +1,134 @@
+adc_converter
+*-----------------------------------------------------------------------------
+*NOTES
+*-----------------------------------------------------------------------------
+
+
+*-----------------------------------------------------------------------------
+*Parameters: User Input
+*-----------------------------------------------------------------------------
+.PARAM p_Vdd 15
+.PARAM vthreshold 1
+.PARAM N_BITS 			4			; Number of bits | FIXED VALUE
+.PARAM N_QUANT_LEVELS 	{2**N_BITS}	; Number of Discrete Quantization Levels
+.PARAM QUANT_STEP 		{p_Vdd/N_QUANT_LEVELS}
+
+.PARAM DAC_SAR_LIB 1001
+*=============================================================================
+* Calibration
+*=============================================================================
+
+
+
+*-----------------------------------------------------------------------------
+*Libraries, Models and includes
+*-----------------------------------------------------------------------------
+.LIB ADC_SAR.LIB
+.LIB DAC.LIB
+
+*-----------------------------------------------------------------------------
+*SUBCKT
+*-----------------------------------------------------------------------------
+
+
+*-----------------------------------------------------------------------------
+*CIRCUIT
+*-----------------------------------------------------------------------------
+; SOURCES
+Vin in 0 PWL(0ms 1V 9.99ms 1V 10ms 5V 19.99ms 5V
++20ms	8V 	29.99ms 8V
++30ms	10V 39.99ms 10V
++40ms	7V 	50ms 	7V)
+
+; Fullscale
+Vdd VDD 0 {p_Vdd}
+
+; CLK
+Vclk clk 0 PWL(0 0 6.99ms 0 7ms 5 7.99ms 5 8ms 0 12.99ms 0
++13ms 5 13.99ms 5 14ms 0 31.99ms 0
++32ms 5 32.99ms 5 33ms 0 43.99ms 0
++44ms 5 44.99ms 5 45ms 0)
+
+
+*//////////////////////////////////////////////////////////////////////////////////////////
+;TASK 1
+.SUBCKT 1000 IN VDD CLK out[7] out[6] out[5] out[4] out[3] out[2] out[1] out[0] OUT_DAC
+;8 BITS ADC SUBCIRCUIT
+;.SUBCKT ADC_SAR_8bits_V2 in vdd clk vss out[7] out[6] out[5] out[4] out[3] out[2] out[1] out[0]
+XADC_SAR_8bitsV2 in vdd CLK  0  out[7] out[6] out[5] out[4] out[3] out[2] out[1] out[0] ADC_SAR_8bits_V2
+*-----------------------------------------------------------------------------------------
+
+; 8 BITS DAC SUBBCIRCUIT
+;.SUBCKT DAC_8bits bit[7] bit[6] bit[5] bit[4] bit[3] bit[2] bit[1] bit[0] VDD CLK VSS out
+XDAC out[7] out[6] out[5] out[4] out[3] out[2] out[1] out[0] VDD CLK 0 OUT_DAC DAC_8bits
+
+.ENDS 1000
+*//////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+*//////////////////////////////////////////////////////////////////////////////////////////
+;TASK 2
+.SUBCKT 1001 IN VDD CLK out[7] out[6] out[5] out[4] out[3] out[2] out[1] out[0] OUT_DAC
+;8 BITS ADC SUBCIRCUIT CLK
+;.SUBCKT ADC_SAR_8bits_V2_CLK in vdd clk vss out[7] out[6] out[5] out[4] out[3] out[2] out[1] out[0]
+XADC_SAR_8bitsV2_CLK  in vdd clk 0 out[7] out[6] out[5] out[4] out[3] out[2] out[1] out[0] ADC_SAR_8bits_V2_CLK
+*-----------------------------------------------------------------------------------------
+; 8 BITS DAC SUBBCIRCUIT CLK
+
+;.SUBCKT DAC_8bits_clk bit[7] bit[6] bit[5] bit[4] bit[3] bit[2] bit[1] bit[0] VDD CLK VSS out
+XDAC_V2_CLK out[7] out[6] out[5] out[4] out[3] out[2] out[1] out[0] VDD CLK 0 OUT_DAC DAC_8bits_clk
+.ENDS 1001
+*//////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+*//////////////////////////////////////////////////////////////////////////////////////////
+;TASK 3
+.SUBCKT 1002 IN VDD CLK out[7] out[6] out[5] out[4] out[3] out[2] out[1] out[0] OUT_DAC
+;8 BITS ADC SUBCIRCUIT CLK
+XADC_SAR_8bitsV2_CLK  in vdd clk 0 out[7] out[6] out[5] out[4] out[3] out[2] out[1] out[0] ADC_SAR_8bits_V2_CLK
++N_BITS = 4
+*-----------------------------------------------------------------------------------------
+; 8 BITS DAC SUBBCIRCUIT CLK
+
+;.SUBCKT DAC_8bits_clk bit[7] bit[6] bit[5] bit[4] bit[3] bit[2] bit[1] bit[0] VDD CLK VSS out
+XDAC_V2_CLK out[7] out[6] out[5] out[4] out[3] out[2] out[1] out[0] VDD CLK 0 OUT_DAC DAC_8bits_clk
++N_BITS = 8
+.ENDS 1002
+*//////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+*//////////////////////////////////////////////////////////////////////////////////////////
+;TASK 4
+.SUBCKT 1003 IN VDD CLK out[7] out[6] out[5] out[4] out[3] out[2] out[1] out[0] OUT_DAC
+;8 BITS ADC SUBCIRCUIT CLK
+;.SUBCKT ADC_SAR_8bits_CLK in vdd clk vss out[7] out[6] out[5] out[4] out[3] out[2] out[1] out[0]
+XADC_SAR_8bits_CLK  in vdd clk 0 out[7] out[6] out[5] out[4] out[3] out[2] out[1] out[0] ADC_SAR_8bits_CLK
+
+*-----------------------------------------------------------------------------------------
+; 8 BITS DAC SUBBCIRCUIT CLK
+
+;.SUBCKT DAC_8bits_CLK_V2 bit[7] bit[6] bit[5] bit[4] bit[3] bit[2] bit[1] bit[0] VDD CLK VSS out
+XDAC_V2_CLK out[7] out[6] out[5] out[4] out[3] out[2] out[1] out[0] VDD CLK 0 OUT_DAC DAC_8bits_CLK_v2
+.ENDS 1003
+*//////////////////////////////////////////////////////////////////////////////////////////
+;.SUBCKT 1000 IN VDD CLK out[7] out[6] out[5] out[4] out[3] out[2] out[1] out[0] OUT_DAC
+XADC_DAC IN VDD CLK out[7] out[6] out[5] out[4] out[3] out[2] out[1] out[0] OUT_DAC {DAC_SAR_LIB}
+
+
+*-----------------------------------------------------------------------------
+*MEASUREMENTS
+*-----------------------------------------------------------------------------
+.INCLUDE meas_ADC_DAC.meas
+
+
+*-----------------------------------------------------------------------------
+* ANALYSIS
+*-----------------------------------------------------------------------------
+;.STEP PARAM DAC_SAR_LIB  LIST 1000 1001 1002 1003
+;.STEP PARAM DAC_SAR_LIB  LIST 1001 1002 1003
+.TRAN 0 50m 0 {15/256/10}
+.PROBE
+.END

@@ -1,0 +1,8 @@
+*Subcircuit of Counter of 2 bits
+.SUBCKT COUNTER_2BITS CLK RESET OUT[0] OUT[1]
+.PARAM VDD = 5
+;  D   	GND   	CLK            	Preset	RESET 	NotQ	Q  
+A1 D1 	0	CLK_INTERNAL 	0 	Reset 	D1 	OUT[0] 	0 DFLOP	Vhigh = VDD
+A2 N002 0 	D1 		0 	Reset 	N002 	OUT[1] 	0 DFLOP	Vhigh = VDD
+
+.END COUNTER_2BITS

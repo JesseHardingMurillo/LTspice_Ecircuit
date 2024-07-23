@@ -1,0 +1,190 @@
+adc_converter
+*-----------------------------------------------------------------------------
+*NOTES
+*-----------------------------------------------------------------------------
+;275u de delay FOR MEASURMENTS
+*-----------------------------------------------------------------------------
+*Parameters: User Input
+*-----------------------------------------------------------------------------
+.PARAM p_Vdd 15
+
+.PARAM N_BITS 			8						; Number of bits | FIXED VALUE
+.PARAM N_QUANT_LEVELS 	{2**N_BITS}				; Number of Discrete Quantization Levels
+.PARAM QUANT_STEP 		{p_Vdd/N_QUANT_LEVELS}
+
+.PARAM clk_counter_period 	500u
+.PARAM clk_counter_Ton		300u
+*Testhbench Vin Values
+.PARAM p_Vin_val1	1
+.PARAM p_Vin_val2	5
+.PARAM p_Vin_val3	8
+.PARAM p_Vin_val4	10
+.PARAM p_Vin_val5	7
+
+.PARAM DAC_SAR_LIB 1001
+
+*Simulation
+.PARAM t_simulation_stop	50ms 				; It used too in the measurments
+.PARAM Vin_Period			10ms
+
+*Measurments
+.PARAM vthreshold 1
+*=============================================================================
+* Calibration
+*=============================================================================
+
+
+
+*-----------------------------------------------------------------------------
+*Libraries, Models and includes
+*-----------------------------------------------------------------------------
+.LIB ADC_SAR.LIB
+.LIB DAC.LIB
+.LIB Counter_2bits.lib
+
+*-----------------------------------------------------------------------------
+*CIRCUIT
+*-----------------------------------------------------------------------------
+; SOURCES
+Vin in 0 PWL(0ms {p_Vin_val1} {Vin_Period-0.1ms}  {p_Vin_val1}
++{Vin_Period}	{p_Vin_val2} {Vin_Period*2-0.1ms} {p_Vin_val2}
++{Vin_Period*2}	{p_Vin_val3} {Vin_Period*3-0.1ms} {p_Vin_val3}
++{Vin_Period*3}	{p_Vin_val4} {Vin_Period*4-0.1ms} {p_Vin_val4}
++{Vin_Period*4}	{p_Vin_val5} {t_simulation_stop}   {p_Vin_val5})
+
+; Fullscale
+Vdd VDD 0 {p_Vdd}
+
+; CLK
+Vclk clk 0 PWL(0 0 6.99ms 0 7ms {p_Vdd} 7.99ms {p_Vdd} 8ms 0 12.99ms 0
++13ms {p_Vdd} 13.99ms {p_Vdd} 14ms 0 31.99ms 0
++32ms {p_Vdd} 32.99ms {p_Vdd} 33ms 0 43.99ms 0
++44ms {p_Vdd} 44.99ms {p_Vdd} 45ms 0)
+
+;CLK COUNTER
+;Vclk_counter clk_counter 0 PULSE(0 5 0 1n 1n 170u 300u)
+Vclk_counter clk_counter	0 PULSE(0 {P_vdd} 300U 1n 1n {clk_counter_Ton} {clk_counter_period})
+
+;Vclk_counter clk_counter 0 PULSE(0 5 0 1n 1n 300u 500u)
+; Counter Funcionando
+;Btest reset 0 V={IF(V(CLK)>=0.5,0,1)}
+
+;A1 D1 0 clk_counter 0 Reset D1 ATB_SEL[0] 0 DFLOP TAU=1N
+;A2 D2 0 D1 0 Reset D2 ATB_SEL[1] 0 DFLOP TAU=1N
+
+
+;Counter V2
+;.SUBCKT COUNTER_2BITS CLK_counter CLK OUT[0] OUT[1]
+Xcounter_2bits	clk_counter CLK ATB_SEL[0] ATB_SEL[1] COUNTER_2BITS
++VDD = {p_Vdd}
+*//////////////////////////////////////////////////////////////////////////////////////////
+;TASK 1
+.SUBCKT 1000 IN VDD CLK ATB_SEL[1] ATB_SEL[0] VSS out[7] out[6] out[5] out[4] out[3] out[2] out[1] out[0] ATB In_sample OUT_DAC
+;8 BITS ADC SUBCIRCUIT
+;.SUBCKT ADC_SAR_8bits_V2 in vdd clk ATB_SEL[0] ATB_SEL[1] vss out[7] out[6] out[5] out[4] out[3] out[2] out[1] out[0] ATB in_sample ADC_SAR_8bits_V2
+XADC_SAR_8bitsV2 in vdd CLK   ATB_SEL[1] ATB_SEL[0] VSS out[7] out[6] out[5] out[4] out[3] out[2] out[1] out[0] ATB In_sample ADC_SAR_8bits_V2
+*-----------------------------------------------------------------------------------------
+
+; 8 BITS DAC SUBBCIRCUIT
+;.SUBCKT DAC_8bits bit[7] bit[6] bit[5] bit[4] bit[3] bit[2] bit[1] bit[0] VDD CLK VSS out
+XDAC out[7] out[6] out[5] out[4] out[3] out[2] out[1] out[0] VDD CLK 0 OUT_DAC DAC_8bits
+
+.ENDS 1000
+*//////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+*//////////////////////////////////////////////////////////////////////////////////////////
+;TASK 2
+.SUBCKT 1001 IN VDD CLK ATB_SEL[1] ATB_SEL[0] VSS out[7] out[6] out[5] out[4] out[3] out[2] out[1] out[0] ATB In_sample OUT_DAC
+;8 BITS ADC SUBCIRCUIT CLK
+;.SUBCKT ADC_SAR_8bits_V2_CLK in vdd clk ATB_SEL[0] ATB_SEL[1] vss out[7] out[6] out[5] out[4] out[3] out[2] out[1] out[0] ATB in_sample
+XADC_SAR_8bitsV2_CLK  in vdd CLK   ATB_SEL[1] ATB_SEL[0] VSS out[7] out[6] out[5] out[4] out[3] out[2] out[1] out[0] ATB In_sample ADC_SAR_8bits_V2_CLK
+*-----------------------------------------------------------------------------------------
+; 8 BITS DAC SUBBCIRCUIT CLK
+
+;.SUBCKT DAC_8bits_clk bit[7] bit[6] bit[5] bit[4] bit[3] bit[2] bit[1] bit[0] VDD CLK VSS out
+XDAC_V2_CLK out[7] out[6] out[5] out[4] out[3] out[2] out[1] out[0] VDD CLK 0 OUT_DAC DAC_8bits_clk
+.ENDS 1001
+*//////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+*//////////////////////////////////////////////////////////////////////////////////////////
+;TASK 3
+.SUBCKT 1002 IN VDD CLK ATB_SEL[1] ATB_SEL[0] VSS out[7] out[6] out[5] out[4] out[3] out[2] out[1] out[0] ATB In_sample OUT_DAC
+;8 BITS ADC SUBCIRCUIT CLK
+XADC_SAR_8bitsV2_CLK  in vdd CLK   ATB_SEL[1] ATB_SEL[0] VSS out[7] out[6] out[5] out[4] out[3] out[2] out[1] out[0] ATB In_sample ADC_SAR_8bits_V2_CLK
++N_BITS = 4
+*-----------------------------------------------------------------------------------------
+; 8 BITS DAC SUBBCIRCUIT CLK
+
+;.SUBCKT DAC_8bits_clk bit[7] bit[6] bit[5] bit[4] bit[3] bit[2] bit[1] bit[0] VDD CLK VSS out
+XDAC_V2_CLK out[7] out[6] out[5] out[4] out[3] out[2] out[1] out[0] VDD CLK 0 OUT_DAC DAC_8bits_clk
++N_BITS = 8
+.ENDS 1002
+*//////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+*//////////////////////////////////////////////////////////////////////////////////////////
+;TASK 4
+.SUBCKT 1003 IN VDD CLK ATB_SEL[1] ATB_SEL[0] VSS out[7] out[6] out[5] out[4] out[3] out[2] out[1] out[0] ATB In_sample OUT_DAC
+;8 BITS ADC SUBCIRCUIT CLK
+;.SUBCKT ADC_SAR_8bits_CLK in vdd clk vss out[7] out[6] out[5] out[4] out[3] out[2] out[1] out[0]
+XADC_SAR_8bits_CLK  in vdd CLK   ATB_SEL[1] ATB_SEL[0] VSS out[7] out[6] out[5] out[4] out[3] out[2] out[1] out[0] ATB In_sample ADC_SAR_8bits_CLK
+
+*-----------------------------------------------------------------------------------------
+; 8 BITS DAC SUBBCIRCUIT CLK
+
+;.SUBCKT DAC_8bits_CLK_V2 bit[7] bit[6] bit[5] bit[4] bit[3] bit[2] bit[1] bit[0] VDD CLK VSS out
+XDAC_V2_CLK out[7] out[6] out[5] out[4] out[3] out[2] out[1] out[0] VDD CLK 0 OUT_DAC DAC_8bits_CLK_v2
+.ENDS 1003
+*//////////////////////////////////////////////////////////////////////////////////////////
+
+;		IN VDD CLK ATB_SEL[0] ATB_SEL[1] VSS out[7] out[6] out[5] out[4] out[3] out[2] out[1] out[0] ATB Sample_Out
+XADC_DAC in vdd CLK   ATB_SEL[1] ATB_SEL[0] 0 out[7] out[6] out[5] out[4] out[3] out[2] out[1] out[0] ATB in_sample OUT_DAC {DAC_SAR_LIB}
+
+
+*-----------------------------------------------------------------------------
+*MEASUREMENTS
+*-----------------------------------------------------------------------------
+.INCLUDE meas_ADC_DAC.meas
+
+.MEAS TRAN clk_counter_Vmax	MAX V(CLK_COUNTER)
+.MEAS TRAN clk_counter_T1  FIND TIME WHEN V(CLK_COUNTER)={clk_counter_Vmax/2} RISE=2
+.MEAS TRAN clk_counter_T2  FIND TIME WHEN V(CLK_COUNTER)={clk_counter_Vmax/2} RISE=3
+.MEAS TRAN clk_counter_Period PARAM {clk_counter_T2-clk_counter_T1}
+
+.MEAS TRAN atb0_quant_step_Ev0 AVG V(atb) TRIG TIME={T_Edge_EV0-TD1} Targ TIME={T_Edge_EV0}
+.MEAS TRAN atb0_quant_step_Ev1 AVG V(atb) TRIG TIME={T_Edge_EV1-TD1} Targ TIME={T_Edge_EV1}
+.MEAS TRAN atb0_quant_step_Ev2 AVG V(atb) TRIG TIME={T_Edge_EV2-TD1} Targ TIME={T_Edge_EV2}
+.MEAS TRAN atb0_quant_step_Ev3 AVG V(atb) TRIG TIME={T_Edge_EV3-TD1} Targ TIME={T_Edge_EV3}
+.MEAS TRAN atb0_quant_step_Ev4 AVG V(atb) TRIG TIME={t_simulation_stop-TD1} Targ TIME={t_simulation_stop-TD2}
+.MEAS TRAN Time_ATB_EV0 TIME WHEN V(ATB_SEL[0])=15/2 rise=1
+.MEAS TRAN atb1_quant_step_Ev0 FIND V(ATB) When time=Time_ATB_EV0
+;MEAS TRAN atb2_quant_step_Ev0 FIND V(ATB) When V(ATB_SEL[0])=15 fall=1
+.MEAS TRAN atb2_quant_step_Ev0 FIND V(ATB) When time={Time_ATB_EV0+501U}
+.MEAS TRAN atb3_quant_step_Ev0 FIND V(ATB) When time={Time_ATB_EV0+1001U}
+
+.MEAS TRAN Time_ATB1 TIME WHEN V(ATB_SEL[0])=15/2 rise=3
+;if($measurment eq @atb_measurments[0]){
+;					print FH ".MEAS TRAN atb_$measurment AVG V(ATB) TRIG TIME={T_Edge_EV$event-TD1} Targ TIME={T_Edge_EV$event-TD2}". "\n";
+;				}
+;			else{
+;					print FH ".MEAS TRAN T_Edge_Counter_EV_$measurment	FIND TIME WHEN V(clk_counter) = {Vclk_counter_max/2} RISE = $rise ","\n";
+;					print FH ".MEAS TRAN atb_$measurment AVG V(ATB) TRIG TIME={T_Edge_EV$event-TD1} Targ TIME={T_Edge_EV$event-TD2}"."\n";
+;				}
+;
+;			}
+
+*-----------------------------------------------------------------------------
+* ANALYSIS
+*-----------------------------------------------------------------------------
+;.STEP PARAM DAC_SAR_LIB  LIST 1003 1002 1001 1000
+;.STEP PARAM DAC_SAR_LIB  LIST 1001 1002 1003
+
+.TRAN 0 {t_simulation_stop} 0 {{p_Vdd}/{N_QUANT_LEVELS-1}/10}
+;.TRAN 0 50ms 0 {15/256/10}
+.PROBE
+.END

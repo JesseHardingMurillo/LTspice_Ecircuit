@@ -1,0 +1,8 @@
+*Mux de 4 entradas 1 salida
+
+
+.SUBCKT Mux4_1_Behavioral sel[0] sel[1] in[0] in[1] in[2] in[3] OUT
+Bmux OUT 0 V={IF(V(sel[0])<1 & V(sel[1])<1, V(in[0]),
++IF(V(sel[0])>=1 & V(sel[1])<1, V(in[1]),
++IF(V(sel[0])<1 & V(sel[1])>=1, V(in[2]),V(in[3]))))}
+.ends Mux4_1_Behavioral

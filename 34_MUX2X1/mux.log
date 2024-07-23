@@ -1,0 +1,15 @@
+LTspice 24.0.9 for Windows
+Circuit: *MUX CIRCUIT
+Start Time: Wed Jun 26 11:31:21 2024
+Questionable use of curly braces in "bmux out 0 v={if(v(sel[0])<1&v(sel[1])<1,v(in[0]),if(v(sel[0])>=1&v(sel[1])<1,v(in[1]),if(v(sel[0])<1&v(sel[1])>=1,v(in[2]),v(in[3]))))}"
+    Error: unknown token in: "if(v(sel[[]0])<1&v(sel[1])<1,v(in[0]),if(v(sel[0])>=1&v(sel[1])<1,v(in[1]),if(v(sel[0])<1&v(sel[1])>=1,v(in[2]),v(in[3]))))"
+solver = Normal
+Maximum thread count: 12
+tnom = 27
+temp = 27
+method = modified trap
+WARNING: Less than two connections to node vcc.  This node is used by vcc.
+WARNING: Less than two connections to node out.  This node is used by b:mux4_1:mux.
+Direct Newton iteration for .op point succeeded.
+Total elapsed time: 0.051 seconds.
+

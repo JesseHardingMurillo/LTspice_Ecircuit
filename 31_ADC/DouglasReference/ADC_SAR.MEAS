@@ -1,0 +1,18 @@
+*-------------
+* MEASUREMENTS
+*-------------
+.MEAS TRAN range_max_lvl_0 FIND V(in) WHEN V(out[0])=vthreshold/2 rise=1
+.MEAS TRAN range_max_lvl_1 FIND V(in) WHEN V(out[0])=vthreshold/2 fall=1
+.MEAS TRAN range_max_lvl_2 FIND V(in) WHEN V(out[0])=vthreshold/2 rise=2
+.MEAS TRAN range_max_lvl_3 FIND V(in) WHEN V(out[0])=vthreshold/2 fall=
+.MEAS TRAN range_max_lvl_4 FIND V(in) WHEN V(out[0])=vthreshold/2 rise=3
+.MEAS TRAN range_max_lvl_5 FIND V(in) WHEN V(out[0])=vthreshold/2 fall=3
+.MEAS TRAN range_max_lvl_6 FIND V(in) WHEN V(out[0])=vthreshold/2 rise=4
+.MEAS TRAN range_max_lvl_7 FIND V(in) WHEN V(out[0])=vthreshold/2 fall=4
+.MEAS TRAN range_max_lvl_8 FIND V(in) WHEN V(out[0])=vthreshold/2 rise=5
+.MEAS TRAN range_max_lvl_9 FIND V(in) WHEN V(out[0])=vthreshold/2 fall=5
+.MEAS TRAN range_max_lvl_10 FIND V(in) WHEN V(out[0])=vthreshold/2 rise=6
+.MEAS TRAN range_max_lvl_11 FIND V(in) WHEN V(out[0])=vthreshold/2 fall=6
+.MEAS TRAN range_max_lvl_12 FIND V(in) WHEN V(out[0])=vthreshold/2 rise=7
+.MEAS TRAN range_max_lvl_13 FIND V(in) WHEN V(out[0])=vthreshold/2 fall=7
+.MEAS TRAN range_max_lvl_14 FIND V(in) WHEN V(out[0])=vthreshold/2 rise=8

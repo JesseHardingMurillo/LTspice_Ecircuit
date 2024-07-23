@@ -1,0 +1,19 @@
+bit[3] 	bit[2]	bit[1]	bit[0]
+2**3	2**2	2**1	2**0
+8		4		2		1	weights
+----------------------------------
+
+1   	1   	0  		1     	= 1 + 0 + 4 + 8 = 'd13
+
+1		1		1		0		= 0 + 2 + 4 + 8 = 'd14
+
+...
+
+
+Estudiar
+
+http://www.ecircuitcenter.com/Circuits/sampling/sampling.htm
+
+http://www.ecircuitcenter.com/Circuits/op_bandwidth1/op_bandwidth1.htm
+
+http://www.ecircuitcenter.com/Circuits/555_Timer1/555_timer1.htm

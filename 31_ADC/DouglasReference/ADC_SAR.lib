@@ -1,0 +1,74 @@
+
+*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+.SUBCKT ADC_SAR_4_bits_v1 out[3] out[2] out[1] out[0] in
+*------------------------------------------------------------------------------------------------------------------------------------
+.param n 4 														; Number of bits (Resolution)
+.param fullscale 15												; Vsupply
+.param nr_quantization_levels 2**n								; Discrete Quantization Levels
+.param quantization_step_size fullscale/nr_quantization_levels 	; Quantization Interval
+*------------------------------------------------------------------------------------------------------------------------------------
+.param vdac_vref {2**n} ; Part of the SAR Algorihtm
+.param vhigh 1
+.param vlow  0
+*------------------------------------------------------------------------------------------------------------------------------------
+V1 calc_nr_quantization_levels 0 {nr_quantization_levels}
+V2 calc_quantization_step_size 0 {quantization_step_size}
+*------------------------------------------------------------------------------------------------------------------------------------
+B3_vdac vdac[3]   0 V=vdac_vref * quantization_step_size * (vhigh/2**1 + vlow/2**2 + vlow/2**3 + vlow/2**4)
+B3_out   out[3]   0 V=V(in) >= V(vdac[3]) ? {vhigh} : {vlow}
+*------------------------------------------------------------------------------------------------------------------------------------
+B2_vdac vdac[2] 0 V=vdac_vref * quantization_step_size * (V(out[3])/2**1 + vhigh/2**2 + vlow/2**3 + vlow/2**4)
+B2_out  out[2]  0 V=( V(in) >= V(vdac[2]) ? vhigh : vlow )
+*------------------------------------------------------------------------------------------------------------------------------------
+B1_vdac vdac[1] 0 V=vdac_vref * quantization_step_size * (V(out[3])/2**1 + V(out[2])/2**2 + vhigh/2**3 + vlow/2**4)
+B1_out  out[1]  0 V=( V(in) >= V(vdac[1]) ? vhigh : vlow )
+*------------------------------------------------------------------------------------------------------------------------------------
+B0_vdac vdac[0] 0 V=vdac_vref * quantization_step_size * (V(out[3])/2**1 + V(out[2])/2**2 + V(out[1])/2**3 + vhigh/2**4)
+B0_out  out[0]  0 V=( V(in) >= V(vdac[0]) ? vhigh : vlow )
+*------------------------------------------------------------------------------------------------------------------------------------
+
+*Level X  goes FROM X*fullscale/2**n  TO  (X+1)*fullscale/2**n
+*Level 15 goes FROM 15*15/16=14.0625  TO  (15+1)*15/16=15
+
+.ENDS ADC_SAR_4_bits_v1
+
+*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+.SUBCKT ADC_SAR_4_bits_v2 out[3] out[2] out[1] out[0] in vdd vss
+*------------------------------------------------------------------------------------------------------------------------------------
+* The fullscale is defined by V(vdd)
+*Level x  goes FROM x*quantization_step_size  TO  (x+1)*quantization_step_size
+*Level 15 goes FROM 15*15/16=14.0625  		  TO  (15+1)*15/16=15
+*------------------------------------------------------------------------------------------------------------------------------------
+.param n 4 														; Number of bits (Resolution)	/ FIXED VALUE
+.param nr_quantization_levels 2**n								; Discrete Quantization Levels 	/ FIXED VALUE
+*------------------------------------------------------------------------------------------------------------------------------------
+*.param quantization_step_size V(vdd)/nr_quantization_levels 	; Quantization Interval = fullscale/nr_quantization_levels
+B_quant_step quantization_step_size 0 V=(V(vdd)/nr_quantization_levels)
+*------------------------------------------------------------------------------------------------------------------------------------
+.param vdac_vref {2**n} 										; Part of the SAR Algorihtm
+.param vhigh 1
+.param vlow  0
+*------------------------------------------------------------------------------------------------------------------------------------
+V1 calc_nr_quantization_levels 0 {nr_quantization_levels}
+*V2 calc_quantization_step_size 0 {quantization_step_size}
+*------------------------------------------------------------------------------------------------------------------------------------
+B3_vdac vdac[3]   0 V=vdac_vref * V(quantization_step_size) * (vhigh/2**1 + vlow/2**2 + vlow/2**3 + vlow/2**4)
+B3_out   out[3]   0 V=V(in) >= V(vdac[3]) ? {vhigh} : {vlow}
+*------------------------------------------------------------------------------------------------------------------------------------
+B2_vdac vdac[2] 0 V=vdac_vref * V(quantization_step_size) * (V(out[3])/2**1 + vhigh/2**2 + vlow/2**3 + vlow/2**4)
+B2_out  out[2]  0 V=( V(in) >= V(vdac[2]) ? vhigh : vlow )
+*------------------------------------------------------------------------------------------------------------------------------------
+B1_vdac vdac[1] 0 V=vdac_vref * V(quantization_step_size) * (V(out[3])/2**1 + V(out[2])/2**2 + vhigh/2**3 + vlow/2**4)
+B1_out  out[1]  0 V=( V(in) >= V(vdac[1]) ? vhigh : vlow )
+*------------------------------------------------------------------------------------------------------------------------------------
+B0_vdac vdac[0] 0 V=vdac_vref * V(quantization_step_size) * (V(out[3])/2**1 + V(out[2])/2**2 + V(out[1])/2**3 + vhigh/2**4)
+B0_out  out[0]  0 V=( V(in) >= V(vdac[0]) ? vhigh : vlow )
+*------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+.ENDS ADC_SAR_4_bits_v2
+
+*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

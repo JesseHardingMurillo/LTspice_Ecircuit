@@ -1,0 +1,104 @@
+*------------------------------------------------------------------------------------------------------------------------
+*ADC & DAC MEASURMENTS
+*------------------------------------------------------------------------------------------------------------------------
+.PARAM 	T_Interval  100U
+.PARAM 	TD1 {T_Interval+TD2}
+.PARAM 	TD2 10U
+.MEAS TRAN VclkMax 					Max V(CLK)
+.MEAS TRAN Vclk_counter_max 			Max V(clk_counter)
+*------------------------------------------------------------------------------------------------------------------------
+.MEAS TRAN ______________________________________EVENT_0_______________________________________ PARAM 0
+.MEAS TRAN T_Edge_EV0			FIND TIME WHEN V(CLK) = {VclkMax/2} RISE = 1 
+.MEAS TRAN V_Ain_at_EV0			AVG V(in) 			TRIG TIME={T_Edge_EV0-TD1} Targ TIME={T_Edge_EV0-TD2}
+.MEAS TRAN V_Sample_at_EV0		AVG V(In_sample)  	TRIG TIME={T_Edge_EV0-TD1} Targ TIME={T_Edge_EV0-TD2}
+.MEAS TRAN V_Aout_at_EV0			AVG V(out_dac) 		TRIG TIME={T_Edge_EV0-TD1} Targ TIME={T_Edge_EV0-TD2}
+.MEAS TRAN V_VDD_at_EV0			AVG V(VDD) 			TRIG TIME={T_Edge_EV0-TD1} Targ TIME={T_Edge_EV0-TD2}
+.MEAS TRAN -----------------------DAC_EVENT_0---------------------- PARAM 0
+.MEAS TRAN V_Dout7_at_EV0 	AVG V(out[7]) 	TRIG TIME={T_Edge_EV0-TD1} Targ TIME={T_Edge_EV0-TD2}
+.MEAS TRAN V_Dout6_at_EV0 	AVG V(out[6]) 	TRIG TIME={T_Edge_EV0-TD1} Targ TIME={T_Edge_EV0-TD2}
+.MEAS TRAN V_Dout5_at_EV0 	AVG V(out[5]) 	TRIG TIME={T_Edge_EV0-TD1} Targ TIME={T_Edge_EV0-TD2}
+.MEAS TRAN V_Dout4_at_EV0 	AVG V(out[4]) 	TRIG TIME={T_Edge_EV0-TD1} Targ TIME={T_Edge_EV0-TD2}
+.MEAS TRAN V_Dout3_at_EV0 	AVG V(out[3]) 	TRIG TIME={T_Edge_EV0-TD1} Targ TIME={T_Edge_EV0-TD2}
+.MEAS TRAN V_Dout2_at_EV0 	AVG V(out[2]) 	TRIG TIME={T_Edge_EV0-TD1} Targ TIME={T_Edge_EV0-TD2}
+.MEAS TRAN V_Dout1_at_EV0 	AVG V(out[1]) 	TRIG TIME={T_Edge_EV0-TD1} Targ TIME={T_Edge_EV0-TD2}
+.MEAS TRAN V_Dout0_at_EV0 	AVG V(out[0]) 	TRIG TIME={T_Edge_EV0-TD1} Targ TIME={T_Edge_EV0-TD2}
+.MEAS TRAN ADC_DECIMAL_EV0 PARAM {(V_Dout7_at_EV0*(2**7))+(V_Dout6_at_EV0*(2**6))+(V_Dout5_at_EV0*(2**5))+(V_Dout4_at_EV0*(2**4))+(V_Dout3_at_EV0*(2**3))+(V_Dout2_at_EV0*(2**2))+(V_Dout1_at_EV0*(2**1))+(V_Dout0_at_EV0*(2**0))}
+.MEAS TRAN Quantization_error_left_EV0 PARAM {ABS(V_Sample_at_EV0-(ADC_DECIMAL_EV0*V_VDD_at_EV0/2**8))} 
+.MEAS TRAN Quantization_error_right_EV0 PARAM {ABS(V_Sample_at_EV0-((ADC_DECIMAL_EV0+1)*V_VDD_at_EV0/2**8))} 
+*------------------------------------------------------------------------------------------------------------------------
+.MEAS TRAN ______________________________________EVENT_1_______________________________________ PARAM 0
+.MEAS TRAN T_Edge_EV1			FIND TIME WHEN V(CLK) = {VclkMax/2} RISE = 2 
+.MEAS TRAN V_Ain_at_EV1			AVG V(in) 			TRIG TIME={T_Edge_EV1-TD1} Targ TIME={T_Edge_EV1-TD2}
+.MEAS TRAN V_Sample_at_EV1		AVG V(In_sample)  	TRIG TIME={T_Edge_EV1-TD1} Targ TIME={T_Edge_EV1-TD2}
+.MEAS TRAN V_Aout_at_EV1			AVG V(out_dac) 		TRIG TIME={T_Edge_EV1-TD1} Targ TIME={T_Edge_EV1-TD2}
+.MEAS TRAN V_VDD_at_EV1			AVG V(VDD) 			TRIG TIME={T_Edge_EV1-TD1} Targ TIME={T_Edge_EV1-TD2}
+.MEAS TRAN -----------------------DAC_EVENT_1---------------------- PARAM 0
+.MEAS TRAN V_Dout7_at_EV1 	AVG V(out[7]) 	TRIG TIME={T_Edge_EV1-TD1} Targ TIME={T_Edge_EV1-TD2}
+.MEAS TRAN V_Dout6_at_EV1 	AVG V(out[6]) 	TRIG TIME={T_Edge_EV1-TD1} Targ TIME={T_Edge_EV1-TD2}
+.MEAS TRAN V_Dout5_at_EV1 	AVG V(out[5]) 	TRIG TIME={T_Edge_EV1-TD1} Targ TIME={T_Edge_EV1-TD2}
+.MEAS TRAN V_Dout4_at_EV1 	AVG V(out[4]) 	TRIG TIME={T_Edge_EV1-TD1} Targ TIME={T_Edge_EV1-TD2}
+.MEAS TRAN V_Dout3_at_EV1 	AVG V(out[3]) 	TRIG TIME={T_Edge_EV1-TD1} Targ TIME={T_Edge_EV1-TD2}
+.MEAS TRAN V_Dout2_at_EV1 	AVG V(out[2]) 	TRIG TIME={T_Edge_EV1-TD1} Targ TIME={T_Edge_EV1-TD2}
+.MEAS TRAN V_Dout1_at_EV1 	AVG V(out[1]) 	TRIG TIME={T_Edge_EV1-TD1} Targ TIME={T_Edge_EV1-TD2}
+.MEAS TRAN V_Dout0_at_EV1 	AVG V(out[0]) 	TRIG TIME={T_Edge_EV1-TD1} Targ TIME={T_Edge_EV1-TD2}
+.MEAS TRAN ADC_DECIMAL_EV1 PARAM {(V_Dout7_at_EV1*(2**7))+(V_Dout6_at_EV1*(2**6))+(V_Dout5_at_EV1*(2**5))+(V_Dout4_at_EV1*(2**4))+(V_Dout3_at_EV1*(2**3))+(V_Dout2_at_EV1*(2**2))+(V_Dout1_at_EV1*(2**1))+(V_Dout0_at_EV1*(2**0))}
+.MEAS TRAN Quantization_error_left_EV1 PARAM {ABS(V_Sample_at_EV1-(ADC_DECIMAL_EV1*V_VDD_at_EV1/2**8))} 
+.MEAS TRAN Quantization_error_right_EV1 PARAM {ABS(V_Sample_at_EV1-((ADC_DECIMAL_EV1+1)*V_VDD_at_EV1/2**8))} 
+*------------------------------------------------------------------------------------------------------------------------
+.MEAS TRAN ______________________________________EVENT_2_______________________________________ PARAM 0
+.MEAS TRAN T_Edge_EV2			FIND TIME WHEN V(CLK) = {VclkMax/2} RISE = 3 
+.MEAS TRAN V_Ain_at_EV2			AVG V(in) 			TRIG TIME={T_Edge_EV2-TD1} Targ TIME={T_Edge_EV2-TD2}
+.MEAS TRAN V_Sample_at_EV2		AVG V(In_sample)  	TRIG TIME={T_Edge_EV2-TD1} Targ TIME={T_Edge_EV2-TD2}
+.MEAS TRAN V_Aout_at_EV2			AVG V(out_dac) 		TRIG TIME={T_Edge_EV2-TD1} Targ TIME={T_Edge_EV2-TD2}
+.MEAS TRAN V_VDD_at_EV2			AVG V(VDD) 			TRIG TIME={T_Edge_EV2-TD1} Targ TIME={T_Edge_EV2-TD2}
+.MEAS TRAN -----------------------DAC_EVENT_2---------------------- PARAM 0
+.MEAS TRAN V_Dout7_at_EV2 	AVG V(out[7]) 	TRIG TIME={T_Edge_EV2-TD1} Targ TIME={T_Edge_EV2-TD2}
+.MEAS TRAN V_Dout6_at_EV2 	AVG V(out[6]) 	TRIG TIME={T_Edge_EV2-TD1} Targ TIME={T_Edge_EV2-TD2}
+.MEAS TRAN V_Dout5_at_EV2 	AVG V(out[5]) 	TRIG TIME={T_Edge_EV2-TD1} Targ TIME={T_Edge_EV2-TD2}
+.MEAS TRAN V_Dout4_at_EV2 	AVG V(out[4]) 	TRIG TIME={T_Edge_EV2-TD1} Targ TIME={T_Edge_EV2-TD2}
+.MEAS TRAN V_Dout3_at_EV2 	AVG V(out[3]) 	TRIG TIME={T_Edge_EV2-TD1} Targ TIME={T_Edge_EV2-TD2}
+.MEAS TRAN V_Dout2_at_EV2 	AVG V(out[2]) 	TRIG TIME={T_Edge_EV2-TD1} Targ TIME={T_Edge_EV2-TD2}
+.MEAS TRAN V_Dout1_at_EV2 	AVG V(out[1]) 	TRIG TIME={T_Edge_EV2-TD1} Targ TIME={T_Edge_EV2-TD2}
+.MEAS TRAN V_Dout0_at_EV2 	AVG V(out[0]) 	TRIG TIME={T_Edge_EV2-TD1} Targ TIME={T_Edge_EV2-TD2}
+.MEAS TRAN ADC_DECIMAL_EV2 PARAM {(V_Dout7_at_EV2*(2**7))+(V_Dout6_at_EV2*(2**6))+(V_Dout5_at_EV2*(2**5))+(V_Dout4_at_EV2*(2**4))+(V_Dout3_at_EV2*(2**3))+(V_Dout2_at_EV2*(2**2))+(V_Dout1_at_EV2*(2**1))+(V_Dout0_at_EV2*(2**0))}
+.MEAS TRAN Quantization_error_left_EV2 PARAM {ABS(V_Sample_at_EV2-(ADC_DECIMAL_EV2*V_VDD_at_EV2/2**8))} 
+.MEAS TRAN Quantization_error_right_EV2 PARAM {ABS(V_Sample_at_EV2-((ADC_DECIMAL_EV2+1)*V_VDD_at_EV2/2**8))} 
+*------------------------------------------------------------------------------------------------------------------------
+.MEAS TRAN ______________________________________EVENT_3_______________________________________ PARAM 0
+.MEAS TRAN T_Edge_EV3			FIND TIME WHEN V(CLK) = {VclkMax/2} RISE = 4 
+.MEAS TRAN V_Ain_at_EV3			AVG V(in) 			TRIG TIME={T_Edge_EV3-TD1} Targ TIME={T_Edge_EV3-TD2}
+.MEAS TRAN V_Sample_at_EV3		AVG V(In_sample)  	TRIG TIME={T_Edge_EV3-TD1} Targ TIME={T_Edge_EV3-TD2}
+.MEAS TRAN V_Aout_at_EV3			AVG V(out_dac) 		TRIG TIME={T_Edge_EV3-TD1} Targ TIME={T_Edge_EV3-TD2}
+.MEAS TRAN V_VDD_at_EV3			AVG V(VDD) 			TRIG TIME={T_Edge_EV3-TD1} Targ TIME={T_Edge_EV3-TD2}
+.MEAS TRAN -----------------------DAC_EVENT_3---------------------- PARAM 0
+.MEAS TRAN V_Dout7_at_EV3 	AVG V(out[7]) 	TRIG TIME={T_Edge_EV3-TD1} Targ TIME={T_Edge_EV3-TD2}
+.MEAS TRAN V_Dout6_at_EV3 	AVG V(out[6]) 	TRIG TIME={T_Edge_EV3-TD1} Targ TIME={T_Edge_EV3-TD2}
+.MEAS TRAN V_Dout5_at_EV3 	AVG V(out[5]) 	TRIG TIME={T_Edge_EV3-TD1} Targ TIME={T_Edge_EV3-TD2}
+.MEAS TRAN V_Dout4_at_EV3 	AVG V(out[4]) 	TRIG TIME={T_Edge_EV3-TD1} Targ TIME={T_Edge_EV3-TD2}
+.MEAS TRAN V_Dout3_at_EV3 	AVG V(out[3]) 	TRIG TIME={T_Edge_EV3-TD1} Targ TIME={T_Edge_EV3-TD2}
+.MEAS TRAN V_Dout2_at_EV3 	AVG V(out[2]) 	TRIG TIME={T_Edge_EV3-TD1} Targ TIME={T_Edge_EV3-TD2}
+.MEAS TRAN V_Dout1_at_EV3 	AVG V(out[1]) 	TRIG TIME={T_Edge_EV3-TD1} Targ TIME={T_Edge_EV3-TD2}
+.MEAS TRAN V_Dout0_at_EV3 	AVG V(out[0]) 	TRIG TIME={T_Edge_EV3-TD1} Targ TIME={T_Edge_EV3-TD2}
+.MEAS TRAN ADC_DECIMAL_EV3 PARAM {(V_Dout7_at_EV3*(2**7))+(V_Dout6_at_EV3*(2**6))+(V_Dout5_at_EV3*(2**5))+(V_Dout4_at_EV3*(2**4))+(V_Dout3_at_EV3*(2**3))+(V_Dout2_at_EV3*(2**2))+(V_Dout1_at_EV3*(2**1))+(V_Dout0_at_EV3*(2**0))}
+.MEAS TRAN Quantization_error_left_EV3 PARAM {ABS(V_Sample_at_EV3-(ADC_DECIMAL_EV3*V_VDD_at_EV3/2**8))} 
+.MEAS TRAN Quantization_error_right_EV3 PARAM {ABS(V_Sample_at_EV3-((ADC_DECIMAL_EV3+1)*V_VDD_at_EV3/2**8))} 
+*------------------------------------------------------------------------------------------------------------------------
+.MEAS TRAN ______________________________________EVENT_4_______________________________________ PARAM 0
+.MEAS TRAN T_Edge_EV4			FIND TIME WHEN V(CLK) = {VclkMax/2} FALL = 4 
+.MEAS TRAN V_Ain_at_EV4			AVG V(in) 			TRIG TIME={t_simulation_stop-TD1} Targ TIME={t_simulation_stop-TD2}
+.MEAS TRAN V_Sample_at_EV4		AVG V(in_sample) 	TRIG TIME={t_simulation_stop-TD1} Targ TIME={t_simulation_stop-TD2}
+.MEAS TRAN V_Aout_at_EV4			AVG V(out_dac) 		TRIG TIME={t_simulation_stop-TD1} Targ TIME={t_simulation_stop-TD2}
+.MEAS TRAN V_VDD_at_EV4			AVG V(VDD) 			TRIG TIME={t_simulation_stop-TD1} Targ TIME={t_simulation_stop-TD2}
+.MEAS TRAN -----------------------DAC_EVENT_4---------------------- PARAM 0
+.MEAS TRAN V_Dout7_at_EV4 	AVG V(out[7]) 	TRIG TIME={t_simulation_stop-TD1} Targ TIME={t_simulation_stop-TD2}
+.MEAS TRAN V_Dout6_at_EV4 	AVG V(out[6]) 	TRIG TIME={t_simulation_stop-TD1} Targ TIME={t_simulation_stop-TD2}
+.MEAS TRAN V_Dout5_at_EV4 	AVG V(out[5]) 	TRIG TIME={t_simulation_stop-TD1} Targ TIME={t_simulation_stop-TD2}
+.MEAS TRAN V_Dout4_at_EV4 	AVG V(out[4]) 	TRIG TIME={t_simulation_stop-TD1} Targ TIME={t_simulation_stop-TD2}
+.MEAS TRAN V_Dout3_at_EV4 	AVG V(out[3]) 	TRIG TIME={t_simulation_stop-TD1} Targ TIME={t_simulation_stop-TD2}
+.MEAS TRAN V_Dout2_at_EV4 	AVG V(out[2]) 	TRIG TIME={t_simulation_stop-TD1} Targ TIME={t_simulation_stop-TD2}
+.MEAS TRAN V_Dout1_at_EV4 	AVG V(out[1]) 	TRIG TIME={t_simulation_stop-TD1} Targ TIME={t_simulation_stop-TD2}
+.MEAS TRAN V_Dout0_at_EV4 	AVG V(out[0]) 	TRIG TIME={t_simulation_stop-TD1} Targ TIME={t_simulation_stop-TD2}
+.MEAS TRAN ADC_DECIMAL_EV4 PARAM {V_Dout7_at_EV4 * 2**7 + V_Dout6_at_EV4 * 2**6 + V_Dout5_at_EV4 * 2**5 + V_Dout4_at_EV4 * 2**4 + V_Dout3_at_EV4 * 2**3 + V_Dout2_at_EV4 * 2**2 + V_Dout1_at_EV4 * 2**1 + V_Dout0_at_EV4 * 2**0}
+.MEAS TRAN Quantization_error_left_EV4 PARAM {ABS(V_Sample_at_EV4-(ADC_DECIMAL_EV4*V_VDD_at_EV4/2**8))} 
+.MEAS TRAN Quantization_error_right_EV4 PARAM {ABS(V_Sample_at_EV4-((ADC_DECIMAL_EV4+1)*V_VDD_at_EV4/2**8))} 
+*------------------------------------------------------------------------------------------------------------------------

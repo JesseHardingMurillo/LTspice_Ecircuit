@@ -1,0 +1,38 @@
+*------------------------------------------------------------------------------------------
+*Subcircuito ADC SAR 4 BITS V2
+*------------------------------------------------------------------------------------------
+;					INPUTS	|	OUTPUTS
+.SUBCKT DAC_4bits in vdd vss out[3] out[2] out[1] out[0]
+
+*------------------------------------------------------------------------------------------
+*Parameters
+*------------------------------------------------------------------------------------------
+.PARAM N_BITS 			4			; Number of bits | FIXED VALUE
+.PARAM N_QUANT_LEVELS 	{2**N_BITS}	; Number of Discrete Quantization Levels
+.PARAM VDAC_VREF		{2**N_BITS}	; SAR algorithm
+.PARAM VHIGH 			1
+.PARAM VLOW 			0
+
+*------------------------------------------------------------------------------------------
+*IMPORTANT DATA
+*------------------------------------------------------------------------------------------
+Bquat_step	quantization_step_size		vss	V=(V(vdd)/{N_QUANT_LEVELS})
+Vquant_level 	calc_n_quant_levels		vss	{N_QUANT_LEVELS}
+
+*------------------------------------------------------------------------------------------
+B3_vdac vdac[3] vss V= VDAC_VREF * V(quantization_step_size) * (VHIGH/2 + VLOW/4 + VLOW/8 + VLOW/16)
+B3_out  out[3]  vss V= V(in)>=V(vdac[3]) ? VHIGH : VLOW
+
+
+B2_vdac vdac[2] vss V= VDAC_VREF * V(quantization_step_size) * (V(out[3])/2 + VHIGH/4 + VLOW/8 + VLOW/16)
+B2_out  out[2]  vss V= V(in)>=V(vdac[2]) ? VHIGH : VLOW
+
+
+B1_vdac vdac[1] vss V= VDAC_VREF * V(quantization_step_size) * (V(out[3])/2 + V(out[2])/4 +  VHIGH/8 + VLOW/16)
+B1_out  out[1]  vss V= V(in)>=V(vdac[1]) ? VHIGH : VLOW
+
+
+B0_vdac vdac[0] vss V= VDAC_VREF * V(quantization_step_size) *  (V(out[3])/2 + V(out[2])/4 + V(out[1])/8 + VHIGH/16)
+B0_out  out[0]  vss V= V(in)>=V(vdac[0]) ? VHIGH : VLOW
+*------------------------------------------------------------------------------------------
+.END DAC_4bits

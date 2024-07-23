@@ -1,0 +1,17 @@
+*Subcircuit of Counter of 2 bits
+.SUBCKT COUNTER_2BITS CLK_counter CLK OUT[0] OUT[1]
+
+.PARAM VDD = 5
+;  D   	GND   	CLK            	Preset	RESET 	NotQ	Q
+.func up(s) buf( ddt(s)) ; generates pulse on rising edge of s
+Bedge_up_detector	edge_up_of_clk 0 V={up(V(clk))*{VDD}}
+
+
+A1 D1 0 				clk_counter 0 Reset D1 	OUT[0] 	0 DFLOP TAU=1N VHIGH= {VDD}
+A2 D2 0 				D1 			0 Reset D2 	OUT[1] 	0 DFLOP TAU=1N VHIGH= {VDD}
+A3 D3 0 				D2 			0 Reset D3 	S1 		0 DFLOP TAU=1N VHIGH= {VDD}
+
+*Interanl Logic of reset
+A4 S1 edge_up_of_clk	0			0 0 	0 	RESET 	0 SRFLOP TAU=1N VHIGH= {VDD}
+
+.END COUNTER_2BITS

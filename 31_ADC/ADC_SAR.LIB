@@ -1,0 +1,340 @@
+
+.LIB Mux_4_1_Behavioral.lib
+
+*------------------------------------------------------------------------------------------
+*Subcircuito ADC SAR 4 BITS V1 (ASC)
+*------------------------------------------------------------------------------------------
+.SUBCKT ADC_4bits In OUT[3] OUT[2] OUT[1] OUT[0]
+*------------------------------------------------------------------------------------------
+.param bits 4
+.param vref 2**bits
+.param fullScale=5
+.param qInter {fullScale/vref} ; Quantization interval = 15/2^4 = 0.9375
+*------------------------------------------------------------------------------------------
+B3_vdac vdac[3] 0 V=qInter * vref * (vhigh/2 + vlow/4 + vlow/8 + vlow/16)
+B3_out  out[3]  0 V= V(in)>=V(vdac[3]) ? vhigh : vlow
+
+
+B2_vdac vdac[2] 0 V=qInter * vref * (V(out[3])/2 + vhigh/4 + vlow/8 + vlow/16)
+B2_out  out[2]  0 V= V(in)>=V(vdac[2]) ? vhigh : vlow
+
+B1_vdac vdac[1] 0 V=qInter * vref * (V(out[3])/2 + V(out[2])/4 + vhigh/8 + vlow/16)
+B1_out  out[1]  0 V= V(in)>=V(vdac[1]) ? vhigh : vlow
+
+
+B0_vdac vdac[0] 0 V=qInter * vref * (V(out[3])/2 + V(out[2])/4 + V(out[1])/8 + vhigh/16)
+B0_out  out[0]  0 V= V(in)>=V(vdac[0]) ? vhigh : vlow
+*------------------------------------------------------------------------------------------
+.END ADC_4bits
+
+*//////////////////////////////////////////////////////////////////////////////////////////
+
+*------------------------------------------------------------------------------------------
+*Subcircuito ADC SAR 4 BITS V2
+*------------------------------------------------------------------------------------------
+;					INPUTS	|	OUTPUTS
+.SUBCKT ADC_SAR_4bits in vdd vss out[3] out[2] out[1] out[0]
+
+
+*------------------------------------------------------------------------------------------
+*Parameters
+*------------------------------------------------------------------------------------------
+.PARAM N_BITS 			4			; Number of bits | FIXED VALUE
+.PARAM N_QUANT_LEVELS 	{2**N_BITS}	; Number of Discrete Quantization Levels
+.PARAM VDAC_VREF		{2**N_BITS}	; SAR algorithm
+.PARAM VHIGH 			1
+.PARAM VLOW 			0
+
+*------------------------------------------------------------------------------------------
+*IMPORTANT DATA
+*------------------------------------------------------------------------------------------
+Bquat_step	quantization_step_size		vss	V=(V(vdd)/{N_QUANT_LEVELS})
+Vquant_level 	calc_n_quant_levels		vss	{N_QUANT_LEVELS}
+
+*------------------------------------------------------------------------------------------
+B3_vdac vdac[3] vss V= VDAC_VREF * V(quantization_step_size) * (VHIGH/2 + VLOW/4 + VLOW/8 + VLOW/16)
+B3_out  out[3]  vss V= V(in)>=V(vdac[3]) ? VHIGH : VLOW
+
+
+B2_vdac vdac[2] vss V= VDAC_VREF * V(quantization_step_size) * (V(out[3])/2 + VHIGH/4 + VLOW/8 + VLOW/16)
+B2_out  out[2]  vss V= V(in)>=V(vdac[2]) ? VHIGH : VLOW
+
+
+B1_vdac vdac[1] vss V= VDAC_VREF * V(quantization_step_size) * (V(out[3])/2 + V(out[2])/4 +  VHIGH/8 + VLOW/16)
+B1_out  out[1]  vss V= V(in)>=V(vdac[1]) ? VHIGH : VLOW
+
+
+B0_vdac vdac[0] vss V= VDAC_VREF * V(quantization_step_size) *  (V(out[3])/2 + V(out[2])/4 + V(out[1])/8 + VHIGH/16)
+B0_out  out[0]  vss V= V(in)>=V(vdac[0]) ? VHIGH : VLOW
+*------------------------------------------------------------------------------------------
+.END ADC_SAR_4bits
+
+*//////////////////////////////////////////////////////////////////////////////////////////
+
+*------------------------------------------------------------------------------------------
+*Subcircuito ADC SAR 3 BITS
+*------------------------------------------------------------------------------------------
+
+;					INPUTS	|	OUTPUTS
+.SUBCKT ADC_SAR_3bits in vdd vss out[2] out[1] out[0]
+
+
+*------------------------------------------------------------------------------------------
+*Parameters
+*------------------------------------------------------------------------------------------
+.PARAM N_BITS 			4			; Number of bits | FIXED VALUE
+.PARAM N_QUANT_LEVELS 	{2**N_BITS}	; Number of Discrete Quantization Levels
+.PARAM VDAC_VREF		{2**N_BITS}	; SAR algorithm
+.PARAM VHIGH 			1
+.PARAM VLOW 			0
+
+*------------------------------------------------------------------------------------------
+*IMPORTANT DATA
+*------------------------------------------------------------------------------------------
+Bquat_step		quantization_step_size	vss	V=(V(vdd)/{N_QUANT_LEVELS})
+Vquant_level 	calc_n_quant_levels		vss	{N_QUANT_LEVELS}
+
+*------------------------------------------------------------------------------------------
+B2_vdac vdac[2] vss V= VDAC_VREF * V(quantization_step_size) * (VHIGH/2 + VLOW/4 + VLOW/8)
+B2_out  out[2]  vss V= V(in)>=V(vdac[2]) ? VHIGH : VLOW
+
+
+B1_vdac vdac[1] vss V= VDAC_VREF * V(quantization_step_size) * (V(out[2])/2 + VHIGH/4 + VLOW/8)
+B1_out  out[1]  0 V= V(in)>=V(vdac[1]) ? VHIGH : VLOW
+
+
+B0_vdac vdac[0] vss V= VDAC_VREF * V(quantization_step_size) * (V(out[2])/2 + V(out[1])/4 + VHIGH/8)
+B0_out  out[0]  vss V= V(in)>=V(vdac[0]) ? VHIGH : vlow
+*------------------------------------------------------------------------------------------
+.END ADC_SAR_3bits
+
+*//////////////////////////////////////////////////////////////////////////////////////////
+
+*------------------------------------------------------------------------------------------
+*Subcircuito SCALER INPUT FOR ADC 8BITS
+*------------------------------------------------------------------------------------------
+.SUBCKT ADCscaler IN VDD IN_LSB
+
+*------------------------------------------------------------------------------------------
+*Parameters
+*------------------------------------------------------------------------------------------
+.PARAM N_QUANT_LEVELS	16
+.PARAM QUANT_STEP	10
+*------------------------------------------------------------------------------------------
+*Funtions
+*------------------------------------------------------------------------------------------
+;MOD
+;IN => (Process) => in_LSB
+;idtmod -> Integrate no mod
+;https://electronics.stackexchange.com/questions/59872/does-ltspice-support-a-remainder-or-modulus-function
+
+;{X - floor(X/Y)*Y}
+;{10.2 - floor(10.2/0.9375)*0.9375}
+;{10.2 - (10)(0.9375)}
+;{10.2 - 9.375}
+;{0.825}
+;I will create a funtion
+
+.FUNC MOD(X,Y) 			{X - int(X/Y)*Y}
+
+*------------------------------------------------------------------------------------------
+Bmod 	mod 	0 v = {MOD(V(in),quant_step)}
+Bin_LSB in_LSB 	0 v = {V(mod) * {V(VDD)/quant_step}}
+
+*------------------------------------------------------------------------------------------
+.END ADCscaler
+
+*//////////////////////////////////////////////////////////////////////////////////////////
+
+*------------------------------------------------------------------------------------------
+*Subcircuito ADC SAR 8 BITS with 2 ADC SAR OF 4 BITS
+*------------------------------------------------------------------------------------------
+.SUBCKT ADC_SAR_8bits in vdd clk vss out[7] out[6] out[5] out[4] out[3] out[2] out[1] out[0]
+
+*------------------------------------------------------------------------------------------
+*Parameters
+*------------------------------------------------------------------------------------------
+.PARAM N_BITS 			4			; Number of bits | FIXED VALUE
+.PARAM N_QUANT_LEVELS 	{2**N_BITS}	; Number of Discrete Quantization Levels
+.PARAM QUANT_STEP		{p_Vdd/N_QUANT_LEVELS}
+
+*------------------------------------------------------------------------------------------
+XADC_MSB in vdd 0 out[7] out[6] out[5] out[4] ADC_SAR_4bits
+
+Xscaler8bits in VDD in_LSB	 ADCscaler
++N_QUANT_LEVELS	=	{N_QUANT_LEVELS}
++QUANT_STEP 	= 	{QUANT_STEP}
+
+XADC_LSB in_LSB vdd 0 out[3] out[2] out[1] out[0] ADC_SAR_4bits
+*------------------------------------------------------------------------------------------
+.END ADC_SAR_8bits
+
+*//////////////////////////////////////////////////////////////////////////////////////////
+
+*------------------------------------------------------------------------------------------
+*Subcircuito ADC SAR 8 BITS
+*------------------------------------------------------------------------------------------
+.SUBCKT ADC_SAR_8bits_V2 in vdd clk ATB_SEL[1] ATB_SEL[0] vss out[7] out[6] out[5] out[4] out[3] out[2] out[1] out[0] ATB in_sample
+
+*------------------------------------------------------------------------------------------
+*Parameters
+*------------------------------------------------------------------------------------------
+.PARAM N_BITS             8                   ; Number of bits | FIXED VALUE
+.PARAM N_QUANT_LEVELS     {2**N_BITS}         ; Number of Discrete Quantization Levels
+.PARAM VDAC_VREF          {2**N_BITS}         ; SAR algorithm reference voltage
+.PARAM VHIGH              1              	  ; Logic high voltage
+.PARAM VLOW               0                   ; Logic low voltage
+
+*------------------------------------------------------------------------------------------
+*IMPORTANT DATA
+*------------------------------------------------------------------------------------------
+Bquat_step    quantization_step_size      vss     V=(V(vdd)/{N_QUANT_LEVELS})
+Vquant_level  calc_n_quant_levels         vss     {N_QUANT_LEVELS}
+
+
+*------------------------------------------------------------------------------------------
+B7_vdac vdac[7] vss V= VDAC_VREF * V(quantization_step_size) * (VHIGH/2 + VLOW/4 + VLOW/8 + VLOW/16 + VLOW/32 + VLOW/64 + VLOW/128 + VLOW/256)
+B7_out  out[7]  vss V= V(in)>=V(vdac[7]) ? VHIGH : VLOW
+
+B6_vdac vdac[6] vss V= VDAC_VREF * V(quantization_step_size) * (V(out[7])/2 + VHIGH/4 + VLOW/8 + VLOW/16 + VLOW/32 + VLOW/64 + VLOW/128 + VLOW/256)
+B6_out  out[6]  vss V= V(in)>=V(vdac[6]) ? VHIGH : VLOW
+
+B5_vdac vdac[5] vss V= VDAC_VREF * V(quantization_step_size) * (V(out[7])/2 + V(out[6])/4 + VHIGH/8 + VLOW/16 + VLOW/32 + VLOW/64 + VLOW/128 + VLOW/256)
+B5_out  out[5]  vss V= V(in)>=V(vdac[5]) ? VHIGH : VLOW
+
+B4_vdac vdac[4] vss V= VDAC_VREF * V(quantization_step_size) * (V(out[7])/2 + V(out[6])/4 + V(out[5])/8 + VHIGH/16 + VLOW/32 + VLOW/64 + VLOW/128 + VLOW/256)
+B4_out  out[4]  vss V= V(in)>=V(vdac[4]) ? VHIGH : VLOW
+
+B3_vdac vdac[3] vss V= VDAC_VREF * V(quantization_step_size) * (V(out[7])/2 + V(out[6])/4 + V(out[5])/8 + V(out[4])/16 + VHIGH/32 + VLOW/64 + VLOW/128 + VLOW/256)
+B3_out  out[3]  vss V= V(in)>=V(vdac[3]) ? VHIGH : VLOW
+
+B2_vdac vdac[2] vss V= VDAC_VREF * V(quantization_step_size) * (V(out[7])/2 + V(out[6])/4 + V(out[5])/8 + V(out[4])/16 + V(out[3])/32 + VHIGH/64 + VLOW/128 + VLOW/256)
+B2_out  out[2]  vss V= V(in)>=V(vdac[2]) ? VHIGH : VLOW
+
+B1_vdac vdac[1] vss V= VDAC_VREF * V(quantization_step_size) * (V(out[7])/2 + V(out[6])/4 + V(out[5])/8 + V(out[4])/16 + V(out[3])/32 + V(out[2])/64 + VHIGH/128 + VLOW/256)
+B1_out  out[1]  vss V= V(in)>=V(vdac[1]) ? VHIGH : VLOW
+
+B0_vdac vdac[0] vss V= VDAC_VREF * V(quantization_step_size) * (V(out[7])/2 + V(out[6])/4 + V(out[5])/8 + V(out[4])/16 + V(out[3])/32 + V(out[2])/64 + V(out[1])/128 + VHIGH/256)
+B0_out  out[0]  vss V= V(in)>=V(vdac[0]) ? VHIGH : VLOW
+
+*------------------------------------------------------------------------------------------
+BquantLevel	quantization_level 0  V={(v(out[7])*(2**7))+(v(out[6])*(2**6))+(v(out[5])*(2**5))+(v(out[4])*(2**4))+(v(out[3])*(2**3))+(v(out[2])*(2**2))+(v(out[1])*(2**1))+(v(out[0])*(2**0))}
+
+Bquant_level_range_from quantization_level_range_from 	0 	V={V(quantization_level)*V(vdd)/2**8}
+Bquant_level_range_to	quantization_level_range_to 	0	V={(V(quantization_level)+1)*V(vdd)/2**8}
+
+
+XMux4_1 	ATB_SEL[0] ATB_SEL[1] quantization_step_size quantization_level quantization_level_range_from quantization_level_range_to ATB Mux4_1_Behavioral
+
+*------------------------------------------------------------------------------------------
+.ENDS ADC_SAR_8bits_V2
+
+*=============================================================================================================================================================
+
+*------------------------------------------------------------------------------------------
+*Subcircuito ADC SAR 8 BITS WITH CLOCK
+*------------------------------------------------------------------------------------------
+.SUBCKT ADC_SAR_8bits_V2_CLK in vdd clk ATB_SEL[1] ATB_SEL[0] vss out[7] out[6] out[5] out[4] out[3] out[2] out[1] out[0] ATB in_sample
+
+*------------------------------------------------------------------------------------------
+*Parameters
+*------------------------------------------------------------------------------------------
+.PARAM N_BITS             8                   ; Number of bits | FIXED VALUE
+.PARAM N_QUANT_LEVELS     {2**N_BITS}         ; Number of Discrete Quantization Levels
+.PARAM VDAC_VREF          {2**N_BITS}         ; SAR algorithm reference voltage
+.PARAM VHIGH              1                   ; Logic high voltage
+.PARAM VLOW               0                   ; Logic low voltage
+*------------------------------------------------------------------------------------------
+*IMPORTANT DATA
+*------------------------------------------------------------------------------------------
+Bquat_step    quantization_step_size      vss     V=(V(vdd)/{N_QUANT_LEVELS})
+Vquant_level  calc_n_quant_levels         vss     {N_QUANT_LEVELS}
+
+*------------------------------------------------------------------------------------------
+*S&H
+*------------------------------------------------------------------------------------------
+Ash in 0 clk 0 0 0 in_sample 0 SAMPLEHOLD Vhigh =20
+
+*------------------------------------------------------------------------------------------
+B7_vdac vdac[7] vss V= VDAC_VREF * V(quantization_step_size) * (VHIGH/2 + VLOW/4 + VLOW/8 + VLOW/16 + VLOW/32 + VLOW/64 + VLOW/128 + VLOW/256)
+B7_out  out[7]  vss V= V(in_sample)>=V(vdac[7]) ? VHIGH : VLOW
+
+B6_vdac vdac[6] vss V= VDAC_VREF * V(quantization_step_size) * (V(out[7])/2 + VHIGH/4 + VLOW/8 + VLOW/16 + VLOW/32 + VLOW/64 + VLOW/128 + VLOW/256)
+B6_out  out[6]  vss V= V(in_sample)>=V(vdac[6]) ? VHIGH : VLOW
+
+B5_vdac vdac[5] vss V= VDAC_VREF * V(quantization_step_size) * (V(out[7])/2 + V(out[6])/4 + VHIGH/8 + VLOW/16 + VLOW/32 + VLOW/64 + VLOW/128 + VLOW/256)
+B5_out  out[5]  vss V= V(in_sample)>=V(vdac[5]) ? VHIGH : VLOW
+
+B4_vdac vdac[4] vss V= VDAC_VREF * V(quantization_step_size) * (V(out[7])/2 + V(out[6])/4 + V(out[5])/8 + VHIGH/16 + VLOW/32 + VLOW/64 + VLOW/128 + VLOW/256)
+B4_out  out[4]  vss V= V(in_sample)>=V(vdac[4]) ? VHIGH : VLOW
+
+B3_vdac vdac[3] vss V= VDAC_VREF * V(quantization_step_size) * (V(out[7])/2 + V(out[6])/4 + V(out[5])/8 + V(out[4])/16 + VHIGH/32 + VLOW/64 + VLOW/128 + VLOW/256)
+B3_out  out[3]  vss V= V(in_sample)>=V(vdac[3]) ? VHIGH : VLOW
+
+B2_vdac vdac[2] vss V= VDAC_VREF * V(quantization_step_size) * (V(out[7])/2 + V(out[6])/4 + V(out[5])/8 + V(out[4])/16 + V(out[3])/32 + VHIGH/64 + VLOW/128 + VLOW/256)
+B2_out  out[2]  vss V= V(in_sample)>=V(vdac[2]) ? VHIGH : VLOW
+
+B1_vdac vdac[1] vss V= VDAC_VREF * V(quantization_step_size) * (V(out[7])/2 + V(out[6])/4 + V(out[5])/8 + V(out[4])/16 + V(out[3])/32 + V(out[2])/64 + VHIGH/128 + VLOW/256)
+B1_out  out[1]  vss V= V(in_sample)>=V(vdac[1]) ? VHIGH : VLOW
+
+B0_vdac vdac[0] vss V= VDAC_VREF * V(quantization_step_size) * (V(out[7])/2 + V(out[6])/4 + V(out[5])/8 + V(out[4])/16 + V(out[3])/32 + V(out[2])/64 + V(out[1])/128 + VHIGH/256)
+B0_out  out[0]  vss V= V(in_sample)>=V(vdac[0]) ? VHIGH : VLOW
+
+*------------------------------------------------------------------------------------------
+BquantLevel	quantization_level 0  V={(v(out[7])*(2**7))+(v(out[6])*(2**6))+(v(out[5])*(2**5))+(v(out[4])*(2**4))+(v(out[3])*(2**3))+(v(out[2])*(2**2))+(v(out[1])*(2**1))+(v(out[0])*(2**0))}
+
+Bquant_level_range_from quantization_level_range_from 	0 	V={V(quantization_level)*V(vdd)/2**8}
+Bquant_level_range_to	quantization_level_range_to 	0	V={(V(quantization_level)+1)*V(vdd)/2**8}
+
+
+XMux4_1 	ATB_SEL[0] ATB_SEL[1] quantization_step_size quantization_level quantization_level_range_from quantization_level_range_to ATB Mux4_1_Behavioral
+
+*------------------------------------------------------------------------------------------
+.ENDS ADC_SAR_8bits_V2_CLK
+
+*//////////////////////////////////////////////////////////////////////////////////////////
+
+*------------------------------------------------------------------------------------------
+*Subcircuito ADC SAR 8 BITS with 2 ADC SAR OF 4 BITS
+*------------------------------------------------------------------------------------------
+.SUBCKT ADC_SAR_8bits_CLK in vdd clk ATB_SEL[1] ATB_SEL[0] vss out[7] out[6] out[5] out[4] out[3] out[2] out[1] out[0] ATB in_sample
+
+*------------------------------------------------------------------------------------------
+*Parameters
+*------------------------------------------------------------------------------------------
+.PARAM N_BITS 			4			; Number of bits | FIXED VALUE
+.PARAM N_QUANT_LEVELS 	{2**N_BITS}	; Number of Discrete Quantization Levels
+.PARAM QUANT_STEP		{p_Vdd/N_QUANT_LEVELS}
+
+*------------------------------------------------------------------------------------------
+*IMPORTANT DATA
+*------------------------------------------------------------------------------------------
+Bquat_step    quantization_step_size      vss     V=(V(vdd)/{N_QUANT_LEVELS})
+Vquant_level  calc_n_quant_levels         vss     {N_QUANT_LEVELS}
+
+*------------------------------------------------------------------------------------------
+*S&H
+*------------------------------------------------------------------------------------------
+Ash in 0 clk 0 0 0 in_sample 0 SAMPLEHOLD Vhigh = 20
+
+*------------------------------------------------------------------------------------------
+XADC_MSB in_sample vdd 0 out[7] out[6] out[5] out[4] ADC_SAR_4bits
+
+Xscaler8bits in_sample VDD in_LSB	 ADCscaler
++N_QUANT_LEVELS	=	{N_QUANT_LEVELS}
++QUANT_STEP 	= 	{QUANT_STEP}
+
+XADC_LSB in_LSB vdd 0 out[3] out[2] out[1] out[0] ADC_SAR_4bits
+*------------------------------------------------------------------------------------------
+BquantLevel	quantization_level 0  V={(v(out[7])*(2**7))+(v(out[6])*(2**6))+(v(out[5])*(2**5))+(v(out[4])*(2**4))+(v(out[3])*(2**3))+(v(out[2])*(2**2))+(v(out[1])*(2**1))+(v(out[0])*(2**0))}
+
+Bquant_level_range_from quantization_level_range_from 	0 	V={V(quantization_level)*V(vdd)/2**8}
+Bquant_level_range_to	quantization_level_range_to 	0	V={(V(quantization_level)+1)*V(vdd)/2**8}
+
+
+XMux4_1 	ATB_SEL[0] ATB_SEL[1] quantization_step_size quantization_level quantization_level_range_from quantization_level_range_to ATB Mux4_1_Behavioral
+
+*------------------------------------------------------------------------------------------
+.END ADC_SAR_8bits_CLK
+
+*//////////////////////////////////////////////////////////////////////////////////////////

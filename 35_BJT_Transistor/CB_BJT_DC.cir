@@ -1,0 +1,70 @@
+CB_BJT_DC
+*-----------------------------------------------------------------------------
+*NOTES
+*-----------------------------------------------------------------------------
+* Se puede observar como 0.7V aproximadamente este enpieza a aumentar
+* Hasta llegar a un voltaje de saturación de 1.12
+* Esto representa una ganancia de voltaje bastante grande con un lapso de voltaje de
+* salida de 15.75 voltios y un lapso de voltaje de entrada de solo 0.42 voltios: una
+* relación de ganancia de 37.5, o 31.48 dB. Observe también cómo el voltaje de salida
+* (medido a través de la carga R) realmente excede la fuente de alimentación (15 voltios)
+* en la saturación, debido al efecto de ayuda en serie de la fuente de voltaje de entrada.
+
+* V(3,4) = Voltaje atravez de la resistencia = I(Load)* R(load)
+*-----------------------------------------------------------------------------
+*Parameters: User Input
+*-----------------------------------------------------------------------------
+.PARAM p_R1 	100
+.PARAM p_Rload 5k
+
+*=============================================================================
+* Calibration
+*=============================================================================
+
+
+
+
+*-----------------------------------------------------------------------------
+*Libraries, Models and includes
+*-----------------------------------------------------------------------------
+.model NPN NPN
+
+
+
+*-----------------------------------------------------------------------------
+*CIRCUIT
+*-----------------------------------------------------------------------------
+Vin 	0 	1	dc 1
+V1		3	0	dc	15
+
+R1 		1 	2 	{p_R1}
+Rload	3	4	{p_Rload}
+
+;	C	B	E
+q1	4	0	2	NPN
+
+*-----------------------------------------------------------------------------
+*MEASUREMENTS
+*-----------------------------------------------------------------------------
+
+
+*-----------------------------------------------------------------------------
+* SIMULATOR OPTIONS
+*-----------------------------------------------------------------------------
+
+
+*-----------------------------------------------------------------------------
+* ANALYSIS
+*-----------------------------------------------------------------------------
+
+
+.dc Vin 0.6 1.2 .02
+;.AC 	DEC 	10 	10 	10MEG
+;.TRAN 	1US  	10m
+.plot dc V(3,4)
+
+.END
+
+
+
+

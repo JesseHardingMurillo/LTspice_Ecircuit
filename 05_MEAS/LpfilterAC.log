@@ -1,6 +1,6 @@
 LTspice 24.0.9 for Windows
 Circuit: LPFILTER.CIR - SIMPLE RC LOW-PASS FILTER
-Start Time: Tue Mar 26 16:17:12 2024
+Start Time: Thu Jun 27 15:36:28 2024
 solver = Normal
 Maximum thread count: 12
 tnom = 27
@@ -15,5 +15,5 @@ Measurement "vout_max" FAIL'ed
 Measurement "vout_min" FAIL'ed
 vout_hz: v(out)=(0.498375,-0.499101) at 5000
 
-Total elapsed time: 0.225 seconds.
+Total elapsed time: 0.103 seconds.
 

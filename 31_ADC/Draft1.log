@@ -1,0 +1,7 @@
+Questionable use of curly braces in "btest reset 0 v={if(v(clk)/2>=0.5,0,1)}"
+    Error: undefined symbol in: "if([v](clk)/2>=0.5,0,1)"
+LTspice 24.0.9 for Windows
+Circuit: * C:\Users\jesse\Documents\GitHub\LTspice_Ecircuit\31_ADC\Draft1.asc
+Start Time: Fri Jun 28 21:12:08 2024
+Fatal Error: Unknown subcircuit called in:
+   xcounter clk_internal reset sel[0] sel[1] counter_2bits vdd =  15 

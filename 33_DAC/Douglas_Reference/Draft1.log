@@ -1,0 +1,17 @@
+Error: unknown token in: "(v(in[[]0])/{{vcc}})*1+(v(in[1])/{{vcc}})*2+(v(in[2])/{{vcc}})*4+(v(in[3])/{{vcc}})*8"
+LTspice 24.0.11 for Windows
+Circuit: * C:\Users\dougl\OneDrive\SuDou\OneDrive\UTN\UTN_LTspice_myDraft\01_JH\2024_04_29\Draft1.asc
+Start Time: Mon Apr 29 18:17:51 2024
+solver = Normal
+Maximum thread count: 16
+tnom = 27
+temp = 27
+method = modified trap
+WARNING: Less than two connections to node aux.  This node is used by vaux.
+WARNING: Less than two connections to node n001.  This node is used by a1.
+WARNING: Less than two connections to node out_dac2.  This node is used by a1.
+WARNING: Less than two connections to node out_cmp.  This node is used by ecmp.
+WARNING: Less than two connections to node out_cmp_opamp.  This node is used by r:op1:out.
+Direct Newton iteration for .op point succeeded.
+Total elapsed time: 0.452 seconds.
+

@@ -1,0 +1,75 @@
+LTspice 24.0.9 for Windows
+Circuit: adc_converter
+Start Time: Mon Jun 24 12:54:22 2024
+Error: unknown token in: "v(in)>=v(vdac[[]7])?{vhigh}:{vlow}"
+Error: unknown token in: "{vdac_vref}*v(quantization_step_size)*(v(out[[]7])/2+{vhigh}/4+{vlow}/8+{vlow}/16+{vlow}/32+{vlow}/64+{vlow}/128+{vlow}/256)"
+Error: unknown token in: "v(in)>=v(vdac[[]6])?{vhigh}:{vlow}"
+Error: unknown token in: "{vdac_vref}*v(quantization_step_size)*(v(out[[]7])/2+v(out[6])/4+{vhigh}/8+{vlow}/16+{vlow}/32+{vlow}/64+{vlow}/128+{vlow}/256)"
+Error: unknown token in: "v(in)>=v(vdac[[]5])?{vhigh}:{vlow}"
+Error: unknown token in: "{vdac_vref}*v(quantization_step_size)*(v(out[[]7])/2+v(out[6])/4+v(out[5])/8+{vhigh}/16+{vlow}/32+{vlow}/64+{vlow}/128+{vlow}/256)"
+Error: unknown token in: "v(in)>=v(vdac[[]4])?{vhigh}:{vlow}"
+Error: unknown token in: "{vdac_vref}*v(quantization_step_size)*(v(out[[]7])/2+v(out[6])/4+v(out[5])/8+v(out[4])/16+{vhigh}/32+{vlow}/64+{vlow}/128+{vlow}/256)"
+Error: unknown token in: "v(in)>=v(vdac[[]3])?{vhigh}:{vlow}"
+Error: unknown token in: "{vdac_vref}*v(quantization_step_size)*(v(out[[]7])/2+v(out[6])/4+v(out[5])/8+v(out[4])/16+v(out[3])/32+{vhigh}/64+{vlow}/128+{vlow}/256)"
+Error: unknown token in: "v(in)>=v(vdac[[]2])?{vhigh}:{vlow}"
+Error: unknown token in: "{vdac_vref}*v(quantization_step_size)*(v(out[[]7])/2+v(out[6])/4+v(out[5])/8+v(out[4])/16+v(out[3])/32+v(out[2])/64+{vhigh}/128+{vlow}/256)"
+Error: unknown token in: "v(in)>=v(vdac[[]1])?{vhigh}:{vlow}"
+Error: unknown token in: "{vdac_vref}*v(quantization_step_size)*(v(out[[]7])/2+v(out[6])/4+v(out[5])/8+v(out[4])/16+v(out[3])/32+v(out[2])/64+v(out[1])/128+{vhigh}/256)"
+Error: unknown token in: "v(in)>=v(vdac[[]0])?{vhigh}:{vlow}"
+Questionable use of curly braces in "bmod mod 0  v={((v(in))-int((v(in))/({{quant_step}}))*({{quant_step}}))}"
+    Error: undefined symbol in: "(([v](in))-int((v(in))/(((quant_step))))*(((quant_step))))"
+Questionable use of curly braces in "bin_lsb in_lsb 0  v={v(mod)*{v(vdd)/{quant_step}}}"
+    Error: bad call of user defined function in: "v([mod)]*(v(vdd)/(quant_step))"
+Questionable use of curly braces in "bin_lsb in_lsb 0  v=(v(mod)*{v(vdd)/{quant_step}})"
+    Error: undefined symbol in: "[v](vdd)/(quant_step)"
+Error: unknown token in: "v(in)>=v(vdac[[]7])?{vhigh}:{vlow}"
+Error: unknown token in: "{vdac_vref}*v(quantization_step_size)*(v(out[[]7])/2+{vhigh}/4+{vlow}/8+{vlow}/16+{vlow}/32+{vlow}/64+{vlow}/128+{vlow}/256)"
+Error: unknown token in: "v(in)>=v(vdac[[]6])?{vhigh}:{vlow}"
+Error: unknown token in: "{vdac_vref}*v(quantization_step_size)*(v(out[[]7])/2+v(out[6])/4+{vhigh}/8+{vlow}/16+{vlow}/32+{vlow}/64+{vlow}/128+{vlow}/256)"
+Error: unknown token in: "v(in)>=v(vdac[[]5])?{vhigh}:{vlow}"
+Error: unknown token in: "{vdac_vref}*v(quantization_step_size)*(v(out[[]7])/2+v(out[6])/4+v(out[5])/8+{vhigh}/16+{vlow}/32+{vlow}/64+{vlow}/128+{vlow}/256)"
+Error: unknown token in: "v(in)>=v(vdac[[]4])?{vhigh}:{vlow}"
+Error: unknown token in: "{vdac_vref}*v(quantization_step_size)*(v(out[[]7])/2+v(out[6])/4+v(out[5])/8+v(out[4])/16+{vhigh}/32+{vlow}/64+{vlow}/128+{vlow}/256)"
+Error: unknown token in: "v(in)>=v(vdac[[]3])?{vhigh}:{vlow}"
+Error: unknown token in: "{vdac_vref}*v(quantization_step_size)*(v(out[[]7])/2+v(out[6])/4+v(out[5])/8+v(out[4])/16+v(out[3])/32+{vhigh}/64+{vlow}/128+{vlow}/256)"
+Error: unknown token in: "v(in)>=v(vdac[[]2])?{vhigh}:{vlow}"
+Error: unknown token in: "{vdac_vref}*v(quantization_step_size)*(v(out[[]7])/2+v(out[6])/4+v(out[5])/8+v(out[4])/16+v(out[3])/32+v(out[2])/64+{vhigh}/128+{vlow}/256)"
+Error: unknown token in: "v(in)>=v(vdac[[]1])?{vhigh}:{vlow}"
+Error: unknown token in: "{vdac_vref}*v(quantization_step_size)*(v(out[[]7])/2+v(out[6])/4+v(out[5])/8+v(out[4])/16+v(out[3])/32+v(out[2])/64+v(out[1])/128+{vhigh}/256)"
+Error: unknown token in: "v(in)>=v(vdac[[]0])?{vhigh}:{vlow}"
+Questionable use of curly braces in "bmod mod 0  v={((v(in))-int((v(in))/({{quant_step}}))*({{quant_step}}))}"
+    Error: undefined symbol in: "(([v](in))-int((v(in))/(((quant_step))))*(((quant_step))))"
+Questionable use of curly braces in "bin_lsb in_lsb 0  v={v(mod)*{v(vdd)/{quant_step}}}"
+    Error: bad call of user defined function in: "v([mod)]*(v(vdd)/(quant_step))"
+Questionable use of curly braces in "bin_lsb in_lsb 0  v=(v(mod)*{v(vdd)/{quant_step}})"
+    Error: undefined symbol in: "[v](vdd)/(quant_step)"
+Error: unknown token in: "v(in)>=v(vdac[[]7])?{vhigh}:{vlow}"
+Error: unknown token in: "{vdac_vref}*v(quantization_step_size)*(v(out[[]7])/2+{vhigh}/4+{vlow}/8+{vlow}/16+{vlow}/32+{vlow}/64+{vlow}/128+{vlow}/256)"
+Error: unknown token in: "v(in)>=v(vdac[[]6])?{vhigh}:{vlow}"
+Error: unknown token in: "{vdac_vref}*v(quantization_step_size)*(v(out[[]7])/2+v(out[6])/4+{vhigh}/8+{vlow}/16+{vlow}/32+{vlow}/64+{vlow}/128+{vlow}/256)"
+Error: unknown token in: "v(in)>=v(vdac[[]5])?{vhigh}:{vlow}"
+Error: unknown token in: "{vdac_vref}*v(quantization_step_size)*(v(out[[]7])/2+v(out[6])/4+v(out[5])/8+{vhigh}/16+{vlow}/32+{vlow}/64+{vlow}/128+{vlow}/256)"
+Error: unknown token in: "v(in)>=v(vdac[[]4])?{vhigh}:{vlow}"
+Error: unknown token in: "{vdac_vref}*v(quantization_step_size)*(v(out[[]7])/2+v(out[6])/4+v(out[5])/8+v(out[4])/16+{vhigh}/32+{vlow}/64+{vlow}/128+{vlow}/256)"
+Error: unknown token in: "v(in)>=v(vdac[[]3])?{vhigh}:{vlow}"
+Error: unknown token in: "{vdac_vref}*v(quantization_step_size)*(v(out[[]7])/2+v(out[6])/4+v(out[5])/8+v(out[4])/16+v(out[3])/32+{vhigh}/64+{vlow}/128+{vlow}/256)"
+Error: unknown token in: "v(in)>=v(vdac[[]2])?{vhigh}:{vlow}"
+Error: unknown token in: "{vdac_vref}*v(quantization_step_size)*(v(out[[]7])/2+v(out[6])/4+v(out[5])/8+v(out[4])/16+v(out[3])/32+v(out[2])/64+{vhigh}/128+{vlow}/256)"
+Error: unknown token in: "v(in)>=v(vdac[[]1])?{vhigh}:{vlow}"
+Error: unknown token in: "{vdac_vref}*v(quantization_step_size)*(v(out[[]7])/2+v(out[6])/4+v(out[5])/8+v(out[4])/16+v(out[3])/32+v(out[2])/64+v(out[1])/128+{vhigh}/256)"
+Error: unknown token in: "v(in)>=v(vdac[[]0])?{vhigh}:{vlow}"
+solver = Normal
+Maximum thread count: 12
+tnom = 27
+temp = 27
+method = modified trap
+WARNING: Less than two connections to node adc_sar_8bits_1:calc_n_quant_levels.  This node is used by v:adc_sar_8bits_1:quant_level.
+WARNING: Less than two connections to node out[16].  This node is used by b:adc_sar_8bits_1:0_out.
+WARNING: Less than two connections to node adc_sar_8bitsv2:calc_n_quant_levels.  This node is used by v:adc_sar_8bitsv2:quant_level.
+WARNING: Less than two connections to node out[8].  This node is used by b:adc_sar_8bitsv2:0_out.
+WARNING: Less than two connections to node adc_sar_8bitsv3:calc_n_quant_levels.  This node is used by v:adc_sar_8bitsv3:quant_level.
+WARNING: Less than two connections to node out[0].  This node is used by b:adc_sar_8bitsv3:0_out.
+Direct Newton iteration for .op point succeeded.
+Heightened Def Con from 0.00233101 to 0.00233101
+Total elapsed time: 1.047 seconds.
+
